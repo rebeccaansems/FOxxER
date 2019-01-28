@@ -57,4 +57,9 @@ MonoBehaviour:
     maxValue: 15
   pointType: 0
   nextWayPoints: []
+  OnTargetArrived:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.ComponentEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   debug: 1

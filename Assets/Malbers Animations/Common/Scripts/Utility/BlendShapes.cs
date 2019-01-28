@@ -10,7 +10,6 @@ namespace MalbersAnimations.Utilities
         public SkinnedMeshRenderer mesh;
         [Range(0, 100)]
         public float[] blendShapes;     //Value of the Blend Shape
-        public bool[] ActiveShape;      //if this Blend Shape Active?
 
         public bool HasBlendShapes
         {
@@ -56,7 +55,8 @@ namespace MalbersAnimations.Utilities
             {
                 for (int i = 0; i < blendShapes.Length; i++)
                 {
-                    mesh.SetBlendShapeWeight(i, Random.Range(0,100));
+                    blendShapes[i] = Random.Range(0, 100);
+                    mesh.SetBlendShapeWeight(i, blendShapes[i]);
                 }
             }
         }

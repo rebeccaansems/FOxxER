@@ -1,11 +1,7 @@
-﻿    using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MalbersAnimations
 {
-   
-
     //Controls the movement while underwater
     public class UnderWaterBehaviour : StateMachineBehaviour
     {
@@ -23,11 +19,10 @@ namespace MalbersAnimations
         protected Rigidbody rb;
         protected Animal animal;
         protected Transform transform;
-        protected Quaternion DeltaRotation;
         protected float Shift;
         protected float deltaTime;
 
-        Speeds BehaviourSpeed;
+        Speeds Speed;
 
         int WaterLayer;
         private float Direction;
@@ -40,23 +35,32 @@ namespace MalbersAnimations
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            ResetAllValues();
+
             rb = animator.GetComponent<Rigidbody>();
             animal = animator.GetComponent<Animal>();
 
-            animator.applyRootMotion = true;
+            animal.RootMotion = true;
 
             transform = animator.transform;                                                             //Save the Transform on a local variable
-            DeltaRotation = transform.rotation;                                                         //Save the Horizontal Rotation
 
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             rb.useGravity = false;
 
 
-            Default_UseShift = animal.useShift;
-            animal.useShift = false;
+            Default_UseShift = animal.UseShift;
+            animal.UseShift = false;
 
             WaterLayer = LayerMask.GetMask("Water");
-            BehaviourSpeed = animal.underWaterSpeed;
+            Speed = animal.underWaterSpeed;
+        }
+
+        void ResetAllValues()
+        {
+            Shift = 0;
+            deltaTime = 0;
+            Direction = 0;
+            forwardAceleration = 0;
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -74,28 +78,25 @@ namespace MalbersAnimations
             deltaTime = Time.deltaTime;                                                     //Store the Delta Time
 
             if (useShift)
-                Shift = Mathf.Lerp(Shift, animal.Shift ? ShiftMultiplier : 1, BehaviourSpeed.lerpPosition * deltaTime);   //Calculate the Shift
-
+                Shift = Mathf.Lerp(Shift, animal.Shift ? ShiftMultiplier : 1, Speed.lerpPosition * deltaTime);   //Calculate the Shift
 
             if (animal.Up) animal.Down = false;       //Cannot press at the same time Down and UP(Jump)
 
-            transform.rotation = DeltaRotation;                                             //Reset the Rotation before rotating... with no Pitch Rotation
+            var CleanEuler = (transform.eulerAngles);
+            CleanEuler.x = CleanEuler.z = 0;
+            transform.eulerAngles = CleanEuler;                                             //Reset the Rotation before rotating... with just Yaw Rotation
 
             //animal.YAxisMovement(animal.upDownSmoothness, deltaTime);
 
 
-            float isGoingForward = animal.MovementAxis.z >= 0 ? 1 : -1;                     //Check if the animal is going Forward or Backwards
-            Direction = Mathf.Lerp(Direction, Mathf.Clamp(animal.Direction, -1, 1), deltaTime * BehaviourSpeed.lerpRotation);          //Calculate the direction
+            float isGoingForward = animal.MovementAxis.z >= 0 ? 1 : -1;                                           //Check if the animal is going Forward or Backwards
+            Direction = Mathf.Lerp(Direction, Mathf.Clamp(animal.Direction, -1, 1), deltaTime * Speed.lerpRotation);          //Calculate the direction
 
-            Quaternion Yaw = Quaternion.Euler(transform.InverseTransformDirection(0, Direction * BehaviourSpeed.rotation * isGoingForward, 0));
+            var RotationYaw = new Vector3(0, Direction * Speed.rotation * isGoingForward, 0);
+            Quaternion Yaw = Quaternion.Euler(transform.InverseTransformDirection(RotationYaw));            //Get the Rotation on the Y Axis transformed to Quaternion
 
-           // transform.rotation *= Yaw;                                                                   //Rotation ROLL USING ROTATE (BAD FOR PERFORMACE)
+            // transform.rotation *= Yaw;                                                                   //Rotation ROLL USING ROTATE (BAD FOR PERFORMACE)
             animal.DeltaRotation *= Yaw;                                                                    //Rotation ROLL USING DeltaRotation (GOOD FOR PERFORMACE)
-
-           // DeltaRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation;            //Restore the rotation to the Default after turning USING ROTATE ...             
-            DeltaRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation * Yaw;        //Restore the rotation to the Default after turning USING DeltaRotation ...
-
-          
 
             float Up = animal.MovementUp;
 
@@ -117,12 +118,12 @@ namespace MalbersAnimations
                 movement = DirectionVector;
             }
 
-            forwardAceleration = Mathf.Lerp(forwardAceleration, DirectionVector.magnitude, deltaTime * BehaviourSpeed.lerpPosition);
+            forwardAceleration = Mathf.Lerp(forwardAceleration, DirectionVector.magnitude, deltaTime * Speed.lerpPosition);
 
             var DeltaMovement =
                 movement *                                      //Apply the movement to the Forward Direction of the Animal
                 forwardAceleration *                            //This is to avoid going forward all the time even if no key is pressed
-                BehaviourSpeed.position *                             //The Fly Velocity multiplier
+                Speed.position *                             //The Fly Velocity multiplier
                 Shift *                                         //The Sprint mulitplier
                 (animal.Speed < 0 ? 0.5f : 1) *                 //If the animal is going backwards go half speed;
                 deltaTime;                                      //DeltaTime
@@ -157,7 +158,7 @@ namespace MalbersAnimations
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animal.useShift = Default_UseShift;
+            animal.UseShift = Default_UseShift;
         }
 
         protected void CheckExitUnderWater()
@@ -172,7 +173,7 @@ namespace MalbersAnimations
                 if (!animal.Down)
                 {
                     animal.Underwater = false;
-                    animal.Anim.applyRootMotion = true;
+                    animal.RootMotion = true;
                     rb.useGravity = true;
                     rb.drag = 0;
 

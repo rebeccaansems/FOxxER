@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MalbersAnimations
 {
@@ -14,18 +13,4 @@ namespace MalbersAnimations
             return reference.ID;
         }
     }
-
-
-    //public struct ActionSet
-    //{
-    //    public enum ActionInterruption { None, Movement, Time, Release }
-    //    /// <summary>
-    //    /// Name of the ActionEmotion
-    //    /// </summary>
-    //    public string name;
-    //    public int ID;
-    //    public ActionInterruption interruption;
-    //    public float time;
-    //    public float loops;
-    //}
 }

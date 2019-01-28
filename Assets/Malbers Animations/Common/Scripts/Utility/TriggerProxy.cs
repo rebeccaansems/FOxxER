@@ -12,24 +12,42 @@ namespace MalbersAnimations.Utilities
     /// </summary>
     public class TriggerProxy : MonoBehaviour
     {
+        [Tooltip("Ignore this Objects with this layers")]
+        public LayerMask Ignore;
+        [SerializeField] private bool active = true;
+
         public ColliderEvent OnTrigger_Enter = new ColliderEvent();
         public ColliderEvent OnTrigger_Stay = new ColliderEvent();
         public ColliderEvent OnTrigger_Exit = new ColliderEvent();
         public CollisionEvent OnCollision_Enter = new CollisionEvent();
 
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
 
         void OnTriggerStay(Collider other)
         {
+            if (!active) return;
+            if (MalbersTools.Layer_in_LayerMask(other.gameObject.layer, Ignore)) return;
+         
+           
             OnTrigger_Stay.Invoke(other);
         }
 
         void OnTriggerEnter(Collider other)
         {
+            if (!active) return;
+            if (MalbersTools.Layer_in_LayerMask(other.gameObject.layer, Ignore)) return;
+
             OnTrigger_Enter.Invoke(other);
         }
 
         void OnTriggerExit(Collider other)
         {
+            if (!active) return;
+            if (MalbersTools.Layer_in_LayerMask(other.gameObject.layer, Ignore)) return;
             OnTrigger_Exit.Invoke(other);
         }
 
@@ -49,6 +67,7 @@ namespace MalbersAnimations.Utilities
         private void Reset()
         {
             var collider = GetComponent<Collider>();
+            Active = true;
 
             if (collider)
             {

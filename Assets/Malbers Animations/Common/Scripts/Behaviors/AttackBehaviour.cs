@@ -8,9 +8,10 @@ namespace MalbersAnimations
     public class AttackBehaviour : StateMachineBehaviour
     {
         public int AttackTrigger = 1;                           //ID of the Attack Trigger to Enable/Disable during the Attack Animation
-        [Range(0, 1)] public float On = 0.3f;
-        [Range(0, 1)] public float Off = 0.6f;
 
+        [Tooltip("Range on the Animation that the Attack Trigger will be Active")]
+        [MinMaxRange(0, 1)]
+        public RangedFloat AttackActivation =  new RangedFloat(0.3f,0.6f);
 
         private bool isOn, isOff;
         private Animal animal;
@@ -33,13 +34,13 @@ namespace MalbersAnimations
         {
             animal.IsAttacking = true;                                  //Important Make Sure its stays true!!
 
-            if (!isOn && (stateInfo.normalizedTime % 1) >= On)
+            if (!isOn && (stateInfo.normalizedTime % 1) >= AttackActivation.minValue)
             {
                 animal.AttackTrigger(AttackTrigger);
                 isOn = true;
             }
 
-            if (!isOff && (stateInfo.normalizedTime % 1) >= Off)
+            if (!isOff && (stateInfo.normalizedTime % 1) >= AttackActivation.maxValue)
             {
                 animal.AttackTrigger(0);
                 isOff = true;

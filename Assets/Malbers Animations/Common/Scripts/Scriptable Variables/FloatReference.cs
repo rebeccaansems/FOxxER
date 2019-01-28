@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 namespace MalbersAnimations.Scriptables
 {
     [System.Serializable]
@@ -12,18 +11,12 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// The Value to return to when Reset is called
         /// </summary>
-        public float DefaultValue;
-
-        /// <summary>
-        /// The Value to return to when Reset is called
-        /// </summary>
         public FloatVar Variable;
 
         public FloatReference()
         {
             UseConstant = true;
             ConstantValue = 0;
-            DefaultValue = 0;
         }
 
         public FloatReference(bool variable = false)
@@ -38,7 +31,6 @@ namespace MalbersAnimations.Scriptables
             {
                 Variable = ScriptableObject.CreateInstance<FloatVar>();
                 Variable.Value = 0;
-                Variable.DefaultValue = 0;
             }
         }
 
@@ -59,23 +51,9 @@ namespace MalbersAnimations.Scriptables
             }
         }
 
-        /// <summary>
-        /// Reset the current value to the Default value
-        /// </summary>
-        public virtual void Reset()
-        {
-            if (UseConstant)
-            {
-                Value = DefaultValue;
-            }
-            Value = UseConstant ? DefaultValue : Variable.DefaultValue;
-        }
-
-        #region Operators
         public static implicit operator float(FloatReference reference)
         {
             return reference.Value;
         }
-        #endregion
     }
 }

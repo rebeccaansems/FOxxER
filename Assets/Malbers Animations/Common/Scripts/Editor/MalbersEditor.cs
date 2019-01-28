@@ -83,6 +83,11 @@ namespace MalbersAnimations
             EditorGUILayout.Space();
         }
 
+
+
+        
+
+
         public static void DrawSplitter()
         {
             EditorGUILayout.Space();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MalbersAnimations.Scriptables;
+using UnityEngine;
 
 namespace MalbersAnimations
 {
@@ -106,7 +107,9 @@ namespace MalbersAnimations
                     break;
                 case TypeMessage.Void:
                     anim.SendMessage(m.message, SendMessageOptions.DontRequireReceiver);
-
+                    break;
+                case TypeMessage.IntVar:
+                    anim.SendMessage(m.message,(int) m.intVarValue, SendMessageOptions.DontRequireReceiver);
                     break;
                 default:
                     break;
@@ -137,6 +140,9 @@ namespace MalbersAnimations
                 case TypeMessage.Void:
                     listener.OnAnimatorBehaviourMessage(m.message, null);
                     break;
+                case TypeMessage.IntVar:
+                    listener.OnAnimatorBehaviourMessage(m.message, (int) m.intVarValue);
+                    break;
                 default:
                     break;
             }
@@ -151,6 +157,7 @@ namespace MalbersAnimations
         public int intValue;
         public float floatValue;
         public string stringValue;
+        public IntVar intVarValue;
 
         public float time;
         public bool sent;

@@ -48,26 +48,23 @@ namespace MalbersAnimations
         /// </summary>
         protected Vector3 targetPosition = NullVector;
         protected Vector3 TargetLastPosition = NullVector;
-        /// <summary>
-        /// Stores the Remainin distance to the Target's Position
-        /// </summary>
+
+        /// <summary>Stores the Remainin distance to the Target's Position</summary>
         protected float RemainingDistance;
         protected float DefaultStopDistance;
-        /// <summary>
-        /// Used to Check if you enter once on a OffMeshLink
-        /// </summary>
+        /// <summary>Used to Check if you enter once on a OffMeshLink</summary>
         protected bool EnterOFFMESH;
-        /// <summary>
-        /// Check if the animal is making an Action animation  
-        /// </summary>
+
+        /// <summary>Check if the animal is making an Action animation  </summary>
         protected bool DoingAnAction;
         protected bool EnterAction;
-        private bool isWaiting;
 
-
+        /// <summary>Is the Animal stopped by an external source like Public Function Stop or Mount AI</summary>       
+        protected bool Stopped = false;
+        /// <summary>Sometimes OffMesh Links can be travelled by flying</summary>         
         private bool isFlyingOffMesh;
 
-        private IWayPoint NextWayPoint;
+        internal IWayPoint NextWayPoint;
         /// <summary>
         /// True if the animal should be Flying
         /// </summary>
@@ -83,6 +80,9 @@ namespace MalbersAnimations
         public float ToTrot = 6f;
         public float ToRun = 8f;
         public bool debug = false;                          //Debuging 
+
+
+    
         #endregion
 
         #region Events
@@ -122,6 +122,8 @@ namespace MalbersAnimations
             set { Agent.stoppingDistance = stoppingDistance = value; }
         }
 
+
+        protected bool targetisMoving;
         /// <summary>
         /// is the Target transform moving??
         /// </summary>
@@ -131,9 +133,11 @@ namespace MalbersAnimations
             {
                 if (target != null)
                 {
-                    return (target.position - TargetLastPosition).magnitude > 0.001f;
+                    targetisMoving = (target.position - TargetLastPosition).magnitude > 0.001f;
+                    return targetisMoving;
                 }
-                return false;
+                targetisMoving = false;
+                return targetisMoving;
             }
         }
 
@@ -148,11 +152,7 @@ namespace MalbersAnimations
         /// <summary>
         /// Is the Animal waiting x time to go to the Next waypoint
         /// </summary>
-        public bool IsWaiting
-        {
-            get { return isWaiting; }
-            protected set { isWaiting = value; }
-        }
+        public bool IsWaiting { get; protected set; }
 
         #endregion
 
@@ -173,23 +173,40 @@ namespace MalbersAnimations
             DefaultStopDistance = StoppingDistance;                             //Store the Started Stopping Distance
             Agent.stoppingDistance = StoppingDistance;
             SetTarget(target);                                                  //Set the first Target
+            IsWaiting = false;
         }
 
         void Update()
         {
+            Updating();
+
+        }
+
+        protected virtual void Updating()
+        {
             if (isFlyingOffMesh) return;
 
-            if (animal.Fly || animal.Swim)                                                         //if the Animal is flying?
+
+            if (Stopped)
+            {
+                if (TargetisMoving)
+                {
+                    Stopped = false;
+                    SetTarget(target);
+                }
+            }
+            else if (animal.Fly || animal.Swim)                                                         //if the Animal is flying?
             {
                 FreeMovement();
             }
             else if (AgentActive)                                               //if we are on a NAV MESH onGround
             {
-                Agent.nextPosition = agent.transform.position;                  //Update the Agent Position to the Transform position
                 if (IsWaiting) return;                                          //If the Animal is Waiting no nothing . .... he is doing something else... wait until he's finish
 
                 if (targetPosition == NullVector)                               //if there's no Position to go to.. Stop the Agent
+                {
                     StopAnimal();
+                }
                 else
                     UpdateAgent();
             }
@@ -200,6 +217,8 @@ namespace MalbersAnimations
 
                 TargetLastPosition = target.position;
             }
+
+            Agent.nextPosition = agent.transform.position;                  //Update the Agent Position to the Transform position
         }
 
         /// <summary>
@@ -207,9 +226,10 @@ namespace MalbersAnimations
         /// </summary>
         private void FreeMovement()
         {
-            if (isWaiting) return;
+            if (IsWaiting) return;
+            if (target ==null || targetPosition == NullVector) return; //If we have no were to go then Skip the code
 
-            RemainingDistance = Vector3.Distance(animal.transform.position, target.position);
+            RemainingDistance = target ? Vector3.Distance(animal.transform.position, target.position) : 0;
 
             var Direction = (target.position - animal.transform.position);
 
@@ -274,7 +294,7 @@ namespace MalbersAnimations
                     }
                     else
                     {
-                        isWaiting = false;
+                        IsWaiting = false;
                     }
                 }
             }
@@ -384,7 +404,7 @@ namespace MalbersAnimations
         protected virtual void WakeAnimal()
         {
             animal.WakeAnimal();
-            isWaiting = false;
+            IsWaiting = false;
         }
 
         /// <summary>
@@ -436,6 +456,7 @@ namespace MalbersAnimations
         }
 
         IEnumerator WaitToNextTargetC;
+
         protected virtual IEnumerator WaitToNextTarget(float time, Transform NextTarget)
         {
             if (isActionZone && isActionZone.MoveToExitAction) time = 0;    //Do not wait if the Action Zone was a 'Move to Exit" one
@@ -479,7 +500,11 @@ namespace MalbersAnimations
         /// </summary>
         public virtual void SetTarget(Transform target)
         {
-            if (target == null) return;             //If there's no target Skip the code
+            if (target == null)
+            {
+                StopAnimal();
+                return;             //If there's no target Skip the code
+            }
 
             this.target = target;
             targetPosition = target.position;       //Update the Target Position 
@@ -490,8 +515,7 @@ namespace MalbersAnimations
             isWayPoint = target.GetComponent<MWayPoint>();
             NextWayPoint = target.GetComponent<IWayPoint>();            //Check if the Next Target has Next Waypoints
 
-         
-         
+            Stopped = false;
 
             StoppingDistance = NextWayPoint != null ? NextWayPoint.StoppingDistance : DefaultStopDistance;  //Set the Next Stopping Distance
 
@@ -537,14 +561,18 @@ namespace MalbersAnimations
         }
 
         /// <summary>
-        /// Stop the Agent on the Animal... also remove the Transform target and the Target Position
+        /// Stop the Agent on the Animal... also remove the Transform target and the Target Position and Stops the Animal
         /// </summary>
         public virtual void StopAnimal()
         {
-            Agent.isStopped = true;
-            target = null;
+            if (Agent && Agent.isOnNavMesh) Agent.isStopped = true;
             targetPosition = NullVector;
-            DoingAnAction = false;
+            StopAllCoroutines();
+            //DoingAnAction = false;
+            //animal.InterruptAction();
+            if (animal)   animal.Stop();
+            IsWaiting = isFlyingOffMesh = false;
+            Stopped = true;
         }
 
         /// <summary>
@@ -559,7 +587,7 @@ namespace MalbersAnimations
             if (!Agent.isOnNavMesh || !Agent.enabled) return;               //Do nothing if we are not on a Nav mesh or the Agent is disabled
             Agent.SetDestination(targetPosition);                           //If there's a position to go to set it as destination
             Agent.isStopped = false;
-
+            Stopped = false;
             Debuging(name + " is travelling to : " + point);
         }
 
@@ -584,7 +612,7 @@ namespace MalbersAnimations
                 distance = Vector3.Distance(animal.transform.position, target.position);
                 yield return null;
             }
-
+            animal.Stop();      ///lets break him out a bit so he wont fall if the movement is too fast
             animal.SetFly(false);
             isFlyingOffMesh = false;
         }

@@ -9,6 +9,7 @@ namespace MalbersAnimations.Events
     {
         public MEvent Event;
 
+
         [HideInInspector]
         public bool useInt = false, useFloat = false, useVoid = true, useString = false, useBool = false, useGO = false, useTransform = false, useVector = false;
 
@@ -44,6 +45,10 @@ namespace MalbersAnimations.Events
     /// </summary>
     public class MEventListener : MonoBehaviour
     {
+//#if UNITY_EDITOR
+//        [TextArea(3, 20)]
+//        public string Description = "";
+//#endif
         public List<MEventItemListener> Events = new List<MEventItemListener>();
 
         private void OnEnable()

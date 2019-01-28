@@ -47,7 +47,9 @@ namespace MalbersAnimations.Utilities
                     break;
                 case TypeMessage.Void:
                     component.SendMessage(m.message, SendMessageOptions.DontRequireReceiver);
-
+                    break;
+                case TypeMessage.IntVar:
+                    component.SendMessage(m.message, (int)m.intVarValue, SendMessageOptions.DontRequireReceiver);
                     break;
                 default:
                     break;
@@ -72,6 +74,9 @@ namespace MalbersAnimations.Utilities
                     break;
                 case TypeMessage.Void:
                     listener.OnAnimatorBehaviourMessage(m.message, null);
+                    break;
+                case TypeMessage.IntVar:
+                    listener.OnAnimatorBehaviourMessage(m.message, (int)m.intVarValue);
                     break;
                 default:
                     break;

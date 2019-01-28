@@ -27,7 +27,8 @@
         Int = 1,
         Float = 2,
         String = 3,
-        Void = 4
+        Void = 4,
+        IntVar = 5
     }
 
     //This is mainly use for the Rider Combat Animator nothing more
@@ -95,15 +96,4 @@
         //Ranged
         Fire_Proyectile = 9,
     }
-
-//    enum InputSystem
-//    {
-//        UnityInput
-//#if CROSS_PLATFORM_INPUT
-//            ,CROSS_PLATFORM_INPUT
-//#endif
-//#if REWIRED
-//            ,Rewired
-//#endif
-//    }
 }

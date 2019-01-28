@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-
+using MalbersAnimations.Scriptables;
 
 namespace MalbersAnimations
 {
@@ -17,14 +17,15 @@ namespace MalbersAnimations
         bool OnEnter, OnExit, OnTime;
 
         private MessagesBehavior MMessage;
+        private MonoScript script;
 
         private void OnEnable()
         {
 
             MMessage = ((MessagesBehavior)target);
 
-           
-          
+            script = MonoScript.FromScriptableObject(MMessage);
+
             listOnEnter = new ReorderableList(serializedObject, serializedObject.FindProperty("onEnterMessage"), true, true, true, true);
             listOnExit = new ReorderableList(serializedObject, serializedObject.FindProperty("onExitMessage"), true, true, true, true);
             listOnTime = new ReorderableList(serializedObject, serializedObject.FindProperty("onTimeMessage"), true, true, true, true);
@@ -52,7 +53,10 @@ namespace MalbersAnimations
 
             EditorGUILayout.BeginVertical(MalbersEditor.StyleGray);
             {
-                
+                EditorGUI.BeginDisabledGroup(true);
+                script = (MonoScript)EditorGUILayout.ObjectField("Script", script, typeof(MonoScript), false);
+                EditorGUI.EndDisabledGroup();
+
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
                 EditorGUI.indentLevel++;
@@ -160,6 +164,9 @@ namespace MalbersAnimations
                 case TypeMessage.String:
                     element.stringValue = EditorGUI.TextField(R_5, element.stringValue);
                     break;
+                case TypeMessage.IntVar:
+                    element.intVarValue = (IntVar)EditorGUI.ObjectField(R_5, element.intVarValue, typeof(IntVar), false);
+                    break;
                 default:
                     break;
             }
@@ -195,6 +202,9 @@ namespace MalbersAnimations
                     break;
                 case TypeMessage.String:
                     element.stringValue = EditorGUI.TextField(R_5, element.stringValue);
+                    break;
+                case TypeMessage.IntVar:
+                    element.intVarValue = (IntVar)EditorGUI.ObjectField(R_5,  element.intVarValue, typeof(IntVar), false);
                     break;
                 default:
                     break;
@@ -238,6 +248,9 @@ namespace MalbersAnimations
                     break;
                 case TypeMessage.String:
                     element.stringValue = EditorGUI.TextField(R_5, element.stringValue);
+                    break;
+                case TypeMessage.IntVar:
+                    element.intVarValue = (IntVar)EditorGUI.ObjectField(R_5, element.intVarValue, typeof(IntVar), false);
                     break;
                 default:
                     break;

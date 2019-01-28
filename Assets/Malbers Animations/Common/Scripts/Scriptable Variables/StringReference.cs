@@ -10,18 +10,12 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// The Value to return to when Reset is called
         /// </summary>
-        public string DefaultValue;
-
-        /// <summary>
-        /// The Value to return to when Reset is called
-        /// </summary>
         public StringVar Variable;
 
         public StringReference()
         {
             UseConstant = true;
             ConstantValue = string.Empty;
-            DefaultValue = string.Empty;
         }
 
         public StringReference(bool variable = false)
@@ -55,18 +49,6 @@ namespace MalbersAnimations.Scriptables
                 else
                     Variable.Value = value;
             }
-        }
-
-        /// <summary>
-        /// Reset the current value to the Default value
-        /// </summary>
-        public virtual void Reset()
-        {
-            if (UseConstant)
-            {
-                Value = DefaultValue;
-            }
-            Value = UseConstant ? DefaultValue : Variable.DefaultValue;
         }
 
         #region Operators

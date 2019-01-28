@@ -40,19 +40,6 @@ namespace MalbersAnimations.Scriptables
                     Variable.Value = value;
             }
         }
-
-        /// <summary>
-        /// Reset the current value to the Default value
-        /// </summary>
-        public virtual void Reset()
-        {
-            if (UseConstant)
-            {
-                Value = DefaultValue;
-            }
-            Value = UseConstant ? DefaultValue : Variable.DefaultValue;
-        }
-
         #region Operators
         public static implicit operator bool(BoolReference reference)
         {

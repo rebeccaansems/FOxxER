@@ -5,8 +5,9 @@ namespace MalbersAnimations
     /// <summary>
     /// This will manage the steps sounds and tracks for each animal, on each feet there's a Script StepTriger (Basic)
     /// </summary>
-    public class StepsManager : MonoBehaviour
+    public class StepsManager : MonoBehaviour, IAnimatorListener
     {
+        [Tooltip("Enable Disable the Steps Manager")]
         public bool Active = true;
         public LayerMask GroundLayer = 1;
         public ParticleSystem Tracks;
@@ -21,9 +22,8 @@ namespace MalbersAnimations
         [Tooltip("Distance to Instantiate the tracks on a terrain")]
         public float trackOffset = 0.0085f;
 
-        protected bool active = true;
-        //Is Called by any of the "StepTrigger" Script on a feet when they collide with the ground.
 
+        //Is Called by any of the "StepTrigger" Script on a feet when they collide with the ground.
         public void EnterStep(StepTrigger foot)
         {
             if (Tracks && !Tracks.gameObject.activeInHierarchy)         //If is a prefab clone it!
@@ -38,7 +38,7 @@ namespace MalbersAnimations
                 Dust.transform.localScale = Scale;
             }
 
-            if (!active) return;
+            if (!Active) return;
 
             RaycastHit footRay;
 
@@ -73,13 +73,15 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// Disable this script, ex.. deactivate when is sleeping or death
-        /// </summary>
-        /// <param name="value"></param>
+        /// <summary>Disable this script, ex.. deactivate when is sleeping or death </summary>
         public virtual void EnableSteps(bool value)
         {
-            active = value;
+            Active = value;
+        }
+
+        public virtual void OnAnimatorBehaviourMessage(string message, object value)
+        {
+            this.InvokeWithParams(message, value);
         }
     }
 }

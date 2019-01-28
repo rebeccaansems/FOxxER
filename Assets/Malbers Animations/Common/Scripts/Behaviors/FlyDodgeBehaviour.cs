@@ -5,10 +5,14 @@ namespace MalbersAnimations
     public class FlyDodgeBehaviour : StateMachineBehaviour
     {
         public bool InPlace;
-        Vector3 momentum;       //To Store the velocity that the animator had before entering this animation state
+        public Vector3 DodgeDirection = Vector3.zero;
+        Vector3 momentum;                                //To Store the velocity that the animator had before entering this animation state
         Rigidbody rb;
         Animal animal;
         float time;
+
+        float multiplier;
+        AnimatorTransitionInfo transition;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -23,7 +27,19 @@ namespace MalbersAnimations
         {
             time = animator.updateMode == AnimatorUpdateMode.AnimatePhysics ? Time.fixedDeltaTime : Time.deltaTime;     //Get the Time Right
 
-            animal.DeltaPosition += momentum * time;
+            multiplier = 1;
+
+            if (animator.IsInTransition(layerIndex))
+            {
+                transition = animator.GetAnimatorTransitionInfo(layerIndex);
+
+                multiplier = stateInfo.normalizedTime <= 0.5f ? transition.normalizedTime : 1 - transition.normalizedTime;  //Smooh out the Movement
+
+            }
+
+
+            animal.DeltaPosition += momentum * time * multiplier;
+            animal.DeltaPosition += animal.transform.TransformDirection(DodgeDirection) * time * multiplier;
         }
     }
 }

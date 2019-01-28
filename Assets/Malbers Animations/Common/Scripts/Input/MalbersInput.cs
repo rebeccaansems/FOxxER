@@ -6,7 +6,7 @@ using MalbersAnimations.Scriptables;
 
 namespace MalbersAnimations
 {
-    public class MalbersInput : MonoBehaviour
+    public class MalbersInput : MonoBehaviour , IInputSource
     {
         #region Variables
         // private iMalbersInputs mCharacter;
@@ -26,6 +26,11 @@ namespace MalbersAnimations
         //public InputAxis UpDown = new InputAxis("UpDown", true, AxisType.Raw);
 
 
+        /// <summary>
+        /// Send to the Character to Move using the interface ICharacterMove
+        /// </summary>    
+        public bool MoveCharacter   { set; get; }
+     
 
         [SerializeField] private bool cameraBaseInput;
         [SerializeField] private bool alwaysForward;
@@ -40,7 +45,7 @@ namespace MalbersAnimations
 
         public string PlayerID = "Player0"; //This is use for Rewired Asset
         #endregion
-
+       
         public bool CameraBaseInput
         {
             get { return cameraBaseInput; }
@@ -60,10 +65,15 @@ namespace MalbersAnimations
             Horizontal.InputSystem = Vertical.InputSystem = Input_System;
             //UpDown.InputSystem = Input_System;
 
-            foreach (var i in inputs) i.InputSystem = Input_System;                 //Update to all the Inputs the Input System
+            foreach (var i in inputs)
+                i.InputSystem = Input_System;                 //Update to all the Inputs the Input System
+
+
             List_to_Dictionary();
 
             InitializeCharacter();
+
+            MoveCharacter = true;       //Set that the Character can be moved
         }
 
         void InitializeCharacter()
@@ -89,9 +99,18 @@ namespace MalbersAnimations
             OnInputEnabled.Invoke();
         }
 
+        /// <summary>
+        /// Send to the Character to Move using the interface ICharacterMove and the Move(Vector3) method
+        /// </summary>  
+        public virtual void EnableMovement(bool value)
+        {
+            MoveCharacter = value;
+        }
+
         void OnDisable()
         {
-            if (mCharacterMove != null) mCharacterMove.Move(Vector3.zero);       //When the Input is Disable make sure the character/animal is not moving.
+            if (mCharacterMove != null)
+                mCharacterMove.Move(Vector3.zero);       //When the Input is Disable make sure the character/animal is not moving.
             OnInputDisabled.Invoke();
         }
 
@@ -123,7 +142,7 @@ namespace MalbersAnimations
 
         private void CharacterMove()
         {
-            if (mCharacterMove != null)
+            if (MoveCharacter && mCharacterMove != null)
             {
                 if (cameraBaseInput)
                     mCharacterMove.Move(CameraInputBased());
@@ -135,7 +154,7 @@ namespace MalbersAnimations
         /// <summary>
         /// Calculate the Input Axis relative to the camera
         /// </summary>
-        Vector3 CameraInputBased()
+        protected Vector3 CameraInputBased()
         {
             // calculate move direction to pass to character
             if (m_Cam != null)
@@ -153,7 +172,7 @@ namespace MalbersAnimations
         }
 
         /// <summary>
-        /// Enable/Disable the Input
+        /// Enable/Disable an Input Row
         /// </summary>
         public virtual void EnableInput(string inputName, bool value)
         {
@@ -167,7 +186,7 @@ namespace MalbersAnimations
 
 
         /// <summary>
-        /// Enable the Input
+        /// Enable an Input Row
         /// </summary>
         public virtual void EnableInput(string inputName)
         {
@@ -180,7 +199,7 @@ namespace MalbersAnimations
         }
 
         /// <summary>
-        /// Disable the Input
+        /// Disable an Input Row
         /// </summary>
         public virtual void DisableInput(string inputName)
         {
@@ -193,7 +212,7 @@ namespace MalbersAnimations
         }
 
         /// <summary>
-        /// Check if the input is active
+        /// Check if an Input Row  is active
         /// </summary>
         public virtual bool IsActive(string name)
         {
@@ -205,6 +224,9 @@ namespace MalbersAnimations
             return false;
         }
 
+        /// <summary>
+        /// Check if an Input Row  exist  and returns it
+        /// </summary>
         public virtual InputRow FindInput(string name)
         {
             InputRow input = inputs.Find(item => item.name.ToUpper() == name.ToUpper());

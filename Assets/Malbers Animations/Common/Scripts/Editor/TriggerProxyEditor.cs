@@ -27,7 +27,10 @@ namespace MalbersAnimations.Utilities
                 EditorGUI.BeginDisabledGroup(true);
                 script = (MonoScript)EditorGUILayout.ObjectField("Script", script, typeof(MonoScript), false);
                 EditorGUI.EndDisabledGroup();
-
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("active"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("Ignore"), new GUIContent("Ignore","GameObjects to Ignore with this layers"));
+                EditorGUILayout.EndVertical();
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("OnTrigger_Enter"), new GUIContent("On Trigger Enter"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("OnTrigger_Stay"), new GUIContent("On Trigger Stay"));

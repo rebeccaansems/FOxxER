@@ -30,7 +30,6 @@ namespace MalbersAnimations.Scriptables
             {
                 Variable = ScriptableObject.CreateInstance<IntVar>();
                 Variable.Value = 0;
-                Variable.DefaultValue = 0;
             }
         }
 

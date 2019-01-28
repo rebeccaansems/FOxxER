@@ -11,11 +11,8 @@ namespace MalbersAnimations
     {
         public enum Ground { walk = 1, trot = 2, run = 3 }
 
-        /// <summary>
-        /// List of all the animals on the scene
-        /// </summary>
+        /// <summary>List of all the animals on the scene </summary>
         public static List<Animal> Animals;
-
 
         #region Components 
         protected Animator anim;                    //Reference for the Animator
@@ -26,29 +23,17 @@ namespace MalbersAnimations
         #region Animator Variables
         protected Vector3 movementAxis;             //In this variable will store Forward (Z) and horizontal (X) Movement
         protected Vector3 rawDirection;
-        /// <summary>
-        /// Transform.UP (Stored)
-        /// </summary>
-        [HideInInspector] internal Vector3 T_Up;
-        /// <summary>
-        /// Transform.Right (Stored)
-        /// </summary>
-        [HideInInspector] internal Vector3 T_Right;
-        /// <summary>
-        /// Transform.Forward (Stored)
-        /// </summary>
-        [HideInInspector] internal Vector3 T_Forward;
+       
+        /// <summary>Transform.UP (Stored)</summary>
+        internal Vector3 T_Up;
+        /// <summary>Transform.Right (Stored)</summary>
+        internal Vector3 T_Right;
+        /// <summary>Transform.Forward (Stored) </summary>
+        internal Vector3 T_Forward;
 
-        /// <summary>
-        /// Transform.Forward with no Y Value
-        /// </summary>
+        /// <summary>Transform.Forward with no Y Value</summary>
         public Vector3 T_ForwardNoY
         { get { return new Vector3(T_Forward.x, 0, T_Forward.z).normalized; } }
-
-        /// <summary>
-        /// Use to intitialize the animal proxy
-        /// </summary>
-        //public AnimalProxy animalProxy;
 
         public static readonly float LowWaterLevel = -1000;
 
@@ -63,9 +48,9 @@ namespace MalbersAnimations
             shift,                      //Sprint or Speed Swap (Set by Input)
             down,                       //Crouch, fly Down or Swim Underwater (Set by Input)
             up,                         //Up for Fly and Swim underwater (Set by Input)
-            dodge,                      //Dodge (Set by Input)
-            fall, fallback,             //If is falling, (Automatic: Fall method)
-
+            dodge;                      //Dodge (Set by Input)
+        internal bool fall, fallback;   //If is falling, (Automatic: Fall method)
+        protected bool
             isInWater,                  //if is Entering Water(Trigger by WaterEnter Script or if the RayWater Hit the WaterLayer)
             isInAir,                    //if is Jumping or falling (Automatic: Fix Position Method)
             swim,                       //if is in Deep Water (Automatic: Swim method)
@@ -84,7 +69,6 @@ namespace MalbersAnimations
         /// Is the animal using a Direction Vector for moving?
         /// </summary>
         private bool directionalMovement;
-
 
         /// <summary>
         /// Value for the Vertical Parameter on the Animator (Calculated from the Movement.z multiplied by the Speeds (Walk Trot Run) and Speed.Lerps
@@ -123,6 +107,10 @@ namespace MalbersAnimations
         public bool JumpPress = false;
         public float JumpHeightMultiplier = 0;
         public float AirForwardMultiplier = 0;
+        public bool CanDoubleJump = false;
+       
+        /// <summary>States for double Jump... 0 = Can Double Jump (reseted when is on Locomotion)... 1 = has already Double Jumped</summary>
+        internal int Double_Jump = 0;
 
         #endregion
 
@@ -140,25 +128,106 @@ namespace MalbersAnimations
 
         protected float CurrentAnimatorSpeed = 1;
 
-        protected Transform platform;
+        private Transform platform;
         protected Vector3 platform_Pos;
         protected float platform_formAngle;
 
+        #region Animator Parameters
+
+        public string m_Vertical = "Vertical";
+        public string m_Horizontal = "Horizontal";
+        public string m_UpDown = "UpDown";
+
+        public string m_Stand = "Stand";
+        public string m_Jump = "_Jump";
+
+        public string m_Fly = "Fly";
+        public string m_Fall = "Fall";
+
+        public string m_Attack1 = "Attack1";
+        public string m_Attack2 = "Attack2";
+
+        public string m_Stunned = "Stunned";
+        public string m_Damaged = "Damaged";
+
+        public string m_Shift = "Shift";
+        public string m_Death = "Death";
+        public string m_Dodge = "Dodge";
+
+        public string m_Underwater = "Underwater";
+        public string m_Swim = "Swim";
+
+        public string m_Action = "Action";
+        public string m_IDAction = "IDAction";
+
+        public string m_IDFloat = "IDFloat";
+        public string m_IDInt = "IDInt";
+        public string m_Slope = "Slope";
+        public string m_Type = "Type";
+        public string m_SpeedMultiplier = "SpeedMultiplier";
+        public string m_StateTime = "StateTime";
+        public string m_Stance = "Stance";
+
+
+        internal int hash_Vertical;
+        internal int hash_Horizontal;
+        internal int hash_UpDown;
+        internal int hash_Stand;
+        internal int hash_Jump;
+        internal int hash_Dodge;
+        internal int hash_Fall;
+        internal int hash_Type;
+        internal int hash_Slope;
+        internal int hash_Shift;
+        internal int hash_Fly;
+        internal int hash_Attack1;
+        internal int hash_Attack2;
+        internal int hash_Death;
+        internal int hash_Damaged;
+        internal int hash_Stunned;
+        internal int hash_IDInt;
+        internal int hash_IDFloat;
+        internal int hash_Swim;
+        internal int hash_Underwater;
+        internal int hash_IDAction;
+        internal int hash_Action;
+        internal int hash_StateTime;
+        internal int hash_Stance;
+
+
+        #region Optional Animator Parameters Activation
+        [HideInInspector] bool hasFly;
+        [HideInInspector] bool hasDodge;
+        [HideInInspector] bool hasSlope;
+        [HideInInspector] bool hasStun;
+        [HideInInspector] bool hasAttack2;
+        [HideInInspector] bool hasUpDown;
+        [HideInInspector] bool hasUnderwater;
+        [HideInInspector] bool hasSwim;
+        [HideInInspector] bool hasStateTime;
+        [HideInInspector] bool hasStance;
+        #endregion
+
+        #endregion
+
 
         #region AirControl
+        /// <summary>Enables you to rotate the animal while jumping or falling</summary>
         public float airRotation = 100;
+        /// <summary>Allows the Inputs to control the Fall and Jump movement on Air</summary>
         public bool AirControl = false;
-        public float airMaxSpeed = 1f;
+        /// <summary> Maximum Horizontal Speed to move while on the air</summary>
+     //   public float airMaxSpeed = 1f;
+        /// <summary> Lerp between air stand and moving forward</summary>
         public float airSmoothness = 2;
+        /// <summary>Acumulated Speed from the Air Control to tranfer it from jump to fall</summary>
         internal Vector3 AirControlDir;
         #endregion
 
 
         public float movementS1 = 1, movementS2 = 2, movementS3 = 3;        //IMPORTANT this are the values for the Animator Locomotion Blend Tree when the velocity is changed (Ex. Horse has 5 velocities)
 
-        /// <summary>
-        /// Maximun angle on the terrain the animal can walk
-        /// </summary>
+        /// <summary>Maximun angle on the terrain the animal can walk </summary>
         [Range(0f, 90f)]
         public float maxAngleSlope = 45f;
         public bool SlowSlopes = true;
@@ -167,13 +236,10 @@ namespace MalbersAnimations
         public int GotoSleep;
 
 
-        /// <summary>
-        /// Smoothness value to Snap to ground
-        /// </summary>
+
+        /// <summary>Smoothness value to Snap to ground </summary>
         public float SnapToGround = 20f;
-        /// <summary>
-        /// Smoothness value to aling to ground
-        /// </summary>
+        /// <summary>Smoothness value to aling to ground </summary>
         public float AlingToGround = 30f;
         public float FallRayDistance = 0.1f;
         public float BackFallRayDistance = 0.5f;
@@ -208,32 +274,24 @@ namespace MalbersAnimations
 
         #region Fly Variables
         public Speeds flySpeed = new Speeds();                  //Fly Speed Values
-        /// <summary>
-        /// On Start the nimal will be set to fly
-        /// </summary>
-        public bool StartFlying;                                //Set to fly at Start
-        /// <summary>
-        /// Can the animal fly?
-        /// </summary>
-        public bool canFly;                                     //is the Fly Logic Active?
-        /// <summary>
-        /// When the animal is near to the ground it will land automatically
-        /// </summary>
+        /// <summary>On Start the nimal will be set to fly</summary>
+        public bool StartFlying;                                
+        /// <summary> Can the animal fly?</summary>
+        public bool canFly;                                     
+        /// <summary>When the animal is near to the ground it will land automatically</summary>
         public bool land = true;                                //if Land true means that when is close to the ground it will exit the Fly State
         protected float LastGroundSpeed;                        //To save the las ground speed before it start flying
 
-        /// <summary>
-        /// The animal cannot fly upwards... just fly forward or down...
-        /// </summary>
-        public bool LockUp = false;                             //
+        /// <summary> The animal cannot fly upwards... just fly forward or down...</summary>
+        public bool LockUp = false;                    
         #endregion
 
 
         #region Attributes Variables (Attack, Damage)
         public float life = 100;
         public float defense = 0;
-        public float damageDelay = 0.5f;            //Time before can aply damagage again
-        public float damageInterrupt = 0.2f;        //NOT IMPLEMENTED YET
+        public float damageDelay = 0.75f;            //Time before can aply damagage again
+        public float damageInterrupt = 0.5f;       
 
         public int TotalAttacks = 3;
         public int activeAttack = -1;
@@ -252,16 +310,21 @@ namespace MalbersAnimations
         protected List<AttackTrigger> Attack_Triggers;      //List of all the Damage Triggers on this Animal.
         #endregion
         #endregion
-        /// <summary>
-        /// Global Modification of the Animator Speed
-        /// </summary>
+        /// <summary>Global Modification of the Animator Speed </summary>
         public float animatorSpeed = 1f;
         public float upDownSmoothness = 2f;
         public bool debug = true;
 
         //------------------------------------------------------------------------------
         #region Modify_the_Position_Variables
-        protected RaycastHit hit_Hip, hit_Chest, WaterHitCenter, FallHit; //Hip and Chest Ray Cast Information
+        internal RaycastHit hit_Hip; //Hip and Chest Ray Cast Information
+        internal RaycastHit hit_Chest; //Hip and Chest Ray Cast Information
+        internal RaycastHit WaterHitCenter; //Hip and Chest Ray Cast Information
+        /// <summary>Raycast Information for Fall</summary>
+        internal RaycastHit FallRayCast; //Hip and Chest Ray Cast Information
+
+
+
         protected Vector3
             fall_Point,
             _hitDirection,
@@ -280,18 +343,7 @@ namespace MalbersAnimations
 
         #endregion
 
-        #region Optional Animator Parameters Activation
-        [HideInInspector] bool hasFly;
-        [HideInInspector] bool hasDodge;
-        [HideInInspector] bool hasSlope;
-        [HideInInspector] bool hasStun;
-        [HideInInspector] bool hasAttack2;
-        [HideInInspector] bool hasUpDown;
-        [HideInInspector] bool hasUnderwater;
-        [HideInInspector] bool hasSwim;
-        [HideInInspector] bool hasStateTime;
-        [HideInInspector] bool hasStance;
-        #endregion
+   
 
         #region Events
         public UnityEvent OnJump;
@@ -316,9 +368,7 @@ namespace MalbersAnimations
       
 
         #region Properties
-        /// <summary>
-        /// Get the RigidBody
-        /// </summary>
+        /// <summary> Animal's RigidBody </summary>
         public Rigidbody _RigidBody
         {
             get
@@ -449,25 +499,20 @@ namespace MalbersAnimations
         }
 
         /// <summary>
-        /// Amount of Idle acumulated if the animals is not moving, if Tired is greater than GotoSleep the animal will go to the sleep state.
-        /// </summary>
+        /// Amount of Idle acumulated if the animals is not moving, if Tired is greater than GotoSleep the animal will go to the sleep state. </summary>/
         public int Tired
         {
             set { tired = value; }
             get { return tired; }
         }
 
-        /// <summary>
-        /// Is the animal on water? not necessarily swimming
-        /// </summary>
+        /// <summary>Is the animal on water? not necessarily swimming </summary>
         public bool IsInWater
         {
             get { return isInWater; }
         }
 
-        /// <summary>
-        /// Change the Speed Up
-        /// </summary>
+        /// <summary>Change the Speed Up</summary>
         public bool SpeedUp
         {
             set
@@ -480,9 +525,7 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// Changes the Speed Down
-        /// </summary>
+        /// <summary>Changes the Speed Down</summary>
         public bool SpeedDown
         {
             set
@@ -495,9 +538,7 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// Set the Animal Speed to Speed1
-        /// </summary>
+        /// <summary>Set the Animal Speed to Speed1 </summary>
         public bool Speed1
         {
             get { return speed1; }
@@ -554,9 +595,7 @@ namespace MalbersAnimations
             set { jump = value; }
         }
 
-        /// <summary>
-        /// is the Animal UnderWater
-        /// </summary>
+        /// <summary> is the Animal UnderWater </summary>
         public bool Underwater
         {
             get { return underwater; }
@@ -570,10 +609,8 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// Allows to use Sprint 
-        /// </summary>
-        public bool useShift = true;
+        /// <summary> Allows to use Sprint </summary>
+       [SerializeField] public bool useShift = true;
 
         public bool Shift
         {
@@ -599,15 +636,16 @@ namespace MalbersAnimations
             set { dodge = value; }
         }
 
+        
         public bool Damaged
         {
             get { return damaged; }
             set { damaged = value; }
         }
 
-        /// <summary>
-        /// Toogle the Fly on and Off!!
-        /// </summary>
+        
+
+        /// <summary>Toogle the Fly on and Off!!</summary>
         public bool Fly
         {
             get
@@ -627,8 +665,8 @@ namespace MalbersAnimations
                     if (fly)                                    //OnFly Enabled!
                     {
                         _RigidBody.useGravity = false;          //Deactivate gravity in case use gravity is off
-                        LastGroundSpeed = groundSpeed;
-                        groundSpeed = 1;                        //Change velocity to 1
+                        LastGroundSpeed = Mathf.RoundToInt( groundSpeed);
+                        groundSpeed = 1;                        //Change velocity to 1 (Flap Wings)
                         IsInAir = true;
                         currentSpeed = flySpeed;
                         Quaternion finalRot = Quaternion.FromToRotation(T_Up, UpVector) * _transform.rotation;
@@ -643,9 +681,7 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// If set to true the animal will die
-        /// </summary>
+        /// <summary>If set to true the animal will die </summary>
         public bool Death
         {
             get { return death; }
@@ -667,9 +703,7 @@ namespace MalbersAnimations
             }
         }
 
-        /// <summary>
-        /// Enables the Attack to the Current Active Attack
-        /// </summary>
+        /// <summary>Enables the Attack to the Current Active Attack</summary>
         public bool Attack1
         {
             get { return attack1; }
@@ -705,6 +739,7 @@ namespace MalbersAnimations
                 {
                     if (AnimState == AnimTag.Action) return;                             //Don't Attack when is making an action
                 }
+
                 attack2 = value;
             }
         }
@@ -741,41 +776,40 @@ namespace MalbersAnimations
             set { actionID = value; }
         }
 
+        /// <summary>Is the Animal Attacking (making a Attack Animation) </summary>
         public bool IsAttacking
         {
             get { return isAttacking; }
             set { isAttacking = value; }
         }
 
-        /// <summary>
-        /// Change the Animator rootMotion value
-        /// </summary>
+        /// <summary> Change the Animator rootMotion value</summary>
         public bool RootMotion
         {
-            set { Anim.applyRootMotion = value; }
+            set
+            {
+                Anim.applyRootMotion = value;
+                //if (!value)
+                //{
+                //    _RigidBody.velocity = (transform.position - LastPosition)/Time.deltaTime;
+                //}
+            }
             get { return Anim.applyRootMotion; }
         }
-
        
 
-        /// <summary>
-        /// Is the Animal on the Air, modifies the rigidbody constraints depending the IsInAir Value
-        /// </summary>
+        /// <summary>Is the Animal on the Air, modifies the rigidbody constraints depending the IsInAir Value </summary>
         public bool IsInAir
         {
             get { return isInAir; }
             set
             {
                 isInAir = value;
-               // _RigidBody.useGravity = value; ?? no se si dejarlo asi
-                StillConstraints(!IsInAir);
+                _RigidBody.constraints = isInAir ? RigidbodyConstraints.FreezeRotation : Still_Constraints;
             }
         }
 
-        public bool Stand
-        {
-            get { return stand; }
-        }
+        public bool Stand { get { return stand; } }
 
         public Vector3 HitDirection
         {
@@ -783,33 +817,20 @@ namespace MalbersAnimations
             set { _hitDirection = value; }
         }
         
-        /// <summary>
-        /// The Scale Factor of the Animal.. if the animal has being scaled this is the multiplier for the raycasting things
-        /// </summary>
-        public float ScaleFactor
-        {
-            get { return scaleFactor; }
-        }
+        /// <summary>The Scale Factor of the Animal.. if the animal has being scaled this is the multiplier for the raycasting things</summary>
+        public float ScaleFactor { get { return scaleFactor; } }
+      
+        public Pivots Pivot_Hip { get { return pivot_Hip; } }
+       
 
-        public Pivots Pivot_Hip
-        {
-            get { return pivot_Hip; }
-        }
+        public Pivots Pivot_Chest   { get { return pivot_Chest; } }
+     
 
-        public Pivots Pivot_Chest
-        {
-            get { return pivot_Chest; }
-        }
-
-        /// <summary>
-        /// Returns the Current Animation State Tag of animal
-        /// </summary>
+        /// <summary>Returns the Current Animation State Tag of animal</summary> 
         public int CurrentAnimState;
 
 
-        /// <summary>
-        /// Returns the Current Animation State Tag of animal, if is in transition it will return the NextState Tag
-        /// </summary>
+        /// <summary>Returns the Current Animation State Tag of animal, if is in transition it will return the NextState Tag</summary>
         public int AnimState
         {
             get { return NextAnimState != 0 ? NextAnimState : CurrentAnimState; }
@@ -828,15 +849,11 @@ namespace MalbersAnimations
         private int lastAnimTag;
         private Transform _transform;
 
-        /// <summary>
-        /// Returns the Next Animation State  Tag of animal 0 means that is not in transition
-        /// </summary>
+        /// <summary>Returns the Next Animation State  Tag of animal 0 means that is not in transition</summary>
         public int NextAnimState;
        
 
-        /// <summary>
-        /// Returns the Animator Component of the Animal
-        /// </summary>
+        /// <summary> Returns the Animator Component of the Animal</summary>
         public Animator Anim
         {
             get
@@ -877,26 +894,20 @@ namespace MalbersAnimations
         }
 
 
-        /// <summary>
-        /// Locks Position Y and AllRotations on the Rigid Body
-        /// </summary>
+        /// <summary>Locks Position Y and AllRotations on the Rigid Body</summary>
         public static RigidbodyConstraints Still_Constraints
         {
             get { return RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; }
         }
 
-        /// <summary>
-        /// Direction the animal to move
-        /// </summary>
+        /// <summary>Direction Vector the animal to move </summary>
         public Vector3 MovementAxis
         {  
             get { return movementAxis; }
             set { movementAxis = value; }
         }
 
-        /// <summary>
-        /// Returns Movement Axis Z value
-        /// </summary>
+        /// <summary> Returns Movement Axis Z value </summary>
         public float MovementForward
         {
             get { return movementAxis.z; }
@@ -957,23 +968,17 @@ namespace MalbersAnimations
            set {   waterLevel = value; }
         }
 
-        /// <summary>
-        /// Is the animal using a Direction Vector for moving?
-        /// </summary>
-        public bool DirectionalMovement
-        {
-            get { return directionalMovement; }
-        }
-        
-        /// <summary>
-        /// RawDirection Vector if the Animal is using DirectionalMovement
-        /// </summary>
+        /// <summary> Is the animal using a Direction Vector for moving?</summary>
+        public bool DirectionalMovement { get { return directionalMovement; } }
+       
+        /// <summary>RawDirection Vector if the Animal is using DirectionalMovement</summary>
         public Vector3 RawDirection
         {
             get { return rawDirection; }
-            private set { rawDirection = value; }
+            set { rawDirection = value; }
         }
 
+        /// <summary> if the Animal can fly and you want to automatically land when the ground is found </summary>
         public bool Land
         {
             get { return land; }
@@ -1015,6 +1020,22 @@ namespace MalbersAnimations
         {
             get { return lastStance; }
         }
+
+        /// <summary>
+        /// Can the Animal Use Sprint
+        /// </summary>
+        public bool UseShift
+        {
+            get { return useShift; }
+            set { useShift = value; }
+        }
+
+        protected Transform Platform
+        {
+            get { return platform; }
+            set { platform = value; }
+        }
+
         private int lastStance;
 
         #endregion
@@ -1027,7 +1048,8 @@ namespace MalbersAnimations
         [HideInInspector] public bool EditorAdvanced = true;
         [HideInInspector] public bool EditorAirControl = true;
         [HideInInspector] public bool EditorAttributes = true;
-        [HideInInspector] public bool EditorEvents = true;
+        [HideInInspector] public bool EditorEvents = false;
+        [HideInInspector] public bool EditorAnimatorParameters = false;
         #endregion
     }
 }

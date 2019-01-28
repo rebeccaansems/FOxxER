@@ -2034,9 +2034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9c9f08a3e62d6479c76be499151cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionsToUse: {fileID: 11400000, guid: da07aa68e45767f46a979ffa21e8ca41, type: 2}
+  ID: {fileID: 0}
   automatic: 0
-  ID: 2
   index: 0
   AutomaticDisabled: 1
   HeadOnly: 1
@@ -2069,7 +2068,6 @@ MonoBehaviour:
   AlignRot: 0
   AlignLookAt: 1
   ActionDelay: 0
-  animalProxy: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []

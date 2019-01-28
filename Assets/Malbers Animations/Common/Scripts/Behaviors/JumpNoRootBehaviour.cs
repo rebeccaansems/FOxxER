@@ -23,7 +23,7 @@ namespace MalbersAnimations
             animal.SetIntID(0);
             animal.OnJump.Invoke();     //Invoke that the Animal is Jumping
 
-            animator.applyRootMotion = false;
+            animal.RootMotion = false;
 
             Vector3 JumpVector = (Vector3.up * JumpMultiplier * animal.JumpHeightMultiplier) + (animator.transform.forward * ForwardMultiplier * animal.AirForwardMultiplier);
 

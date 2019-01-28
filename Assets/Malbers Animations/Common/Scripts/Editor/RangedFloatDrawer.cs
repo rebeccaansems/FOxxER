@@ -49,4 +49,5 @@ namespace MalbersAnimations
             EditorGUI.EndProperty();
         }
     }
+
 }

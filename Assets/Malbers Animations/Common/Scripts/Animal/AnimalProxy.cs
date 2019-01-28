@@ -376,9 +376,6 @@ namespace MalbersAnimations
         public void SetFloatID(float value)
         {if (animal) animal.SetFloatID(value); }
 
-        public virtual void StillConstraints(bool active)
-        { if (animal) animal.StillConstraints(active); }
-
         public virtual void EnableColliders(bool active)
         { if (animal) animal.EnableColliders(active); }
 

@@ -14,8 +14,9 @@ namespace MalbersAnimations
         {
             Animal animal = animator.GetComponent<Animal>();
 
-            animal.Damaged = false;                                      // Set Damage to false so it wont get "pressed"
+            animal.Damaged = false;                                     // Set Damage to false so it wont get "pressed"
             animator.SetBool(Hash.Damaged, false);
+            animal.StartCoroutine(animal.CDamageInterrupt());           //Damage Interrupt
 
             if (!DirectionalDamage) return;                             //if is not Directional Damage just skip the next code
 

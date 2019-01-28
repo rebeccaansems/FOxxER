@@ -13,22 +13,16 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// The current value
         /// </summary>
-        [SerializeField]
-        private int value = 0;
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        [SerializeField]
-        private int defaultValue = 0;
-
-#if UNITY_EDITOR
+        [SerializeField]   private int value = 0;
+     
+        #if UNITY_EDITOR
         [TextArea(3, 20)]
         public string Description = "";
-#endif
+        #endif
         /// <summary>
         /// When active OnValue changed will ve used every time the value changes (you can subscribe only at runtime .?)
         /// </summary>
-        public bool UseEvent = true;
+        public bool UseEvent = false;
 
         /// <summary>
         /// Invoked when the value changes
@@ -51,24 +45,9 @@ namespace MalbersAnimations.Scriptables
             }
         }
 
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        public virtual int DefaultValue
-        {
-            get { return defaultValue; }
-            set { defaultValue = value; }
-        }
-
-        /// <summary>
-        /// Reset the Float Value to the Default value
-        /// </summary>
-        public virtual void ResetValue() { Value = DefaultValue; }
-
         public virtual void SetValue(IntVar var)
         {
             Value = var.Value;
-            DefaultValue = var.DefaultValue;
         }
 
         public static implicit operator int(IntVar reference)

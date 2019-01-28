@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
@@ -15,7 +15,7 @@ namespace MalbersAnimations
         static AnimalLayer()
         {
             CreateLayer();
-            CreateFlyTag();
+            CreateFlyTag("Fly");
         }
 
         static void CreateLayer()
@@ -32,7 +32,7 @@ namespace MalbersAnimations
             }
 
             SerializedProperty layerSP = layers.GetArrayElementAtIndex(20);
-            if (layerSP.stringValue != "Animal")
+            if (layerSP.stringValue == string.Empty)
             {
                 Debug.Log("Setting up layers.  Layer " + "[20]" + " is now called " + "[Animal]");
                 layerSP.stringValue = "Animal";
@@ -42,14 +42,11 @@ namespace MalbersAnimations
             }
         }
 
-        static void CreateFlyTag()
+        static void CreateFlyTag(string s)
         {
             SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
             SerializedProperty tagsProp = tagManager.FindProperty("tags");
 
-
-            // Adding a Tag
-            string s = "Fly";
 
             // First check if it is not already present
             bool found = false;

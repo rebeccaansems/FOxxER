@@ -144,7 +144,7 @@ namespace MalbersAnimations
 /// <summary>
 /// Reordable List Header
 /// </summary>
-void HeaderCallbackDelegate(Rect rect)
+        void HeaderCallbackDelegate(Rect rect)
         {
             Rect R_1 = new Rect(rect.x + 20, rect.y, (rect.width - 20) / 4 - 23, EditorGUIUtility.singleLineHeight);
             EditorGUI.LabelField(R_1, "Name");

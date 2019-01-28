@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9418035, y: 0, z: 0.8104875}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22469116}
@@ -297,7 +297,6 @@ MonoBehaviour:
   AlignRot: 1
   AlignLookAt: 0
   ActionDelay: 0
-  animalProxy: {fileID: 11400000, guid: 5c0bed80b6d31504c96212f7e6ae2f7b, type: 2}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []

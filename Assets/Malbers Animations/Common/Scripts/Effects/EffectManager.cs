@@ -87,6 +87,22 @@ namespace MalbersAnimations.Utilities
             yield return null;
         }
 
+        public virtual void StopEffect(int ID)
+        {
+            List<Effect> effects = Effects.FindAll(effect => effect.ID == ID && effect.active == true);
+
+            if (effects != null)
+
+            {
+                foreach (var e in effects)
+                {
+                    if (e.Modifier) e.Modifier.StopEffect(e);              //Play Modifier when the effect play
+                    e.OnStop.Invoke();
+                    e.On = false;
+                }
+            }
+        }
+
         IEnumerator Life(Effect e)
         {
             if (e.life > 0)

@@ -27,7 +27,7 @@ namespace MalbersAnimations
         protected Rigidbody rb;
         protected Animal animal;
         protected Transform transform;
-        protected Quaternion DeltaRotation;
+        //protected Quaternion DeltaRotation;
         protected float Shift;
         protected float Direction;
         protected float deltaTime;
@@ -48,26 +48,28 @@ namespace MalbersAnimations
             animal = animator.GetComponent<Animal>();
             BehaviourSpeed = animal.flySpeed;
 
-            animator.applyRootMotion = true;
+            animal.RootMotion = true;
 
             transform = animator.transform;                                                             //Save the Transform on a local variable
-            DeltaRotation = transform.rotation;
+                                                                                                        // DeltaRotation = transform.rotation;
 
             acceleration = 0;
             vertical = animal.Speed;
 
-            FallVector = 
-                animal.CurrentAnimState == AnimTag.Fall || animal.CurrentAnimState == AnimTag.Jump ? 
+            FallVector =
+                animal.CurrentAnimState == AnimTag.Fall || animal.CurrentAnimState == AnimTag.Jump ?
                 rb.velocity : Vector3.zero;          //Just recover if your coming from the fall animations
 
             rb.constraints = RigidbodyConstraints.FreezeRotation;                                       //Release the Y Constraint
-           // rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);                                 //Clean the Y velocity
+                                                                                                        // rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);                                 //Clean the Y velocity
             rb.useGravity = false;
             rb.drag = Drag;
         }
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (!animal.Fly) return;
+
             float TransitionNormalizedTime = 1;
 
             if (animator.IsInTransition(layerIndex) && stateInfo.normalizedTime < 0.5f)     //If is in the First Transition
@@ -78,21 +80,26 @@ namespace MalbersAnimations
 
             deltaTime = Time.deltaTime; //Store the Delta Time
 
-            transform.rotation = DeltaRotation;                                             //Reset the Rotation before rotating... with no Pitch Rotation
+            var CleanEuler = (transform.eulerAngles);
+            CleanEuler.x = CleanEuler.z = 0;
+
+            transform.eulerAngles = CleanEuler;                                             //Reset the Rotation before rotating... with just Yaw Rotation
 
             float isGoingForward = animal.MovementAxis.z >= 0 ? 1 : -1;                     //Check if the animal is going Forward or Backwards
 
             Direction = Mathf.Lerp(Direction, Mathf.Clamp(animal.Direction, -1, 1), deltaTime * BehaviourSpeed.lerpRotation);          //Calculate the direction
 
-            Quaternion Yaw = Quaternion.Euler(transform.InverseTransformDirection(0, Direction * BehaviourSpeed.rotation * isGoingForward, 0));
+            var RotationYaw = new Vector3(0, Direction * BehaviourSpeed.rotation * isGoingForward, 0);
+
+            Quaternion Yaw = Quaternion.Euler(transform.InverseTransformDirection(RotationYaw));            //Get the Rotation on the Y Axis transformed to Quaternion
 
 
             //***THE ANIMAL ALREADY TAKE CARE FO THE YAW ROTATIONs***/
-            // animal.DeltaRotation *= Yaw;                                                                      //Rotation ROLL USING DeltaRotation (GOOD FOR PERFORMACE)
+            animal.DeltaRotation *= Yaw;                                                                      //Rotation ROLL USING DeltaRotation (GOOD FOR PERFORMACE)
             // transform.rotation *= Yaw;                                                                       //Rotation ROLL USING ROTATE (BAD FOR PERFORMACE)
 
             //DeltaRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation;            //Restore the rotation to the Default after turning USING ROTATE ...             
-            DeltaRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation * Yaw;        //Restore the rotation to the Default after turning USING DeltaRotation ...
+            //DeltaRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation * Yaw;        //Restore the rotation to the Default after turning USING DeltaRotation ...
 
             float UpDown = animal.MovementUp;
 
@@ -134,9 +141,9 @@ namespace MalbersAnimations
             if (CanNotSwim)
             {
                 RaycastHit WaterHitCenter;
-               // Debug.DrawRay(animal.Main_Pivot_Point, -Vector3.up * animal.Pivot_Multiplier * animal.ScaleFactor * animal.FallRayMultiplier, Color.green);
+                // Debug.DrawRay(animal.Main_Pivot_Point, -Vector3.up * animal.Pivot_Multiplier * animal.ScaleFactor * animal.FallRayMultiplier, Color.green);
 
-                if (Physics.Raycast(animal.Main_Pivot_Point, -Vector2.up, out WaterHitCenter,animal.Pivot_Multiplier * animal.ScaleFactor * animal.FallRayMultiplier, 16)) //16 Water Layer
+                if (Physics.Raycast(animal.Main_Pivot_Point, -Vector2.up, out WaterHitCenter, animal.Pivot_Multiplier * animal.ScaleFactor * animal.FallRayMultiplier, 16)) //16 Water Layer
                 {
                     foundWater = true;
                 }
@@ -206,7 +213,7 @@ namespace MalbersAnimations
 
         private void ResetAllValues()
         {
-            deltaTime =  acceleration = forwardAceleration = PitchAngle = Direction = 0;
+            deltaTime = acceleration = forwardAceleration = PitchAngle = Direction = 0;
         }
     }
 }

@@ -22,11 +22,13 @@ namespace MalbersAnimations
             animal = animator.GetComponent<Animal>();                           //Get Reference for Animal
             rb = animator.GetComponent<Rigidbody>();                            //Get Reference for Rigid Body
 
-            animator.applyRootMotion = false;
+            animal.RootMotion = false;
 
             if (RigidY) rb.constraints = Animal.Still_Constraints;
 
             //if we are landing on the Ground Set that is not longer on the air
+
+            rb.drag = 0;
 
             if (Landing)
                 animal.IsInAir = false;

@@ -44,6 +44,7 @@ namespace MalbersAnimations.Scriptables
             buttonRect.yMin += popupStyle.margin.top;
             buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
             buttonRect.x -= 20;
+
             position.xMin = buttonRect.xMax; 
 
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
@@ -54,7 +55,7 @@ namespace MalbersAnimations.Scriptables
 
             useConstant.boolValue = (result == 0);
 
-            EditorGUI.PropertyField(position, useConstant.boolValue ? constantValue : variable, GUIContent.none);
+            EditorGUI.PropertyField(position, useConstant.boolValue ? constantValue : variable, GUIContent.none,false);
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();

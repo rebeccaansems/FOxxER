@@ -30,18 +30,12 @@ namespace MalbersAnimations.Scriptables
 
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-               // EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-
-                // DrawDefaultInspector();
                 EditorGUILayout.BeginHorizontal();
-                EditorGUIUtility.labelWidth = 55;
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("value"), new GUIContent("Value","The current value"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultValue"), new GUIContent("Default", "The value to return when Reset is called"));
-                EditorGUIUtility.labelWidth = 0;
+                var useEvent = serializedObject.FindProperty("UseEvent");
+                useEvent.boolValue = GUILayout.Toggle(useEvent.boolValue, new GUIContent("E", "Enable 'OnValueChanged' Event. It will be invoked only when the value changes"), EditorStyles.miniButton, GUILayout.Width(18));
                 EditorGUILayout.EndHorizontal();
-
-
-                MalbersEditor.DrawSplitter();
+               // MalbersEditor.DrawSplitter();
 
                 // EditorGUILayout.EndVertical();
 
@@ -49,22 +43,20 @@ namespace MalbersAnimations.Scriptables
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("Description"));
                 //  EditorGUILayout.EndVertical();
 
-                MalbersEditor.DrawSplitter();
                 // EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-                var useEvent = serializedObject.FindProperty("UseEvent");
 
-                useEvent.boolValue = EditorGUILayout.ToggleLeft(new GUIContent("Enable Event", "If Value changes, the Event 'OnValueChanged' will be invoked"), useEvent.boolValue);
 
                 //EditorGUILayout.PropertyField(useEvent, new GUIContent("Use Event", "If the value changes the On Value Changed Event will be invoked"));
 
-                EditorGUI.BeginDisabledGroup(!useEvent.boolValue);
+                //EditorGUI.BeginDisabledGroup(!useEvent.boolValue);
 
-                //if (useEvent.boolValue)
+                if (useEvent.boolValue)
                 {
+                    MalbersEditor.DrawSplitter();
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("OnValueChanged"));
                 }
                 // EditorGUILayout.EndVertical();
-                EditorGUI.EndDisabledGroup();
+               // EditorGUI.EndDisabledGroup();
                 EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndVertical();

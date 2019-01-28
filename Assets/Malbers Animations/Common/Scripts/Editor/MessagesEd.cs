@@ -2,26 +2,26 @@
 using UnityEditor;
 using UnityEditorInternal;
 using MalbersAnimations.Utilities;
+using MalbersAnimations.Scriptables;
 
 namespace MalbersAnimations
 {
     [CustomEditor(typeof(Messages))]
     public class MessagesEd : Editor
     {
-        private ReorderableList
-            list,
-            listOnExit, 
-            listOnTime;
-
-
-        bool OnEnter;
+        private ReorderableList list;
 
         private Messages MMessage;
 
+        private MonoScript script;
+
         private void OnEnable()
         {
+
             MMessage = ((Messages)target);
-          
+            script = MonoScript.FromMonoBehaviour(MMessage);
+
+
             list = new ReorderableList(serializedObject, serializedObject.FindProperty("messages"), true, true, true, true);
 
             list.drawElementCallback = drawElementCallback1;
@@ -40,7 +40,10 @@ namespace MalbersAnimations
 
             EditorGUILayout.BeginVertical(MalbersEditor.StyleGray);
             {
-                
+                EditorGUI.BeginDisabledGroup(true);
+                script = (MonoScript)EditorGUILayout.ObjectField("Script", script, typeof(MonoScript), false);
+                EditorGUI.EndDisabledGroup();
+
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
                 list.DoLayoutList();
                 EditorGUILayout.EndVertical();
@@ -103,10 +106,12 @@ namespace MalbersAnimations
                 case TypeMessage.String:
                     element.stringValue = EditorGUI.TextField(R_5, element.stringValue);
                     break;
+                case TypeMessage.IntVar:
+                    element.intVarValue = (IntVar)EditorGUI.ObjectField(R_5, element.intVarValue, typeof(IntVar), false);
+                    break;
                 default:
                     break;
             }
-
         }
     }
 }

@@ -279,8 +279,8 @@ namespace MalbersAnimations
                 EditorGUILayout.EndVertical();
 
                 EditorGUILayout.BeginVertical(MalbersEditor.FlatBox);
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("damageDelay"), new GUIContent("Damage Delay", "Time which this animal can receive damage again (Immunity)"));
-               // EditorGUILayout.PropertyField(damageInterrupt, new GUIContent("Damage Interrupt", "Time to move again after being hit"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("damageDelay"), new GUIContent("Damage Inmunity", "The Animal will not receive Damage during this time"));
+                EditorGUILayout.PropertyField(damageInterrupt, new GUIContent("Damage Interrupt", "After receiving damage, time that the Animal can move to flee"));
                 EditorGUILayout.EndVertical();
 
                 EditorGUILayout.BeginVertical(MalbersEditor.FlatBox);
@@ -300,17 +300,18 @@ namespace MalbersAnimations
             {
                 EditorGUILayout.BeginVertical(MalbersEditor.FlatBox);
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("airRotation"), new GUIContent("Jump/Fall Rotation", "Enables you to rotate the animal while jumping or falling"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("AirControl"), new GUIContent("Air Control", "the Inputs controll the Fall and Jump movement on Air"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("AirControl"), new GUIContent("Air Control", "Allows the Inputs to control the Fall and Jump movement on Air"));
 
                 if (M.AirControl)
                 {
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("airMaxSpeed"), new GUIContent("Air Max Speed", "Maximum Speed to move while on the air"));
+                   // EditorGUILayout.PropertyField(serializedObject.FindProperty("airMaxSpeed"), new GUIContent("Air Max Speed", "Maximum Speed to move while on the air"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("airSmoothness"), new GUIContent("Air Smoothness", "Lerp between air stand and moving forward"));
                 }
 
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("JumpPress"), new GUIContent("Jump Press", "If There's Jump Height value this will controll will keel adding more Jump if the JumpInput is pressed"));
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("AirForwardMultiplier"), new GUIContent("Air Forward", "Adds More Height to the Jump. Check the JumpBehaviour on the Animator Controller"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("AirForwardMultiplier"), new GUIContent("Jump Forward", "Adds More Height to the Jump. Check the JumpBehaviour on the Animator Controller"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("JumpHeightMultiplier"), new GUIContent("Jump Height", "Adds More Height to the Jump. Check the JumpBehaviour on the Animator Controller"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("CanDoubleJump"), new GUIContent("Double Jump", "Can the Animal make a double Jump"));
 
                 EditorGUILayout.EndVertical();
             }
@@ -383,6 +384,43 @@ namespace MalbersAnimations
             }
             EditorGUILayout.EndVertical();
 
+            var EditorAnimParams = serializedObject.FindProperty("EditorAnimatorParameters");
+
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            EditorGUI.indentLevel++;
+            EditorAnimParams.boolValue = EditorGUILayout.Foldout(EditorAnimParams.boolValue, "Animator Parameters");
+            EditorGUI.indentLevel--;
+
+            if (EditorAnimParams.boolValue)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Vertical"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Horizontal"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_UpDown"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Stand"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Jump"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Fly"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Fall"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Attack1"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Attack2"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Stunned"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Damaged"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Shift"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Death"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Dodge"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Underwater"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Swim"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Action"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IDAction"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IDFloat"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IDInt"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Slope"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Type"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_SpeedMultiplier"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_StateTime"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Stance"));
+            }
+
+            EditorGUILayout.EndVertical();
 
             //──────────────────────────────────────────────────── Events ────────────────────────────────────────────────────
 

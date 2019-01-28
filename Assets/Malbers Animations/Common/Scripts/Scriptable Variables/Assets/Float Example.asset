@@ -11,9 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430f4b739740ffb4ba6961f6bb00f801, type: 3}
   m_Name: Float Example
   m_EditorClassIdentifier: 
-  Clone: 0
   value: 30
-  defaultValue: 0.5
   Description: This is an example for a Float Scriptable Variable
   UseEvent: 0
   OnValueChanged:

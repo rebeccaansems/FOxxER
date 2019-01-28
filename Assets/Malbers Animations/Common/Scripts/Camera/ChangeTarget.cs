@@ -29,7 +29,7 @@ namespace MalbersAnimations
                 }
 
                 m = GetComponent<MFreeLookCamera>();
-                if (m)
+                if (m && m.Target)
                 {
                     input = m.Target.GetComponent<MalbersInput>();
                     if (input) input.enabled = true;

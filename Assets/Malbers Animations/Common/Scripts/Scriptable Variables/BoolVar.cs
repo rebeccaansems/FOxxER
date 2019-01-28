@@ -8,19 +8,12 @@ namespace MalbersAnimations.Scriptables
     [CreateAssetMenu(menuName = "Malbers Animations/Scriptable Variables/Bool Var")]
     public class BoolVar : ScriptableObject
     {
+        [SerializeField] private bool value;
 
-        [SerializeField]
-        private bool value;
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        [SerializeField]
-        private bool defaultValue;
-
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         [TextArea(3, 20)]
         public string Description = "";
-#endif
+        #endif
 
         /// <summary>
         /// When active OnValue changed will ve used every time the value changes (you can subscribe only at runtime .?)
@@ -47,24 +40,9 @@ namespace MalbersAnimations.Scriptables
             }
         }
 
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        public virtual bool DefaultValue
-        {
-            get { return defaultValue; }
-            set { defaultValue = value; }
-        }
-
-        /// <summary>
-        /// Reset the Float Value to the Default value
-        /// </summary>
-        public virtual void ResetValue() { Value = DefaultValue; }
-
         public virtual void SetValue(BoolVar var)
         {
             Value = var.Value;
-            DefaultValue = var.DefaultValue;
         }
 
         public static implicit operator bool(BoolVar reference)

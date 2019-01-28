@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MalbersAnimations.Utilities;
 
 namespace MalbersAnimations
 {
@@ -20,6 +21,7 @@ namespace MalbersAnimations
         int FallRayInterval;
         int WaterRayInterval;
         int GroundLayer;
+        private Transform transform;
 
         Vector3 IncomingSpeed;
 
@@ -27,19 +29,20 @@ namespace MalbersAnimations
         {
             animal = animator.GetComponent<Animal>();
             rb = animator.GetComponent<Rigidbody>();
+            transform = animator.transform;
 
             GroundLayer = animal.GroundLayer;
 
             IncomingSpeed = rb.velocity;
             IncomingSpeed.y = 0;
 
-            animal.SetIntID(1);
+           // animal.SetIntID(0);
             animal.IsInAir = true;                                          //the  Animal is on the air (This also changes the RigidBody Constraints)
             animator.SetFloat(Hash.IDFloat, 1);                             //Is use to blend between the low and high fall animations 
 
             MaxHeight = float.MinValue; //Resets MaxHeight
 
-            animator.applyRootMotion = false;
+            animal.RootMotion = false;
 
             rb.drag = 0;
             rb.useGravity = true;
@@ -69,6 +72,16 @@ namespace MalbersAnimations
             //}
 
             if (animal.debug)  Debug.DrawRay(animal.Main_Pivot_Point, -animal.transform.up * 50, Color.magenta);
+
+
+            if (animal.CanDoubleJump && animal.Double_Jump == 0)
+            {
+                if (animal.Jump)
+                {
+                    animal.Double_Jump++;
+                    animal.SetIntID(112);
+                }
+            }
 
 
             if (Physics.Raycast(animal.Main_Pivot_Point, -animal.transform.up, out FallRay, 50, GroundLayer))
@@ -114,34 +127,35 @@ namespace MalbersAnimations
             //Restore the Intervals for the raycasting
             animal.PivotsRayInterval = PivotsRayInterval;
             animal.FallRayInterval = FallRayInterval;
-            animal.WaterRayInterval =WaterRayInterval;
+            animal.WaterRayInterval = WaterRayInterval;
 
             animal.AirControlDir = Vector3.zero;        //Remove the AirControlDir speed
         }
 
-        //If the jump can be controlled on air
         void AirControl()
         {
+            RaycastHit hit_AirControl = animal.FallRayCast;
+            float Angle = Vector3.Angle(Vector3.up, hit_AirControl.normal);
+            if (Angle > animal.maxAngleSlope) return;
+
+
             float deltaTime = Time.deltaTime;
             var VerticalSpeed = rb.velocity.y;
             var PlanarRawDirection = animal.RawDirection;
             PlanarRawDirection.y = 0;
-            
+
             animal.AirControlDir = Vector3.Lerp(animal.AirControlDir, PlanarRawDirection, deltaTime * animal.airSmoothness);
 
-            Debug.DrawRay(animal.transform.position, animal.AirControlDir, Color.yellow);
+            Debug.DrawRay(transform.position, transform.TransformDirection(animal.AirControlDir), Color.yellow);
 
-            Vector3 RB_Velocity = animal.AirControlDir * animal.airMaxSpeed;
+            Vector3 RB_Velocity = animal.AirControlDir * animal.AirForwardMultiplier;
 
             if (!animal.DirectionalMovement)
             {
-                RB_Velocity = animal.transform.TransformDirection(RB_Velocity);
+                RB_Velocity = transform.TransformDirection(RB_Velocity);
             }
 
             RB_Velocity.y = VerticalSpeed;
-
-            //RB_Velocity += IncomingSpeed;
-            //IncomingSpeed = Vector3.Lerp(IncomingSpeed, Vector3.zero , deltaTime * 5);
 
             rb.velocity = RB_Velocity;
         }

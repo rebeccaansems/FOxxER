@@ -36,7 +36,6 @@ namespace MalbersAnimations.Scriptables
             {
                 Variable = ScriptableObject.CreateInstance<Vector3Var>();
                 Variable.Value =  Vector3.zero;
-                Variable.DefaultValue = Vector3.zero;
             }
         }
 
@@ -57,20 +56,13 @@ namespace MalbersAnimations.Scriptables
             }
         }
 
-        /// <summary>
-        /// Reset the current value to the Default value
-        /// </summary>
-        public virtual void Reset()
-        {
-            if (UseConstant)
-            {
-                Value = DefaultValue;
-            }
-            Value = UseConstant ? DefaultValue : Variable.DefaultValue;
-        }
-
         #region Operators
         public static implicit operator Vector3(Vector3Reference reference)
+        {
+            return reference.Value;
+        }
+
+        public static implicit operator Vector2(Vector3Reference reference)
         {
             return reference.Value;
         }

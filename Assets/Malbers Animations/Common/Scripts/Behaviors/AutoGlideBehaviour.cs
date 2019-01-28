@@ -22,8 +22,8 @@ namespace MalbersAnimations
         {
             animal = animator.GetComponent<Animal>();
 
-            Default_UseShift = animal.useShift;
-            animal.useShift = false;
+            Default_UseShift = animal.UseShift;
+            animal.UseShift = false;
 
             FlyStyleTime = GlideChance.RandomValue;
             currentTime = Time.time;
@@ -31,6 +31,7 @@ namespace MalbersAnimations
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (!animal.Fly) return;
             if (Time.time - FlyStyleTime >= currentTime)
             {
                 currentTime = Time.time;
@@ -44,7 +45,7 @@ namespace MalbersAnimations
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animal.useShift = Default_UseShift;
+            animal.UseShift = Default_UseShift;
         }
     }
 

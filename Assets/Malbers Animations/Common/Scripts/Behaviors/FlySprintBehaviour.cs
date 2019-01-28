@@ -47,6 +47,8 @@ namespace MalbersAnimations
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (animal.MovementReleased ) return;  //if the Dragon is not moving forward do nothing
+
             var deltaTime = Time.deltaTime;
 
             Shift = Mathf.Lerp(Shift, animal.Shift ? ShiftMultiplier : 1, BehaviourSpeed.lerpPosition * deltaTime);   //Calculate the Shift

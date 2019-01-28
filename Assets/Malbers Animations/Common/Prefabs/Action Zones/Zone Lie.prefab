@@ -116,9 +116,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070427609404914}
-  m_LocalRotation: {x: -0, y: 0.59190476, z: -0, w: 0.806008}
-  m_LocalPosition: {x: 4.515518, y: 0, z: 4.390512}
-  m_LocalScale: {x: 0.5283773, y: 0.5283772, z: 0.5283773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224844793597432418}
   - {fileID: 4735444369528910}
@@ -293,7 +293,6 @@ MonoBehaviour:
   AlignRot: 1
   AlignLookAt: 0
   ActionDelay: 0
-  animalProxy: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []

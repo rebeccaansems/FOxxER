@@ -11,13 +11,7 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// The current value
         /// </summary>
-        [SerializeField]
-        private float value = 0;
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        [SerializeField]
-        private float defaultValue = 0;
+        [SerializeField] private float value = 0;
 
 #if UNITY_EDITOR
         [TextArea(3, 20)]
@@ -26,7 +20,7 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// When active OnValue changed will ve used every time the value changes (you can subscribe only at runtime .?)
         /// </summary>
-        public bool UseEvent = true;
+        public bool UseEvent = false;
 
         /// <summary>
         /// Invoked when the value changes
@@ -47,26 +41,6 @@ namespace MalbersAnimations.Scriptables
                     if (UseEvent) OnValueChanged.Invoke(value);         //If we are using OnChange event Invoked
                 }
             }
-        }
-
-        /// <summary>
-        /// The Value to return to when Reset is called
-        /// </summary>
-        public virtual float DefaultValue
-        {
-            get { return defaultValue; }
-            set { defaultValue = value; }
-        }
-
-        /// <summary>
-        /// Reset the Value to the Default value
-        /// </summary>
-        public virtual void ResetValue() { Value = DefaultValue; }
-
-        public virtual void SetValue(FloatVar var)
-        {
-            Value = var.Value;
-            DefaultValue = var.DefaultValue;
         }
 
         public static implicit operator float(FloatVar reference)

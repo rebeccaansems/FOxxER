@@ -18,6 +18,7 @@ namespace MalbersAnimations.Utilities
 
         public bool random;
 
+        MaterialItem Active;
 
         /// <summary>
         /// All Material Changer Index Stored on a string separated by a space ' '

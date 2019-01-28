@@ -14,6 +14,7 @@ namespace MalbersAnimations
 
         override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
+
             int newParam = Random.Range(1, Range + 1);
             animator.SetInteger(Parameter, newParam);
 

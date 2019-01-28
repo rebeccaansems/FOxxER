@@ -11,14 +11,9 @@ namespace MalbersAnimations.Scriptables
         /// <summary>
         /// The current value
         /// </summary>
-        [SerializeField]
-        private Vector3 value = Vector3.zero;
-        /// <summary>
-        /// The default float value to return to
-        /// </summary>
-        [SerializeField]
-        private Vector3 defaultValue = Vector3.zero;
-
+        [SerializeField] private Vector3 value = Vector3.zero;
+       
+ 
 #if UNITY_EDITOR
         [TextArea(3, 20)]
         public string Description = "";
@@ -49,29 +44,20 @@ namespace MalbersAnimations.Scriptables
             }
         }
 
-        /// <summary>
-        /// The Value to return to when Reset is called
-        /// </summary>
-        public virtual Vector3 DefaultValue
-        {
-            get { return defaultValue; }
-            set { defaultValue = value; }
-        }
-
-        /// <summary>
-        /// Reset the Value to the Default value
-        /// </summary>
-        public virtual void ResetValue() { Value = DefaultValue; }
-
         public virtual void SetValue(Vector3Var var)
         {
             Value = var.Value;
-            DefaultValue = var.DefaultValue;
         }
 
         public static implicit operator Vector3(Vector3Var reference)
         {
             return reference.Value;
         }
+
+        public static implicit operator Vector2(Vector3Var reference)
+        {
+            return reference.Value;
+        }
+
     }
 }

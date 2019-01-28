@@ -29,7 +29,7 @@ namespace MalbersAnimations
             animal = animator.GetComponent<Animal>();           //Get the Animal
             acceleration = 0;
             animal.IsInAir = true;
-            animator.applyRootMotion = true;
+            animal.RootMotion = true;
 
             FallVector = animal.CurrentAnimState == AnimTag.Fall ? rb.velocity : Vector3.zero;          //Just recover if your coming from the fall animations
 

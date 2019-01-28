@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
 
 namespace MalbersAnimations.Utilities
 {
@@ -30,9 +31,42 @@ namespace MalbersAnimations.Utilities
         public static Vector3 NullVector = new Vector3(float.MinValue, float.MinValue, float.MinValue);
 
 
+#if UNITY_EDITOR
+        public static List<T> GetAllInstances<T>() where T : ScriptableObject
+        {
+            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info
+            T[] a = new T[guids.Length];
+
+            for (int i = 0; i < guids.Length; i++)         //probably could get optimized 
+            {
+                string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
+                a[i] = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
+            }
+            var aA = a.ToList();
+
+            return aA;
+        }
+#endif
+        /// <summary>
+        /// Returns the Instance of an Scriptable Object by its name
+        /// </summary>
+        public static T GetInstance<T>(string name) where T : ScriptableObject
+        {
+#if UNITY_EDITOR
+            if (Application.isEditor)
+            {
+                var allInstances = GetAllInstances<T>();
+
+                T found = allInstances.Find(x => x.name == name);
+
+                return found;
+            }
+#endif
+            return null;
+        }
+
         public static void DebugCross(Vector3 center, float radius, Color color)
         {
-
             Debug.DrawLine(center - new Vector3(0, radius, 0), center + new Vector3(0, radius, 0), color);
             Debug.DrawLine(center - new Vector3(radius, 0, 0), center + new Vector3(radius, 0, 0), color);
             Debug.DrawLine(center - new Vector3(0, 0, radius), center + new Vector3(0, 0, radius), color);
@@ -67,7 +101,16 @@ namespace MalbersAnimations.Utilities
             Debug.DrawLine(center + new Vector3(0, 0, radius), center - new Vector3(-radius,0, 0), color);
             Debug.DrawLine(center - new Vector3(0, 0, radius), center + new Vector3(radius, 0,0), color);
         }
-    
+
+        /// <summary>
+        /// Set a Layer to the Game Object and all its children
+        /// </summary>
+        public static void  SetLayer(Transform root, int layer)
+        {
+            root.gameObject.layer = layer;
+            foreach (Transform child in root)
+                SetLayer(child, layer);
+        }
 
         /// <summary>
         /// Calculate a Direction from an origin to a target
@@ -221,6 +264,17 @@ namespace MalbersAnimations.Utilities
         }
 
 
+        /// <summary>
+        /// Calculate the direction from the center of the Screen
+        /// </summary>
+        /// <param name="origin">The start point to calculate the direction</param>
+        public static Vector3 DirectionFromCamera(Transform origin, LayerMask layerMask)
+        {
+            RaycastHit p;
+            return DirectionFromCamera(origin, 0.5f * Screen.width, 0.5f * Screen.height, out p, layerMask);
+        }
+
+
         public static Vector3 DirectionFromCamera(Transform origin, Vector3 ScreenCenter)
         {
             RaycastHit p;
@@ -228,7 +282,9 @@ namespace MalbersAnimations.Utilities
         }
 
 
-        public static RaycastHit RayCastHitToCenter(Transform origin, Vector3 ScreenCenter)
+
+
+        public static RaycastHit RayCastHitToCenter(Transform origin, Vector3 ScreenCenter, int layerMask = -1)
         {
             Camera cam = Camera.main;
 
@@ -241,7 +297,7 @@ namespace MalbersAnimations.Utilities
 
             RaycastHit[] hits;
 
-            hits = Physics.RaycastAll(ray, 100);
+            hits = Physics.RaycastAll(ray, 100, layerMask);
 
             foreach (RaycastHit item in hits)
             {
@@ -267,6 +323,23 @@ namespace MalbersAnimations.Utilities
         public static RaycastHit RayCastHitToCenter(Transform origin)
         {
             return RayCastHitToCenter(origin, new Vector3( 0.5f * Screen.width, 0.5f * Screen.height));
+        }
+
+
+        /// <summary>
+        /// Returns a RaycastHit to the center of the screen
+        /// </summary>
+        public static RaycastHit RayCastHitToCenter(Transform origin, LayerMask layerMask)
+        {
+            return RayCastHitToCenter(origin, new Vector3(0.5f * Screen.width, 0.5f * Screen.height), layerMask);
+        }
+
+        /// <summary>
+        /// Returns a RaycastHit to the center of the screen
+        /// </summary>
+        public static RaycastHit RayCastHitToCenter(Transform origin, int layerMask)
+        {
+            return RayCastHitToCenter(origin, new Vector3(0.5f * Screen.width, 0.5f * Screen.height), layerMask);
         }
 
 

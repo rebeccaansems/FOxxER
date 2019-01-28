@@ -75,11 +75,9 @@ namespace MalbersAnimations.Events
                 script = (MonoScript)EditorGUILayout.ObjectField("Script", script, typeof(MonoScript), false);
                 EditorGUI.EndDisabledGroup();
 
-              //  DrawDefaultInspector();
-
-
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
                 {
+                    //EditorGUILayout.PropertyField(serializedObject.FindProperty("Description"));
                     list.DoLayoutList();
 
                     if (list.index != -1)

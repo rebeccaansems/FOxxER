@@ -8,7 +8,7 @@ namespace MalbersAnimations
     /// All Callbacks in here
     public partial class Animal
     {
-        int ToogleAmount = 4; //This is used for Enabling and disabling States
+        int ToogleAmount = 4; //This is used for Enabling and disabling States when calling with SetAttack, SetAction.. etc
 
         public virtual void OnAnimatorBehaviourMessage(string message, object value)
         {
@@ -22,7 +22,11 @@ namespace MalbersAnimations
         {
             MovementAxis = (Vector3.forward) * 3;
             ActionID = -2;
+            iswakingUp = true;
         }
+        protected bool iswakingUp;
+    
+
 
         /// <summary>
         /// Toogle the New Stance with the Default Stance▼▲ 
@@ -30,6 +34,22 @@ namespace MalbersAnimations
         public virtual void ToggleStance(int NewStance)
         {
             Stance = Stance == NewStance ? 0 : NewStance;
+        }
+
+
+        /// <summary>
+        /// Reset all the Inputs on the Animal
+        /// </summary>
+        public virtual void ResetInputs()
+        {
+            Attack1 = false;
+            Attack2 = false;
+            Shift = false;
+            Jump = false;
+            Action = false;
+            ActionID = 0;
+            MovementAxis = Vector3.zero;     //Reset the movement
+            RawDirection = Vector3.zero;
         }
 
         /// <summary>
@@ -96,6 +116,7 @@ namespace MalbersAnimations
         public virtual void Stop()
         {
             movementAxis = Vector3.zero;
+            RawDirection = Vector3.zero;
         }
 
 
@@ -253,14 +274,17 @@ namespace MalbersAnimations
         /// </summary>
         public void SetIntID(int value)
         {
-            IDInt = value;
-            Anim.SetInteger(Hash.IDInt, IDInt);         //Update the Animator
+            if (gameObject.activeInHierarchy)
+            {
+                IDInt = value;
+                Anim.SetInteger(hash_IDInt, IDInt);         //Update the Animator
+            }
         }
 
         public void SetFloatID(float value)
         {
             IDFloat = value;
-            Anim.SetFloat(Hash.IDFloat, IDFloat);         //Update the Animator
+            Anim.SetFloat(hash_IDFloat, IDFloat);         //Update the Animator
         }
 
         /// <summary>
@@ -277,14 +301,6 @@ namespace MalbersAnimations
         public bool IsJumping
         {
            get { return  AnimState == AnimTag.Jump; }
-        }
-
-        /// <summary>
-        /// Toggle  the RigidBody Constraints
-        /// </summary>
-        public virtual void StillConstraints(bool active)
-        {
-            _RigidBody.constraints = active ? Still_Constraints : RigidbodyConstraints.FreezeRotation;
         }
 
         /// <summary>
@@ -333,12 +349,9 @@ namespace MalbersAnimations
         public virtual void InAir(bool active)
         {
             IsInAir = active;
-            StillConstraints(!active);
         }
 
-        /// <summary>
-        /// Activate the Jump and deactivate it 2 frames later
-        /// </summary>
+        /// <summary>Activate the Jump and deactivate it 2 frames later</summary>
         public virtual void SetJump()
         {
             StartCoroutine(ToggleJump());
@@ -382,6 +395,7 @@ namespace MalbersAnimations
 
         }
 
+        /// <summary> Used for respawing the Animal </summary>
         public virtual void ResetAnimal()
         {
             fly = false;
@@ -392,6 +406,7 @@ namespace MalbersAnimations
             damaged = false;
             attack2 = false;
             anim.Rebind();
+            Platform = null;
         }
 
         IEnumerator StunC;
@@ -401,6 +416,8 @@ namespace MalbersAnimations
         /// </summary>
         public virtual void SetStun(float time)
         {
+            if (AnimState == AnimTag.Jump || AnimState == AnimTag.JumpStart || AnimState == AnimTag.JumpEnd) return;
+
             if (StunC != null) StopCoroutine(StunC);
             StunC = null;
 
@@ -451,7 +468,7 @@ namespace MalbersAnimations
             {
                 yield return null;
             }
-            groundSpeed = 2;
+            groundSpeed = 2;        //Force Glide
 
             if (_RigidBody)
             {
@@ -499,6 +516,12 @@ namespace MalbersAnimations
             Stun = true;
             yield return new WaitForSeconds(time);
             stun = false;
+        }
+
+        internal IEnumerator CDamageInterrupt()
+        {
+            yield return new WaitForSeconds(damageInterrupt);
+            SetIntID(-1);
         }
     }
 }

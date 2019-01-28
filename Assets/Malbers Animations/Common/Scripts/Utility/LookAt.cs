@@ -23,7 +23,12 @@ namespace MalbersAnimations.Utilities
         [Tooltip("The Animations allows the LookAt to be enable/disabled")]
         public bool AnimationActive = true;             //Means the Animator has deactivate it
 
-        public bool UseCamera;                          //Use the camera ForwardDirection instead a Target
+        [Space]
+        [Tooltip("What layers the Look At Rays should ignore")]
+        public LayerMask Ignore = 4;
+        public bool UseCamera;                                                         //Use the camera ForwardDirection instead a Target
+        [Tooltip("What point of the Camera it will cast the Ray")]
+        public Vector2 CameraCenter = new Vector2(0.5f,0.5f);                          //Use the camera ForwardDirection instead a Target
         public Transform Target;                        //Use a target to look At
 
         [Space]
@@ -85,6 +90,7 @@ namespace MalbersAnimations.Utilities
 
         void Awake()
         {
+
             if (Camera.main != null) cam = Camera.main.transform;               //Get the main camera
 
             var Anim = GetComponent<Animator>();
@@ -122,11 +128,13 @@ namespace MalbersAnimations.Utilities
         /// </summary>
         void LookAtBoneSet()
         {
+            if (!Target && !cam) return; //If there's no camera and no Target ignore completely
+
             hasTarget = false;
             if (UseCamera || Target) hasTarget = true;
 
 
-            angle = Vector3.Angle(transform.forward, direction);                                                    //Find the angle for the current bone
+            angle = Vector3.Angle(transform.forward, Direction);                                                    //Find the angle for the current bone
 
 
             currentSmoothness = Mathf.Lerp(currentSmoothness, IsAiming ? 1 : 0, Time.deltaTime * Smoothness);
@@ -143,13 +151,15 @@ namespace MalbersAnimations.Utilities
                 Vector3 dir = transform.forward;
 
 
-                if (UseCamera)
+                if (UseCamera && cam)
                 {
+                    var ScreenCenter = new Vector2(CameraCenter.x * Screen.width, CameraCenter.y * Screen.height);
                     dir = cam.forward;
+                    dir = Utilities.MalbersTools.DirectionFromCamera(bone.bone, ScreenCenter, out aimHit, ~Ignore);
 
-                    aimHit = MalbersTools.RayCastHitToCenter(bone.bone);        //Calculate the Direction from the Bone
+                    //aimHit = MalbersTools.RayCastHitToCenter(bone.bone, CameraCenter, ~Ignore);        //Calculate the Direction from the Bone
 
-                    if (aimHit.collider)                                        //if something was hit 
+                    if (aimHit.collider)                                                //if something was hit 
                     {
                         dir = MalbersTools.DirectionTarget(bone.bone.position, aimHit.point);
                     }
@@ -157,18 +167,18 @@ namespace MalbersAnimations.Utilities
 
                 if (Target) dir = MalbersTools.DirectionTarget(bone.bone, Target);
 
-                direction = Vector3.Lerp(direction, dir, Time.deltaTime * Smoothness);
+                Direction = Vector3.Lerp(Direction, dir, Time.deltaTime * Smoothness);
 
                 if (currentSmoothness == 0) return;                                         //Skip all next stuffs
 
 
                 if (debug && i == Bones.Length - 1)
                 {
-                    Debug.DrawRay(bone.bone.position, direction * 15, Color.green);
+                    Debug.DrawRay(bone.bone.position, Direction * 15, Color.green);
                 }
 
 
-                var final = Quaternion.LookRotation(direction, UpVector) * Quaternion.Euler(bone.offset);
+                var final = Quaternion.LookRotation(Direction, UpVector) * Quaternion.Euler(bone.offset);
                 var next = Quaternion.Lerp(bone.bone.rotation, final, bone.weight * currentSmoothness);
                 bone.bone.rotation = next;
             }
@@ -191,6 +201,38 @@ namespace MalbersAnimations.Utilities
             this.InvokeWithParams(message, value);
         }
 
+        private void OnValidate()
+        {
+            CameraCenter = new Vector2(Mathf.Clamp01(CameraCenter.x), Mathf.Clamp01(CameraCenter.y));
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (debug)
+            {
+                UnityEditor.Handles.color = new Color(0, 1, 0, 0.1f);
+
+                Transform Center = Bones != null && Bones.Length>0 && Bones[Bones.Length - 1] != null ? Bones[Bones.Length - 1].bone : null;
+                if (Center != null)
+                {
+                    UnityEditor.Handles.DrawSolidArc(Center.position, Vector3.up, Quaternion.Euler(0, -LimitAngle, 0) * transform.forward, LimitAngle * 2, 1);
+                    UnityEditor.Handles.color = Color.green;
+                    UnityEditor.Handles.DrawWireArc(Center.position, Vector3.up, Quaternion.Euler(0, -LimitAngle, 0) * transform.forward, LimitAngle * 2, 1);
+                }
+            }
+
+            if (Application.isPlaying)
+            {
+
+                if (IsAiming)
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawSphere(aimHit.point, 0.05f);
+                }
+            }
+        }
+#endif
     }
 }
 
