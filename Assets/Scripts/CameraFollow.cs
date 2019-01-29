@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
     public Vector3 cameraPos;
+    
+    private Vector3 playerPos;
+    private Transform player;
 
-    private Vector3 targetPos;
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     void Update()
     {
-        targetPos = new Vector3(target.position.x + cameraPos.x, cameraPos.y, target.position.z + cameraPos.z);
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.1f);
+        playerPos = new Vector3(player.position.x + cameraPos.x, cameraPos.y, player.position.z + cameraPos.z);
+        transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
     }
 }
