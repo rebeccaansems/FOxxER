@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Vector3 cameraPos;
+    public bool cameraFollowOn;
     
     private Vector3 playerPos;
     private Transform player;
@@ -16,7 +17,10 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        playerPos = new Vector3(player.position.x + cameraPos.x, cameraPos.y, player.position.z + cameraPos.z);
-        transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
+        if (cameraFollowOn)
+        {
+            playerPos = new Vector3(player.position.x + cameraPos.x, cameraPos.y, player.position.z + cameraPos.z);
+            transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
+        }
     }
 }
