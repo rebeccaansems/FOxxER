@@ -826,6 +826,26 @@ PrefabInstance:
       propertyPath: EditorAirControl
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
+        type: 3}
+      propertyPath: EditorAttributes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
+        type: 3}
+      propertyPath: EditorAnimatorParameters
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
+        type: 3}
+      propertyPath: CanDoubleJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
+        type: 3}
+      propertyPath: EditorEvents
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40028b8e62dc154408c556da49a70943, type: 3}
 --- !u!4 &1767813178 stripped
