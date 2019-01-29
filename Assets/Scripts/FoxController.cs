@@ -31,6 +31,7 @@ public class FoxController : MonoBehaviour
         if (this.transform.position.y < -0.6f)
         {
             Die();
+
         }
     }
 
@@ -49,5 +50,10 @@ public class FoxController : MonoBehaviour
         yield return new WaitForSeconds(3);
         GameController.instance.GameOver();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void EnableJumping(bool enable)
+    {
+
     }
 }
