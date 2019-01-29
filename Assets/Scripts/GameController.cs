@@ -44,13 +44,13 @@ public class GameController : MonoBehaviour
     {
         currentGameScoreText.text = gameScore.ToString();
 
-        if (Input.mousePosition.normalized.y > 0.99f)
+        if (Input.GetMouseButton(0))
         {
-            player.GetComponent<MalbersInput>().EnableInput("Jump", false);
-        }
-        else if (pauseScreen.interactable == false)
-        {
-            player.GetComponent<MalbersInput>().EnableInput("Jump", true);
+            if (Input.mousePosition.normalized.y < 0.99f && pauseScreen.interactable == false)
+            {
+                Debug.Log("!");
+                player.GetComponent<Animal>().SetJump();
+            }
         }
     }
 
@@ -69,7 +69,6 @@ public class GameController : MonoBehaviour
             pauseScreen.blocksRaycasts = false;
             pauseScreen.alpha = 0;
             player.GetComponent<MalbersInput>().AlwaysForward = true;
-            StartCoroutine(EnableJump());
         }
         else
         {
@@ -78,11 +77,5 @@ public class GameController : MonoBehaviour
             pauseScreen.alpha = 1;
             player.GetComponent<MalbersInput>().AlwaysForward = false;
         }
-    }
-
-    IEnumerator EnableJump()
-    {
-        yield return new WaitForSeconds(0.5f);
-        player.GetComponent<MalbersInput>().EnableInput("Jump", true);
     }
 }
