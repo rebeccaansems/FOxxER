@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FoxController : MonoBehaviour
 {
@@ -28,5 +29,13 @@ public class FoxController : MonoBehaviour
         this.GetComponent<MalbersInput>().AlwaysForward = false;
         this.GetComponent<StepsManager>().Active = false;
         this.GetComponent<Animal>().getDamaged(new DamageValues(Vector3.up, 200));
+
+        StartCoroutine(Restart());
+    }
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
