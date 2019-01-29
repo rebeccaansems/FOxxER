@@ -8,10 +8,22 @@ public class FoxController : MonoBehaviour
 {
     public CameraFollow cameraFollow;
 
+    private GameObject currentIsland;
+
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Island" && currentIsland != other.gameObject)
+        {
+            currentIsland = other.gameObject;
+            GameController.k_GameScore++;
+            Debug.Log(GameController.k_GameScore);
+        }
     }
 
     // Update is called once per frame

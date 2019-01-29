@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6481828}
   m_Layer: 0
   m_Name: CPT_Island_L_e_07_LOD0
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 20555446}
   m_Layer: 0
   m_Name: CPT_Island_L_e_07_LOD
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 6499038}
   m_Layer: 0
   m_Name: CPT_Island_L_e_07_LOD1
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 6476990}
   m_Layer: 0
   m_Name: CPT_Island_L_e_07_LOD2
-  m_TagString: Untagged
+  m_TagString: Island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
