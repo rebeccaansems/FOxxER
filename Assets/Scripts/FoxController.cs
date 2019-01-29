@@ -21,8 +21,7 @@ public class FoxController : MonoBehaviour
         if (other.tag == "Island" && currentIsland != other.gameObject)
         {
             currentIsland = other.gameObject;
-            GameController.k_GameScore++;
-            Debug.Log(GameController.k_GameScore);
+            GameController.instance.gameScore++;
         }
     }
 
@@ -48,6 +47,7 @@ public class FoxController : MonoBehaviour
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(3);
+        GameController.instance.GameOver();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
