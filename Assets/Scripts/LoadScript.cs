@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class LoadScript : MonoBehaviour
 {
-    public bool destroyLoad;
+    public bool destroyOnLoad;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (destroyLoad)
+        if (destroyOnLoad)
         {
             Destroy(this.gameObject);
         }
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
