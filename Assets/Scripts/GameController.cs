@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
         {
             if (Input.mousePosition.normalized.y < 0.99f && pauseScreen.interactable == false)
             {
-                Debug.Log("!");
                 player.GetComponent<Animal>().SetJump();
             }
         }
