@@ -34,7 +34,7 @@ public class FoxController : MonoBehaviour
         }
         else if (Mathf.Abs(this.transform.position.x) > 0.05f)
         {
-            float step = 0.5f * Time.deltaTime;
+            float step = 0.05f * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, transform.position.y, transform.position.z), step);
         }
     }
