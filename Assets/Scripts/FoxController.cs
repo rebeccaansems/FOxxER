@@ -12,7 +12,7 @@ public class FoxController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Island" && currentIsland != other.gameObject)
+        if (other.gameObject.CompareTag("Island") && currentIsland != other.gameObject)
         {
             currentIsland = other.gameObject;
             GameController.instance.gameScore++;
