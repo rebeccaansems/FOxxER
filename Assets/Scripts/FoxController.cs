@@ -10,12 +10,6 @@ public class FoxController : MonoBehaviour
 
     private GameObject currentIsland;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Island" && currentIsland != other.gameObject)

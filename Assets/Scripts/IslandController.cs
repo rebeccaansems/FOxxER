@@ -10,7 +10,7 @@ public class IslandController : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameController.instance.player.transform;
     }
 
     public void SetupIsland(int chunk)

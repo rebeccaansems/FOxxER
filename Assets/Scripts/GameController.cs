@@ -1,22 +1,24 @@
 ﻿using MalbersAnimations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    [HideInInspector]
     public int gameScore;
+    [HideInInspector]
+    public GameObject player;
 
     [SerializeField]
-    private Text currentGameScoreText;
+    private TextMeshProUGUI currentGameScoreText;
     [SerializeField]
-    private Text prevHighScoreText;
+    private TextMeshProUGUI prevHighScoreText;
     [SerializeField]
     private CanvasGroup pauseScreen;
-
-    private FoxController player;
 
 
     public static GameController instance = null;
@@ -25,8 +27,11 @@ public class GameController : MonoBehaviour
     {
         if (instance == null)
         {
+            //setup game data
+            Application.targetFrameRate = 60;
+
             instance = this;
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<FoxController>();
+            player = GameObject.FindGameObjectWithTag("Player");
         }
         else if (pauseScreen.interactable)
         {

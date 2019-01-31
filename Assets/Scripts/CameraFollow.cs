@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameController.instance.player.transform;
     }
 
     void FixedUpdate()
