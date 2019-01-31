@@ -1767,6 +1767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandChunks:
   - {fileID: 5372724015130957651, guid: fb649785bb06fa14f88c64cdace5ddcb, type: 3}
+  - {fileID: 920003717859339957, guid: 0e2450177326bdb4f8f81a812915ab2a, type: 3}
   player: {fileID: 680658708}
 --- !u!1001 &1567767954
 PrefabInstance:
