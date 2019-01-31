@@ -1688,6 +1688,7 @@ MonoBehaviour:
   islandChunks:
   - {fileID: 5372724015130957651, guid: fb649785bb06fa14f88c64cdace5ddcb, type: 3}
   - {fileID: 920003717859339957, guid: 0e2450177326bdb4f8f81a812915ab2a, type: 3}
+  - {fileID: 1121574630745587410, guid: d2b1611b76c11f447ac7161cd3de879f, type: 3}
   player: {fileID: 680658708}
 --- !u!1001 &1567767954
 PrefabInstance:
@@ -1756,7 +1757,7 @@ PrefabInstance:
     - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
         type: 3}
       propertyPath: EditorAdvanced
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
         type: 3}
@@ -1771,7 +1772,7 @@ PrefabInstance:
     - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
         type: 3}
       propertyPath: EditorAirControl
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000011348868976, guid: 40028b8e62dc154408c556da49a70943,
         type: 3}
@@ -2368,8 +2369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScore: 0
   player: {fileID: 0}
-  currentGameScoreText: {fileID: 0}
-  prevHighScoreText: {fileID: 0}
+  currentGameScoreText: {fileID: 2070984139}
+  prevHighScoreText: {fileID: 1568586962}
   pauseScreen: {fileID: 47984162}
 --- !u!4 &2045037886
 Transform:
