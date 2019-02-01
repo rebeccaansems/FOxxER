@@ -1799,6 +1799,11 @@ PrefabInstance:
       propertyPath: GroundLayer.m_Bits
       value: 1025
       objectReference: {fileID: 0}
+    - target: {fileID: 114183812280567388, guid: 40028b8e62dc154408c556da49a70943,
+        type: 3}
+      propertyPath: Dust
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40028b8e62dc154408c556da49a70943, type: 3}
 --- !u!1 &1568586960
