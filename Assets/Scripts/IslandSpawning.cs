@@ -23,7 +23,7 @@ public class IslandSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > 42 * (numberSpawnedChunks - 3))
+        if (player.transform.localPosition.z > 42 * (numberSpawnedChunks - 3))
         {
             SpawnChunk();
         }
@@ -32,7 +32,7 @@ public class IslandSpawning : MonoBehaviour
     private void SpawnChunk()
     {
         GameObject newIslandChunk = Instantiate(islandChunks[Random.Range(0, islandChunks.Length)], this.gameObject.transform);
-        newIslandChunk.transform.position = new Vector3(0, 0, numberSpawnedChunks * 42);
+        newIslandChunk.transform.localPosition = new Vector3(0, 0, numberSpawnedChunks * 42);
         newIslandChunk.GetComponent<IslandController>().SetupIsland(numberSpawnedChunks);
         numberSpawnedChunks++;
     }

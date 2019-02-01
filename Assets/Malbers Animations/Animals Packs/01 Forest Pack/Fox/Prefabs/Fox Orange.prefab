@@ -1148,7 +1148,7 @@ MonoBehaviour:
   CanDoubleJump: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1025
   StartSpeed: 2
   height: 0.51
   walkSpeed:
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   movementS1: 1
   movementS2: 2
   movementS3: 3
-  maxAngleSlope: 45
+  maxAngleSlope: 40
   SlowSlopes: 1
   GotoSleep: 20
   SnapToGround: 20
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   EditorWater: 1
   EditorAir: 1
   EditorAdvanced: 0
-  EditorAirControl: 0
+  EditorAirControl: 1
   EditorAttributes: 0
   EditorEvents: 0
   EditorAnimatorParameters: 0
@@ -1459,9 +1459,9 @@ MonoBehaviour:
   Active: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 1025
   Tracks: {fileID: 198000013136168986, guid: b89bf404b651df940b0f4eb9de79a61d, type: 3}
-  Dust: {fileID: 198000010737321038, guid: f0185de6019ebaa4db45528f37bad8d2, type: 3}
+  Dust: {fileID: 0}
   StepsVolume: 0.2
   DustParticles: 15
   Scale: {x: 1, y: 1, z: 1}
