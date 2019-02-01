@@ -46,30 +46,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkyboxMaterial: {fileID: 2100000, guid: 9db1704bf17a80e4ab114d1085dc4266, type: 2}
-  _topColor: {r: 0.247, g: 0.318, b: 0.561, a: 1}
-  _bottomColor: {r: 0.773, g: 0.455, b: 0.682, a: 1}
+  _topColor: {r: 0.028758172, g: 0.04705883, b: 0.2013072, a: 1}
+  _bottomColor: {r: 0.0026143792, g: 0.23660132, b: 0.5163399, a: 1}
   _starsEnabled: 1
   _starsCubemap: {fileID: 8900000, guid: 8872a522d7da63c4095c44ca9bf0964b, type: 3}
-  _starsTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  _starsTint: {r: 0.62745106, g: 0.62745106, b: 0.62745106, a: 1}
   _starsExtinction: 2
   _starsTwinklingSpeed: 4
   _sunEnabled: 1
   _sunTexture: {fileID: 2800000, guid: 74e412b1b4d56534baeb0961bac91684, type: 3}
   _sunLight: {fileID: 108000013561775790}
-  _sunTint: {r: 0.7019608, g: 0.54901963, b: 0.36862746, a: 1}
+  _sunTint: {r: 0.7421569, g: 0.4563726, b: 0.5230392, a: 0}
   _sunSize: 1
   _sunFlare: 1
   _sunFlareBrightness: 0.3
   _moonEnabled: 1
   _moonTexture: {fileID: 2800000, guid: 77f8724492f53bc4886576ec4f84921f, type: 3}
   _moonLight: {fileID: 108000014146307234}
-  _moonTint: {r: 0.4901961, g: 0.5372549, b: 1, a: 1}
+  _moonTint: {r: 0.4556863, g: 0.52156866, b: 0.5764706, a: 1}
   _moonSize: 1
   _moonFlare: 1
   _moonFlareBrightness: 0.3
   _cloudsCubemap: {fileID: 8900000, guid: eef65d496c7133349b3223df0850594e, type: 3}
-  _cloudsHeight: 0
-  _cloudsOffset: 0.2
+  _cloudsHeight: 0.03
+  _cloudsOffset: 0.043
   _cloudsRotationSpeed: 1
   _exposure: 1
   _adjustFogColor: 1
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011200675260}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: -0, y: 0.92387956, z: -0, w: -0.3826834}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -115,8 +115,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.8436275, g: 0.52254903, b: 0.5627451, a: 1}
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -124,7 +124,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.3
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -151,9 +151,9 @@ LensFlare:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011200675260}
   m_Enabled: 1
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: e45ffde4e28acef49bf2a2c62534334c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Brightness: 0.3
+  m_Brightness: 0
   m_FadeSpeed: 3
   m_IgnoreLayers:
     serializedVersion: 2
@@ -184,7 +184,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012507270554}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: -0.38268343, w: 0}
+  m_LocalRotation: {x: -0.23227231, y: 0.6781297, z: -0.24068959, w: -0.6544144}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -201,8 +201,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 0.0101960795, g: 0.39137256, b: 0.70588243, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -210,7 +210,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.3
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
