@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Controller
   - Island
+  - Portal
   layers:
   - Default
   - TransparentFX

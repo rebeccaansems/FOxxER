@@ -20,9 +20,13 @@ public class FoxController : MonoBehaviour
             currentIsland = other.gameObject;
             GameController.instance.gameScore++;
         }
+        else if (other.gameObject.CompareTag("Portal"))
+        {
+            Debug.Log("!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (IfStuck())
