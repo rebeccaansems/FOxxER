@@ -25,24 +25,10 @@ public class FoxController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (zCounter > 60)
+        if (IfStuck())
         {
-            zCounter = 0;
-            if ((int)this.transform.position.z == lastZvalue)
-            {
-                zMatchCounter++;
-                if (zMatchCounter > 5)
-                {
-                    Die();
-                }
-            }
-            else
-            {
-                zMatchCounter = 0;
-            }
-            lastZvalue = (int)this.transform.position.z;
+            Die();
         }
-        zCounter++;
 
         if (this.transform.position.y < -0.6f)
         {
@@ -70,5 +56,28 @@ public class FoxController : MonoBehaviour
         yield return new WaitForSeconds(3);
         GameController.instance.GameOver();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private bool IfStuck()
+    {
+        if (zCounter > 60)
+        {
+            zCounter = 0;
+            if ((int)this.transform.position.z == lastZvalue)
+            {
+                zMatchCounter++;
+                if (zMatchCounter > 5)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                zMatchCounter = 0;
+            }
+            lastZvalue = (int)this.transform.position.z;
+        }
+        zCounter++;
+        return false;
     }
 }
