@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI prevHighScoreText;
     [SerializeField]
-    private CanvasGroup pauseScreen;
+    private CanvasGroup pauseScreen, restartScreen;
     [SerializeField]
     private Image jumpZone;
 
@@ -57,6 +57,14 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0;
+
+        restartScreen.interactable = true;
+        restartScreen.blocksRaycasts = true;
+        restartScreen.alpha = 1;
+
+        jumpZone.raycastTarget = false;
+
         PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(PlayerPrefs.GetInt("Score" + currentLevel, 0), gameScore));
 
         PlayerPrefs.Save();
@@ -98,5 +106,11 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

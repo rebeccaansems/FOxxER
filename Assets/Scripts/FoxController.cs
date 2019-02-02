@@ -57,9 +57,8 @@ public class FoxController : MonoBehaviour
 
     IEnumerator Restart()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         GameController.instance.GameOver();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private bool IfStuck()
