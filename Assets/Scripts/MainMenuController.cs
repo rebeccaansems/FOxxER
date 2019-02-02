@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class MainMenuController : MonoBehaviour
     private int[] highScores;
 
     public float discRotateSpeed;
-    public int leftRight = 0, currDirection;
+    public int selectedLevel = 0, currDirection;
 
     public GameObject diskObject;
     public CanvasGroup mainCanvas;
@@ -28,7 +29,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.GetInt("Score3", 0),
             PlayerPrefs.GetInt("Score4", 0)
         };
-        currHighscoreText.text = highScores[leftRight].ToString();
+        currHighscoreText.text = highScores[selectedLevel].ToString();
     }
 
     void Update()
@@ -37,7 +38,7 @@ public class MainMenuController : MonoBehaviour
         {
             RotateDisk();
             mainCanvas.alpha = 0;
-            currHighscoreText.text = highScores[leftRight].ToString();
+            currHighscoreText.text = highScores[selectedLevel].ToString();
         }
         else
         {
@@ -62,12 +63,12 @@ public class MainMenuController : MonoBehaviour
 
                 if ((fingerStart.x - fingerEnd.x) > 80 || Input.GetKey(KeyCode.RightArrow))
                 {
-                    leftRight++;
+                    selectedLevel++;
                     StartRotatingDisk(1);
                 }
                 else if ((fingerStart.x - fingerEnd.x) < -80 || Input.GetKey(KeyCode.LeftArrow))
                 {
-                    leftRight--;
+                    selectedLevel--;
                     StartRotatingDisk(-1);
                 }
 
@@ -76,7 +77,7 @@ public class MainMenuController : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
-                leftRight = 0;
+                selectedLevel = 0;
                 fingerStart = Vector2.zero;
                 fingerEnd = Vector2.zero;
             }
@@ -85,23 +86,23 @@ public class MainMenuController : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            leftRight++;
+            selectedLevel++;
             StartRotatingDisk(1);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            leftRight--;
+            selectedLevel--;
             StartRotatingDisk(-1);
         }
 #endif
 
-        if (leftRight > 3)
+        if (selectedLevel > 3)
         {
-            leftRight = 0;
+            selectedLevel = 0;
         }
-        else if (leftRight < 0)
+        else if (selectedLevel < 0)
         {
-            leftRight = 3;
+            selectedLevel = 3;
         }
     }
 
@@ -118,7 +119,12 @@ public class MainMenuController : MonoBehaviour
         if ((Mathf.RoundToInt(diskObject.transform.localEulerAngles.y / 2) * 2) % 90 == 0)
         {
             diskIsRotating = false;
-            diskObject.transform.localEulerAngles = new Vector3(0, 90 * leftRight, 0);
+            diskObject.transform.localEulerAngles = new Vector3(0, 90 * selectedLevel, 0);
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1 + selectedLevel);
     }
 }
