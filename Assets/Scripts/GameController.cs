@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Image jumpZone;
 
+    private int currentLevel = 0;
+
 
     public static GameController instance = null;
 
@@ -43,7 +45,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         gameScore = 0;
-        prevHighScoreText.text = PlayerPrefs.GetInt("Score", 0).ToString();
+        prevHighScoreText.text = PlayerPrefs.GetInt("Score" + currentLevel, 0).ToString();
     }
 
     private void Update()
@@ -53,7 +55,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        PlayerPrefs.SetInt("Score", Mathf.Max(PlayerPrefs.GetInt("Score", 0), gameScore));
+        PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(PlayerPrefs.GetInt("Score" + currentLevel, 0), gameScore));
 
         PlayerPrefs.Save();
     }

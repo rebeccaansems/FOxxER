@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
@@ -12,11 +13,21 @@ public class MainMenuController : MonoBehaviour
 
     public float discRotateSpeed;
     public int leftRight = 0, currDirection;
+
     public GameObject diskObject;
+    public TextMeshProUGUI currHighscoreText;
+
+    private int[] highScores;
 
     void Start()
     {
         diskIsRotating = false;
+        highScores = new int[4] {
+            PlayerPrefs.GetInt("Score0", 0),
+            PlayerPrefs.GetInt("Score1", 0),
+            PlayerPrefs.GetInt("Score3", 0),
+            PlayerPrefs.GetInt("Score4", 0)
+        };
     }
 
     void Update()
@@ -28,6 +39,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             Gesture();
+            currHighscoreText.text = highScores[leftRight].ToString();
         }
     }
 
