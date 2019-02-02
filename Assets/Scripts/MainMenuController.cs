@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     private Vector2 fingerStart;
     private Vector2 fingerEnd;
 
-    private bool discIsRotating;
+    private bool diskIsRotating;
 
     public float discRotateSpeed;
     public int leftRight = 0, currDirection;
@@ -16,20 +16,14 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
-        discIsRotating = false;
+        diskIsRotating = false;
     }
 
     void Update()
     {
-        if (discIsRotating)
+        if (diskIsRotating)
         {
-            diskObject.transform.Rotate(0, currDirection * (discRotateSpeed * Time.deltaTime), 0);
-
-            if ((Mathf.RoundToInt(diskObject.transform.localEulerAngles.y / 2) * 2) % 90 == 0)
-            {
-                discIsRotating = false;
-                diskObject.transform.localEulerAngles = new Vector3(0, 90 * leftRight, 0);
-            }
+            RotateDisk();
         }
         else
         {
@@ -54,12 +48,12 @@ public class MainMenuController : MonoBehaviour
                 if ((fingerStart.x - fingerEnd.x) > 80 || Input.GetKey(KeyCode.RightArrow))
                 {
                     leftRight++;
-                    RotateDisk(1);
+                    StartRotatingDisk(1);
                 }
                 else if ((fingerStart.x - fingerEnd.x) < -80 || Input.GetKey(KeyCode.LeftArrow))
                 {
                     leftRight--;
-                    RotateDisk(-1);
+                    StartRotatingDisk(-1);
                 }
 
                 fingerStart = touch.position;
@@ -77,12 +71,12 @@ public class MainMenuController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             leftRight++;
-            RotateDisk(1);
+            StartRotatingDisk(1);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             leftRight--;
-            RotateDisk(-1);
+            StartRotatingDisk(-1);
         }
 #endif
 
@@ -96,9 +90,20 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    void RotateDisk(int direction)
+    void StartRotatingDisk(int direction)
     {
         currDirection = direction;
-        discIsRotating = true;
+        diskIsRotating = true;
+    }
+
+    void RotateDisk()
+    {
+        diskObject.transform.Rotate(0, currDirection * (discRotateSpeed * Time.deltaTime), 0);
+
+        if ((Mathf.RoundToInt(diskObject.transform.localEulerAngles.y / 2) * 2) % 90 == 0)
+        {
+            diskIsRotating = false;
+            diskObject.transform.localEulerAngles = new Vector3(0, 90 * leftRight, 0);
+        }
     }
 }
