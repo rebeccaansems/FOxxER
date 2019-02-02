@@ -19,14 +19,8 @@ public class FoxController : MonoBehaviour
         {
             currentIsland = other.gameObject;
             GameController.instance.gameScore++;
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Portal"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + 1, 2);
         }
     }
 

@@ -1154,7 +1154,7 @@ MonoBehaviour:
   walkSpeed:
     name: 
     position: 0
-    animator: 1.2
+    animator: 1
     lerpPosition: 8
     lerpAnimator: 2
     rotation: 0
@@ -1164,7 +1164,7 @@ MonoBehaviour:
     position: 0
     animator: 1
     lerpPosition: 4
-    lerpAnimator: 2
+    lerpAnimator: 3
     rotation: 0
     lerpRotation: 6
   runSpeed:
@@ -1329,11 +1329,11 @@ MonoBehaviour:
   CurrentAnimState: 0
   NextAnimState: 0
   EditorGeneral: 0
-  EditorGround: 0
+  EditorGround: 1
   EditorWater: 1
   EditorAir: 1
   EditorAdvanced: 0
-  EditorAirControl: 1
+  EditorAirControl: 0
   EditorAttributes: 0
   EditorEvents: 0
   EditorAnimatorParameters: 0
