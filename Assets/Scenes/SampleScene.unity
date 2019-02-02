@@ -2219,7 +2219,7 @@ MonoBehaviour:
   islandChunks:
   - {fileID: 5372724015130957651, guid: fb649785bb06fa14f88c64cdace5ddcb, type: 3}
   - {fileID: 920003717859339957, guid: 0e2450177326bdb4f8f81a812915ab2a, type: 3}
-  - {fileID: 1626583762865422469, guid: 0a4d0d48963b9544d8c7301f8dfc3af3, type: 3}
+  - {fileID: 1121574630745587410, guid: d2b1611b76c11f447ac7161cd3de879f, type: 3}
   player: {fileID: 680658708}
 --- !u!1001 &1567767954
 PrefabInstance:
