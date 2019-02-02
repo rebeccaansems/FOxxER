@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-
     private Vector2 fingerStart;
     private Vector2 fingerEnd;
 
     private bool diskIsRotating;
 
+    private int[] highScores;
+
     public float discRotateSpeed;
     public int leftRight = 0, currDirection;
 
     public GameObject diskObject;
+    public CanvasGroup mainCanvas;
     public TextMeshProUGUI currHighscoreText;
-
-    private int[] highScores;
 
     void Start()
     {
@@ -28,6 +28,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.GetInt("Score3", 0),
             PlayerPrefs.GetInt("Score4", 0)
         };
+        currHighscoreText.text = highScores[leftRight].ToString();
     }
 
     void Update()
@@ -35,11 +36,13 @@ public class MainMenuController : MonoBehaviour
         if (diskIsRotating)
         {
             RotateDisk();
+            mainCanvas.alpha = 0;
+            currHighscoreText.text = highScores[leftRight].ToString();
         }
         else
         {
             Gesture();
-            currHighscoreText.text = highScores[leftRight].ToString();
+            mainCanvas.alpha = 1;
         }
     }
 
