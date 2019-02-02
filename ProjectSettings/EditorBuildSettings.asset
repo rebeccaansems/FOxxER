@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneOrange.unity
     guid: 9fbe2c390bb5dee4abb34d84efb43793
   - enabled: 1
-    path: Assets/Scenes/SceneBlack.unity
-    guid: 771f5101c1b6db4438b95d3334d938a9
+    path: Assets/Scenes/SceneFennec.unity
+    guid: 352136cd79703c64abc2156dc6492821
   - enabled: 1
     path: Assets/Scenes/SceneSnow.unity
     guid: a84e3c2ce8359484b8b94ea72f0123bc
+  - enabled: 1
+    path: Assets/Scenes/SceneBlack.unity
+    guid: 771f5101c1b6db4438b95d3334d938a9
   m_configObjects: {}
