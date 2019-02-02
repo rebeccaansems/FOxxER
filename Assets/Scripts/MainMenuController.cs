@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject diskObject;
     public CanvasGroup mainCanvas;
     public TextMeshProUGUI currHighscoreText;
+    public Image soundOnImage, soundOffImage;
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.GetInt("Score3", 0)
         };
         currHighscoreText.text = highScores[selectedLevel].ToString();
+        UpdateMusicButtons();
     }
 
     void Update()
@@ -67,12 +70,12 @@ public class MainMenuController : MonoBehaviour
             {
                 fingerEnd = touch.position;
 
-                if ((fingerStart.x - fingerEnd.x) > 80 || Input.GetKey(KeyCode.RightArrow))
+                if ((fingerStart.x - fingerEnd.x) > 40)
                 {
                     selectedLevel++;
                     StartRotatingDisk(1);
                 }
-                else if ((fingerStart.x - fingerEnd.x) < -80 || Input.GetKey(KeyCode.LeftArrow))
+                else if ((fingerStart.x - fingerEnd.x) < -40)
                 {
                     selectedLevel--;
                     StartRotatingDisk(-1);
@@ -101,6 +104,12 @@ public class MainMenuController : MonoBehaviour
             StartRotatingDisk(-1);
         }
 #endif
+    }
+
+    void StartRotatingDisk(int direction)
+    {
+        currDirection = direction;
+        diskIsRotating = true;
 
         if (selectedLevel > 3)
         {
@@ -110,12 +119,6 @@ public class MainMenuController : MonoBehaviour
         {
             selectedLevel = 3;
         }
-    }
-
-    void StartRotatingDisk(int direction)
-    {
-        currDirection = direction;
-        diskIsRotating = true;
     }
 
     void RotateDisk()
@@ -132,5 +135,18 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1 + selectedLevel);
+    }
+
+    public void MuteMusicButtonPressed()
+    {
+        Debug.Log(OverallController.instance.isMuted);
+        OverallController.instance.isMuted = !OverallController.instance.isMuted;
+        UpdateMusicButtons();
+    }
+
+    void UpdateMusicButtons()
+    {
+        soundOnImage.enabled = !OverallController.instance.isMuted;
+        soundOffImage.enabled = OverallController.instance.isMuted;
     }
 }
