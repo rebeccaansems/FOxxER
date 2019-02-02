@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     {
         if (instance == null)
         {
-            //setup game data
+            //setup overall game data
             Application.targetFrameRate = 60;
 
             instance = this;
@@ -92,5 +92,11 @@ public class GameController : MonoBehaviour
 
             Time.timeScale = 0.001f;
         }
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }

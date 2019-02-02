@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 0b6d9bc100ac2294ca0e60823785e1b3
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/SceneOrange.unity
     guid: 9fbe2c390bb5dee4abb34d84efb43793
   - enabled: 1
-    path: Assets/Scenes/ArcticScene.unity
-    guid: f8a714a60ad04c84e9af61531c7b095a
+    path: Assets/Scenes/SceneBlack.unity
+    guid: 771f5101c1b6db4438b95d3334d938a9
+  - enabled: 1
+    path: Assets/Scenes/SceneSnow.unity
+    guid: a84e3c2ce8359484b8b94ea72f0123bc
   m_configObjects: {}

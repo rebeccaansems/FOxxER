@@ -20,14 +20,20 @@ public class MainMenuController : MonoBehaviour
     public CanvasGroup mainCanvas;
     public TextMeshProUGUI currHighscoreText;
 
+    private void Awake()
+    {
+        //setup overall game data
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         diskIsRotating = false;
         highScores = new int[4] {
             PlayerPrefs.GetInt("Score0", 0),
             PlayerPrefs.GetInt("Score1", 0),
-            PlayerPrefs.GetInt("Score3", 0),
-            PlayerPrefs.GetInt("Score4", 0)
+            PlayerPrefs.GetInt("Score2", 0),
+            PlayerPrefs.GetInt("Score3", 0)
         };
         currHighscoreText.text = highScores[selectedLevel].ToString();
     }
