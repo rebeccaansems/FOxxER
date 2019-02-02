@@ -26,19 +26,22 @@ public class FoxController : MonoBehaviour
 
     void Update()
     {
-        if (IfStuck())
+        if (Time.timeScale == 1)
         {
-            Die();
-        }
+            if (IfStuck())
+            {
+                Die();
+            }
 
-        if (this.transform.position.y < -0.6f)
-        {
-            Die();
-        }
-        else if (Mathf.Abs(this.transform.position.x) > 0.05f)
-        {
-            float step = 0.05f * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, transform.position.y, transform.position.z), step);
+            if (this.transform.position.y < -0.6f)
+            {
+                Die();
+            }
+            else if (Mathf.Abs(this.transform.position.x) > 0.05f)
+            {
+                float step = 0.05f * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, transform.position.y, transform.position.z), step);
+            }
         }
     }
 
