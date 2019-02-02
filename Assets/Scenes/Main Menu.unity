@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1262,10 +1262,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Jump
-  m_VerticalAxis: Jump
-  m_SubmitButton: Jump
-  m_CancelButton: Jump
+  m_HorizontalAxis: Vertical
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Vertical
+  m_CancelButton: Vertical
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -1683,7 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2214,17 +2214,17 @@ PrefabInstance:
     - target: {fileID: 6142923514236917992, guid: eea05900b334f4c42918b1ed8257952d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6142923514236917992, guid: eea05900b334f4c42918b1ed8257952d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6142923514236917992, guid: eea05900b334f4c42918b1ed8257952d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eea05900b334f4c42918b1ed8257952d, type: 3}

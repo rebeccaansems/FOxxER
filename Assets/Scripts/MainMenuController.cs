@@ -24,12 +24,12 @@ public class MainMenuController : MonoBehaviour
 
     private void Awake()
     {
-        //setup overall game data
         Application.targetFrameRate = 60;
     }
 
     void Start()
     {
+        selectedLevel = OverallController.instance.currentLevel;
         diskIsRotating = false;
         highScores = new int[4] {
             PlayerPrefs.GetInt("Score0", 0),
@@ -39,6 +39,8 @@ public class MainMenuController : MonoBehaviour
         };
         currHighscoreText.text = highScores[selectedLevel].ToString();
         UpdateMusicButtons();
+
+        diskObject.transform.localEulerAngles = new Vector3(0, 90 * selectedLevel, 0);
     }
 
     void Update()
@@ -134,12 +136,12 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame()
     {
+        OverallController.instance.currentLevel = selectedLevel;
         SceneManager.LoadScene(1 + selectedLevel);
     }
 
     public void MuteMusicButtonPressed()
     {
-        Debug.Log(OverallController.instance.isMuted);
         OverallController.instance.isMuted = !OverallController.instance.isMuted;
         UpdateMusicButtons();
     }
