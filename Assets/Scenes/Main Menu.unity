@@ -251,7 +251,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170997809}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children:
@@ -565,8 +565,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1337510606}
+  - component: {fileID: 1337510607}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Main Disk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,6 +588,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337510607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337510605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408002befc4800643829bc78a8d3e7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discRotateSpeed: 90
+  leftRight: 0
+  currDirection: 0
+  diskObject: {fileID: 170997809}
 --- !u!1 &1409534758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1109,7 @@ PrefabInstance:
     - target: {fileID: 6142923514236917992, guid: eea05900b334f4c42918b1ed8257952d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.076
+      value: 0.118
       objectReference: {fileID: 0}
     - target: {fileID: 6142923514236917992, guid: eea05900b334f4c42918b1ed8257952d,
         type: 3}
