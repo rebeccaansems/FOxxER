@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 184734, guid: c7dd0ff8cced2e846a35d76774c88b52, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 479596, guid: c7dd0ff8cced2e846a35d76774c88b52, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -411,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 171420, guid: 9fe234857c82cf4458cf0590188e35b7, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 408746, guid: 9fe234857c82cf4458cf0590188e35b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.2
@@ -477,6 +485,10 @@ PrefabInstance:
     - target: {fileID: 161980, guid: a29ab1aa742bd8947bd49f550861fb32, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 161980, guid: a29ab1aa742bd8947bd49f550861fb32, type: 3}
+      propertyPath: m_TagString
+      value: Island
       objectReference: {fileID: 0}
     - target: {fileID: 467746, guid: a29ab1aa742bd8947bd49f550861fb32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -545,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 168308, guid: 82e6dfa2f308fd14b915e04c901d9b69, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 402338, guid: 82e6dfa2f308fd14b915e04c901d9b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -612,6 +628,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 104800, guid: 21a0d0d09ce3f094d96ad716d0292a46, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 431370, guid: 21a0d0d09ce3f094d96ad716d0292a46, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.1
@@ -675,9 +695,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice_M_12
       objectReference: {fileID: 0}
+    - target: {fileID: 168390, guid: 449d87f6f96292641977349d30304a05, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 414274, guid: 449d87f6f96292641977349d30304a05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.1
+      value: 15.3
       objectReference: {fileID: 0}
     - target: {fileID: 414274, guid: 449d87f6f96292641977349d30304a05, type: 3}
       propertyPath: m_LocalPosition.y
@@ -685,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 414274, guid: 449d87f6f96292641977349d30304a05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 292.4
+      value: 277.6
       objectReference: {fileID: 0}
     - target: {fileID: 414274, guid: 449d87f6f96292641977349d30304a05, type: 3}
       propertyPath: m_LocalRotation.x
@@ -754,6 +778,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 111732, guid: 7117591b4c6497a46af071fd9e617304, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 458272, guid: 7117591b4c6497a46af071fd9e617304, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.1
@@ -820,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 178096, guid: 48c1a87ab27d49248b3278831f74e94f, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 178096, guid: 48c1a87ab27d49248b3278831f74e94f, type: 3}
+      propertyPath: m_TagString
+      value: Island
       objectReference: {fileID: 0}
     - target: {fileID: 456472, guid: 48c1a87ab27d49248b3278831f74e94f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,6 +920,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 118754, guid: af033a11a37d290489dcaa6d24edb72f, type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
     - target: {fileID: 408306, guid: af033a11a37d290489dcaa6d24edb72f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.3
@@ -898,7 +934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408306, guid: af033a11a37d290489dcaa6d24edb72f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.3
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 408306, guid: af033a11a37d290489dcaa6d24edb72f, type: 3}
       propertyPath: m_LocalRotation.x

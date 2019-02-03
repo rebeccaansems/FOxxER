@@ -656,6 +656,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4855850549105555624, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850548788796448, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -704,6 +709,11 @@ PrefabInstance:
     - target: {fileID: 463877616585805005, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463877616585805005, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510788509739919206, guid: 50c4d8f76b072814e933d8d86a840fd7,
@@ -922,6 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandChunks:
   - {fileID: 7335718880686625534, guid: edb1924df8bdda543bf8a4408b8e329a, type: 3}
+  - {fileID: 6133061971693759264, guid: d6fc353b86f4c8e4b9ffe1df97909369, type: 3}
+  - {fileID: 3995814789065109640, guid: 205f2c5ca01da084c865be7cdcebe90d, type: 3}
   player: {fileID: 0}
 --- !u!225 &1613175123 stripped
 CanvasGroup:

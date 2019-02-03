@@ -69,7 +69,7 @@ public class FoxController : MonoBehaviour
             if ((int)this.transform.position.z == lastZvalue)
             {
                 zMatchCounter++;
-                if (zMatchCounter > 5)
+                if (zMatchCounter > 2)
                 {
                     return true;
                 }
