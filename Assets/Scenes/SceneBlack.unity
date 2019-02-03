@@ -479,75 +479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 799d782e8461d22409d343fbf3513e81, type: 2}
---- !u!1001 &536253517
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1865026799341966470, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_Name
-      value: Forest Chunk 01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271485742224298166, guid: c652ec61bb4c714439c19f8e7aa59f8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c652ec61bb4c714439c19f8e7aa59f8f, type: 3}
 --- !u!4 &1151520642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010419590262, guid: 7631b023c8302874c8ad21b5f51a9f7f,
@@ -676,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1471264420
 Transform:
   m_ObjectHideFlags: 0
@@ -704,9 +635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   islandChunks:
-  - {fileID: 5372724015130957651, guid: fb649785bb06fa14f88c64cdace5ddcb, type: 3}
-  - {fileID: 920003717859339957, guid: 0e2450177326bdb4f8f81a812915ab2a, type: 3}
-  - {fileID: 1121574630745587410, guid: d2b1611b76c11f447ac7161cd3de879f, type: 3}
+  - {fileID: 1865026799341966470, guid: c652ec61bb4c714439c19f8e7aa59f8f, type: 3}
+  - {fileID: 1865026799341966470, guid: 39b1251a4839a5348b27834264868744, type: 3}
+  - {fileID: 1865026799341966470, guid: 311b0d9fef273884b90996f496c2805e, type: 3}
   player: {fileID: 0}
 --- !u!4 &1677626308 stripped
 Transform:
