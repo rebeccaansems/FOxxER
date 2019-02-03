@@ -8,16 +8,16 @@ public class FoxController : MonoBehaviour
 {
     public CameraFollow cameraFollow;
 
-    private GameObject currentIsland;
+    private List<GameObject> islandsHit = new List<GameObject>();
 
     private int zCounter, zMatchCounter;
     private int lastZvalue;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Island") && currentIsland != other.gameObject)
+        if (other.gameObject.CompareTag("Island") && islandsHit.Contains(other.gameObject) == false)
         {
-            currentIsland = other.gameObject;
+            islandsHit.Add(other.gameObject);
             GameController.instance.gameScore++;
 
             this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + 1, 2);
