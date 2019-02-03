@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class FoxController : MonoBehaviour
 {
     public CameraFollow cameraFollow;
+    public float startSpeed = 1, topSpeed = 2;
 
     private List<GameObject> islandsHit = new List<GameObject>();
 
@@ -20,7 +21,7 @@ public class FoxController : MonoBehaviour
             islandsHit.Add(other.gameObject);
             GameController.instance.gameScore++;
 
-            this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + 1, 2);
+            this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + startSpeed, topSpeed);
         }
     }
 
