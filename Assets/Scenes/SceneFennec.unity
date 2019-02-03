@@ -1133,15 +1133,5 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 534669906}
-    - target: {fileID: 114000012714968500, guid: a0916409fb2e96c49916df3229adfda3,
-        type: 3}
-      propertyPath: EditorGround
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114055676717428586, guid: a0916409fb2e96c49916df3229adfda3,
-        type: 3}
-      propertyPath: Dust
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0916409fb2e96c49916df3229adfda3, type: 3}
