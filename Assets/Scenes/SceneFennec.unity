@@ -919,9 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   islandChunks:
-  - {fileID: 5372724015130957651, guid: fb649785bb06fa14f88c64cdace5ddcb, type: 3}
-  - {fileID: 920003717859339957, guid: 0e2450177326bdb4f8f81a812915ab2a, type: 3}
-  - {fileID: 1121574630745587410, guid: d2b1611b76c11f447ac7161cd3de879f, type: 3}
+  - {fileID: 5103461122260118676, guid: bafb786dd99713a4fabf680d31965952, type: 3}
   player: {fileID: 0}
 --- !u!225 &1659537948 stripped
 CanvasGroup:
@@ -1135,5 +1133,15 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114000012714968500, guid: a0916409fb2e96c49916df3229adfda3,
+        type: 3}
+      propertyPath: EditorGround
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055676717428586, guid: a0916409fb2e96c49916df3229adfda3,
+        type: 3}
+      propertyPath: Dust
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0916409fb2e96c49916df3229adfda3, type: 3}
