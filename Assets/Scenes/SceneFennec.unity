@@ -795,6 +795,12 @@ PrefabInstance:
       objectReference: {fileID: 2045037884}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+--- !u!198 &952480368 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8003872136245491774, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 952480367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1151520642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010419590262, guid: 7631b023c8302874c8ad21b5f51a9f7f,
@@ -1139,6 +1145,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 1659537948}
   restartScreen: {fileID: 727379962}
   jumpZone: {fileID: 902039032}
+  highscoreParticleSystem: {fileID: 952480368}
 --- !u!4 &2045037886
 Transform:
   m_ObjectHideFlags: 0

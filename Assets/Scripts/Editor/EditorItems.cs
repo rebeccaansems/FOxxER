@@ -17,11 +17,5 @@ public class EditorItems
         ScreenCapture.CaptureScreenshot(Application.productName + "-" + DateTime.Now.ToString("hhmmss") + ".png");
         Debug.Log("CLICK: " + Application.productName + "-" + DateTime.Now.ToString("hhmmss") + ".png");
     }
-
-    [MenuItem("Tools/In Game/Create App Object")]
-    public static void CreateAsset()
-    {
-        OtherApp.CreateAsset<OtherApp>();
-    }
 }
 #endif

@@ -1942,7 +1942,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   Tracks: {fileID: 198000013136168986, guid: b89bf404b651df940b0f4eb9de79a61d, type: 3}
-  Dust: {fileID: 198000010737321038, guid: f0185de6019ebaa4db45528f37bad8d2, type: 3}
+  Dust: {fileID: 0}
   StepsVolume: 0.2
   DustParticles: 15
   Scale: {x: 1, y: 1, z: 1}
@@ -2084,7 +2084,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6c06aecab444d499c58abd5782103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  startSpeed: 1
+  topSpeed: 2
 --- !u!1 &1000013849441940
 GameObject:
   m_ObjectHideFlags: 0

@@ -855,6 +855,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 4855850548707628492}
   restartScreen: {fileID: 1078079576475573575}
   jumpZone: {fileID: 4855850548325975438}
+  highscoreParticleSystem: {fileID: 8003872136245491774}
 --- !u!4 &2045037886
 Transform:
   m_ObjectHideFlags: 0
@@ -1101,6 +1102,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
+    - target: {fileID: 4395270357872107276, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
 --- !u!1001 &4344804628468061413
@@ -1158,41 +1164,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2563255265509957685, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: cameraFollow
-      value: 
-      objectReference: {fileID: 534669906}
-    - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: EditorGround
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: EditorGeneral
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: StartSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: EditorAirControl
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: EditorAttributes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114908095169023344, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: Dust
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e544daeda16e72148a31bf7a71097c22, type: 3}
 --- !u!114 &4855850548325975438 stripped
@@ -1237,3 +1208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &8003872136245491774 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8003872136245491774, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1194924050424026875}
+  m_PrefabAsset: {fileID: 0}

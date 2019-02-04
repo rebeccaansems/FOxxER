@@ -21,8 +21,10 @@ public class GameController : MonoBehaviour
     private CanvasGroup pauseScreen, restartScreen;
     [SerializeField]
     private Image jumpZone;
+    [SerializeField]
+    private ParticleSystem highscoreParticleSystem;
 
-    private int currentLevel = 0;
+    private int currentLevel = 0, prevHighScore;
 
 
     public static GameController instance = null;
@@ -47,7 +49,10 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         gameScore = 0;
-        prevHighScoreText.text = PlayerPrefs.GetInt("Score" + currentLevel, 0).ToString();
+        prevHighScore = PlayerPrefs.GetInt("Score" + currentLevel, 0);
+        prevHighScoreText.text = prevHighScore.ToString();
+
+        highscoreParticleSystem.Stop();
 
         UpdateMusicButtons();
     }
@@ -55,7 +60,25 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         currentGameScoreText.text = gameScore.ToString();
+
+        if (gameScore > prevHighScore)
+        {
+            HighscoreAchieved();
+            prevHighScore = gameScore;
+        }
     }
+
+    private void HighscoreAchieved()
+    {
+        int numberOfDigits = gameScore.ToString().Length;
+        ParticleSystem.ShapeModule particleShape = highscoreParticleSystem.shape;
+        particleShape.position = new Vector3((30 * numberOfDigits) - 158, 0, 0);
+        particleShape.scale = new Vector3((15 * numberOfDigits) - 5, 25, 0);
+
+        highscoreParticleSystem.Stop();
+        highscoreParticleSystem.Play();
+    }
+
     public void GameOver()
     {
         Time.timeScale = 0;
@@ -66,7 +89,7 @@ public class GameController : MonoBehaviour
 
         jumpZone.raycastTarget = false;
 
-        PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(PlayerPrefs.GetInt("Score" + currentLevel, 0), gameScore));
+        PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(prevHighScore, gameScore));
 
         PlayerPrefs.Save();
     }
@@ -123,7 +146,7 @@ public class GameController : MonoBehaviour
 
     void UpdateMusicButtons()
     {
-        foreach(GameObject soundOn in GameObject.FindGameObjectsWithTag("Sound On"))
+        foreach (GameObject soundOn in GameObject.FindGameObjectsWithTag("Sound On"))
         {
             soundOn.GetComponent<Image>().enabled = !OverallController.instance.isMuted;
         }
