@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    private Vector2 fingerStart;
-    private Vector2 fingerEnd;
+    //private Vector2 fingerStart;
+    //private Vector2 fingerEnd;
 
     private bool diskIsRotating;
 
@@ -58,42 +58,10 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    private Vector2 touchOrigin = -Vector2.one; //start offscreen
+
     void Gesture()
     {
-        foreach (Touch touch in Input.touches)
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                fingerStart = touch.position;
-                fingerEnd = touch.position;
-            }
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                fingerEnd = touch.position;
-
-                if ((fingerStart.x - fingerEnd.x) > 40)
-                {
-                    selectedLevel++;
-                    StartRotatingDisk(1);
-                }
-                else if ((fingerStart.x - fingerEnd.x) < -40)
-                {
-                    selectedLevel--;
-                    StartRotatingDisk(-1);
-                }
-
-                fingerStart = touch.position;
-            }
-
-            if (touch.phase == TouchPhase.Ended)
-            {
-                selectedLevel = 0;
-                fingerStart = Vector2.zero;
-                fingerEnd = Vector2.zero;
-            }
-        }
-
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -105,6 +73,39 @@ public class MainMenuController : MonoBehaviour
             selectedLevel--;
             StartRotatingDisk(-1);
         }
+#else
+        if (Input.touchCount > 0)
+        {
+            Touch myTouch = Input.touches[0];
+
+            if (myTouch.phase == TouchPhase.Began)
+            {
+                touchOrigin = myTouch.position;
+            }
+            else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+            {
+                Vector2 touchEnd = myTouch.position;
+
+                float touchDiffX = touchEnd.x - touchOrigin.x;
+                float touchDiffY = touchEnd.y - touchOrigin.y;
+                touchOrigin.x = -1;
+
+                if (Mathf.Abs(touchDiffX) > Mathf.Abs(touchDiffY))
+                {
+                    if (touchDiffX > 0)
+                    {
+                        selectedLevel++;
+                        StartRotatingDisk(1);
+                    }
+                    else
+                    {
+                        selectedLevel--;
+                        StartRotatingDisk(-1);
+                    }
+                }
+            }
+        }
+
 #endif
     }
 
