@@ -146,6 +146,15 @@ public class MainMenuController : MonoBehaviour
 
     void UpdateMusicButtons()
     {
+        if (OverallController.instance.isMuted)
+        {
+            PlayerPrefs.SetInt("Muted", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Muted", 0);
+        }
+
         soundOnImage.enabled = !OverallController.instance.isMuted;
         soundOffImage.enabled = OverallController.instance.isMuted;
     }

@@ -6,6 +6,7 @@ public class OverallController : MonoBehaviour
 {
     public bool isMuted = false;
     public int currentLevel = 0;
+    public int musicVolume = 0;
 
     public static OverallController instance = null;
 
@@ -14,11 +15,17 @@ public class OverallController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        musicVolume = isMuted ? 0 : 1;
     }
 }

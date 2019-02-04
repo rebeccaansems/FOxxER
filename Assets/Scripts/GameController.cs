@@ -146,6 +146,15 @@ public class GameController : MonoBehaviour
 
     void UpdateMusicButtons()
     {
+        if (OverallController.instance.isMuted)
+        {
+            PlayerPrefs.SetInt("Muted", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Muted", 0);
+        }
+
         foreach (GameObject soundOn in GameObject.FindGameObjectsWithTag("Sound On"))
         {
             soundOn.GetComponent<Image>().enabled = !OverallController.instance.isMuted;
