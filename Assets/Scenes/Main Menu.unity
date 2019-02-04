@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408002befc4800643829bc78a8d3e7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discRotateSpeed: 90
+  discRotateSpeed: 120
   selectedLevel: 0
   currDirection: 0
   diskObject: {fileID: 170997809}
