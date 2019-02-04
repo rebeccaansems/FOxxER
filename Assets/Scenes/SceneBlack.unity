@@ -380,7 +380,6 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
-  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -466,19 +465,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPos: {x: 0, y: 4, z: -6}
   cameraFollowOn: 1
---- !u!114 &534669907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 799d782e8461d22409d343fbf3513e81, type: 2}
 --- !u!4 &1151520642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010419590262, guid: 7631b023c8302874c8ad21b5f51a9f7f,
@@ -791,6 +777,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -912,16 +908,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -1063,16 +1049,6 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 534669906}
-    - target: {fileID: 2563255265509957685, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: startSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2563255265509957685, guid: e544daeda16e72148a31bf7a71097c22,
-        type: 3}
-      propertyPath: topSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 114000012928153534, guid: e544daeda16e72148a31bf7a71097c22,
         type: 3}
       propertyPath: EditorGround
