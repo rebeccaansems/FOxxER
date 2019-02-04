@@ -9,6 +9,8 @@ TagManager:
   - Controller
   - Island
   - Portal
+  - Sound On
+  - Sound Off
   layers:
   - Default
   - TransparentFX

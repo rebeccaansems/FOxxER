@@ -48,13 +48,14 @@ public class GameController : MonoBehaviour
     {
         gameScore = 0;
         prevHighScoreText.text = PlayerPrefs.GetInt("Score" + currentLevel, 0).ToString();
+
+        UpdateMusicButtons();
     }
 
     private void Update()
     {
         currentGameScoreText.text = gameScore.ToString();
     }
-
     public void GameOver()
     {
         Time.timeScale = 0;
@@ -113,4 +114,24 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void MuteMusicButtonPressed()
+    {
+        OverallController.instance.isMuted = !OverallController.instance.isMuted;
+        UpdateMusicButtons();
+    }
+
+    void UpdateMusicButtons()
+    {
+        foreach(GameObject soundOn in GameObject.FindGameObjectsWithTag("Sound On"))
+        {
+            soundOn.GetComponent<Image>().enabled = !OverallController.instance.isMuted;
+        }
+
+        foreach (GameObject soundOff in GameObject.FindGameObjectsWithTag("Sound Off"))
+        {
+            soundOff.GetComponent<Image>().enabled = OverallController.instance.isMuted;
+        }
+    }
+
 }

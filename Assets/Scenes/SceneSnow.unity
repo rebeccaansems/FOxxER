@@ -590,12 +590,12 @@ PrefabInstance:
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -730,12 +730,12 @@ PrefabInstance:
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548707628493, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -837,45 +837,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 3911739845156744450, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.r
+    - target: {fileID: 1756635009, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3911739845156744450, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    - target: {fileID: 1756635010, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1756635010, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894686346672807911, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
-      propertyPath: m_Color.g
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3911739845156744450, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    - target: {fileID: 6440300319158625808, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 6440300319158625808, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MuteMusicButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918037209, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3911739845156744450, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.69803923
+    - target: {fileID: 1918037210, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1918037210, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 4855850549446719506, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850549446719506, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.r
+    - target: {fileID: 1153686529, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4855850549446719506, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850549446719506, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
+    - target: {fileID: 1153686531, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1153686531, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MuteMusicButtonPressed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
