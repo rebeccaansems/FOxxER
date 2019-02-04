@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class FoxController : MonoBehaviour
 {
-    public CameraFollow cameraFollow;
     public float startSpeed = 1, topSpeed = 2;
 
     private List<GameObject> islandsHit = new List<GameObject>();
@@ -48,7 +47,7 @@ public class FoxController : MonoBehaviour
 
     private void Die()
     {
-        cameraFollow.cameraFollowOn = false;
+        Camera.main.GetComponent<CameraFollow>().cameraFollowOn = false;
         this.GetComponent<MalbersInput>().AlwaysForward = false;
         this.GetComponent<StepsManager>().Active = false;
         this.GetComponent<Animal>().getDamaged(new DamageValues(Vector3.up, 200));
