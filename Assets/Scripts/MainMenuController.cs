@@ -7,13 +7,6 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    //private Vector2 fingerStart;
-    //private Vector2 fingerEnd;
-
-    private bool diskIsRotating;
-
-    private int[] highScores;
-
     public float discRotateSpeed;
     public int selectedLevel = 0, currDirection;
 
@@ -21,6 +14,12 @@ public class MainMenuController : MonoBehaviour
     public CanvasGroup mainCanvas;
     public TextMeshProUGUI currHighscoreText;
     public Image soundOnImage, soundOffImage;
+
+    private Vector2 touchOrigin = -Vector2.one; //start offscreen
+    private bool diskIsRotating;
+
+    private int[] highScores;
+
 
     private void Awake()
     {
@@ -58,8 +57,6 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private Vector2 touchOrigin = -Vector2.one; //start offscreen
-
     void Gesture()
     {
 #if UNITY_EDITOR
@@ -92,7 +89,7 @@ public class MainMenuController : MonoBehaviour
 
                 if (Mathf.Abs(touchDiffX) > Mathf.Abs(touchDiffY))
                 {
-                    if (touchDiffX > 0)
+                    if (touchDiffX < 0)
                     {
                         selectedLevel++;
                         StartRotatingDisk(1);
