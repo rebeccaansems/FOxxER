@@ -607,6 +607,16 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 2583691263
       objectReference: {fileID: 0}
+    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -726,16 +736,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548707628493, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -858,6 +858,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MuteMusicButtonPressed
       objectReference: {fileID: 0}
+    - target: {fileID: 2142991257, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191213284, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRestartPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 223718307, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093535930, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850548788796448, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -887,30 +911,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2142991257, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 191213284, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2045037884}
-    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowRestartPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 223718307, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1093535930, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   islandChunks:
-  - {fileID: 7335718880686625534, guid: edb1924df8bdda543bf8a4408b8e329a, type: 3}
-  - {fileID: 6133061971693759264, guid: d6fc353b86f4c8e4b9ffe1df97909369, type: 3}
-  - {fileID: 3995814789065109640, guid: 205f2c5ca01da084c865be7cdcebe90d, type: 3}
+  - {fileID: 5199899420706224916, guid: 08342f9d9c0f8b24e9381ec4c5b572ed, type: 3}
+  - {fileID: 5111968506000196190, guid: f52e220ecd7545a46ade2017016eeeac, type: 3}
+  - {fileID: 7244811365676682627, guid: f5e8ae131df8f1346be31d71b15e8fdd, type: 3}
   player: {fileID: 0}
 --- !u!225 &1613175123 stripped
 CanvasGroup:
