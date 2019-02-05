@@ -89,6 +89,7 @@ public class GameController : MonoBehaviour
 
         jumpZone.raycastTarget = false;
 
+        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + gameScore);
         PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(prevHighScore, gameScore));
 
         PlayerPrefs.Save();

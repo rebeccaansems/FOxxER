@@ -11,15 +11,17 @@ public class MainMenuController : MonoBehaviour
     public int selectedLevel = 0, currDirection;
 
     public GameObject diskObject;
-    public CanvasGroup mainCanvas;
-    public TextMeshProUGUI currHighscoreText;
-    public Image soundOnImage, soundOffImage;
+    public CanvasGroup mainCanvas, lockedFoxCanvas, playButtonCanvas;
+    public TextMeshProUGUI scoreInfoText, totalScoreText;
+    public Image soundOnImage, soundOffImage, trophyIcon, unlockIcon;
 
     private Vector2 touchOrigin = -Vector2.one; //start offscreen
     private bool diskIsRotating;
 
     private int[] highScores;
 
+    [SerializeField]
+    private int[] unlockScores;
 
     private void Awake()
     {
@@ -36,10 +38,14 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.GetInt("Score2", 0),
             PlayerPrefs.GetInt("Score3", 0)
         };
-        currHighscoreText.text = highScores[selectedLevel].ToString();
+        scoreInfoText.text = highScores[selectedLevel].ToString();
         UpdateMusicButtons();
 
+        totalScoreText.text = PlayerPrefs.GetInt("TotalScore", 0).ToString();
+
         diskObject.transform.localEulerAngles = new Vector3(0, 90 * selectedLevel, 0);
+
+        CheckFoxLocking();
     }
 
     void Update()
@@ -48,7 +54,8 @@ public class MainMenuController : MonoBehaviour
         {
             RotateDisk();
             mainCanvas.alpha = 0;
-            currHighscoreText.text = highScores[selectedLevel].ToString();
+
+            CheckFoxLocking();
         }
         else
         {
@@ -159,5 +166,29 @@ public class MainMenuController : MonoBehaviour
 
         soundOnImage.enabled = !OverallController.instance.isMuted;
         soundOffImage.enabled = OverallController.instance.isMuted;
+    }
+    
+    void CheckFoxLocking()
+    {
+        if (PlayerPrefs.GetInt("TotalScore", 0) > unlockScores[selectedLevel]) //Unlock
+        {
+            scoreInfoText.text = highScores[selectedLevel].ToString();
+            lockedFoxCanvas.alpha = 0;
+            trophyIcon.enabled = true;
+            unlockIcon.enabled = false;
+
+            playButtonCanvas.alpha = 1;
+            playButtonCanvas.interactable = true;
+        }
+        else //Lock
+        {
+            scoreInfoText.text = unlockScores[selectedLevel].ToString();
+            lockedFoxCanvas.alpha = 1;
+            trophyIcon.enabled = false;
+            unlockIcon.enabled = true;
+
+            playButtonCanvas.alpha = 0;
+            playButtonCanvas.interactable = false;
+        }
     }
 }
