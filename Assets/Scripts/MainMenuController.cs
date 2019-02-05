@@ -108,6 +108,8 @@ public class MainMenuController : MonoBehaviour
 
     void StartRotatingDisk(int direction)
     {
+        this.GetComponent<PlayAudio>().Play();
+
         currDirection = direction;
         diskIsRotating = true;
 
