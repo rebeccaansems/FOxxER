@@ -7,6 +7,7 @@ public class OverallController : MonoBehaviour
     public bool isMuted = false;
     public int currentLevel = 0;
     public int musicVolume = 0;
+    public int sfxVolume = 1;
 
     public static OverallController instance = null;
 
