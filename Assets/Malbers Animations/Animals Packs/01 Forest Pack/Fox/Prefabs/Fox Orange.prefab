@@ -1320,7 +1320,7 @@ MonoBehaviour:
   Active: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 1024
   Tracks: {fileID: 198000013136168986, guid: b89bf404b651df940b0f4eb9de79a61d, type: 3}
   Dust: {fileID: 0}
   StepsVolume: 0.2
@@ -1329,9 +1329,9 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 73addaaa36bc5b4478d7cbee61bd3ad0, type: 3}
   - {fileID: 8300000, guid: 7f5d9f9991c533547a0f2e8dca867933, type: 3}
+  - {fileID: 8300000, guid: bbd4941d8f179af4eaa8b0e6f06352a8, type: 3}
   - {fileID: 8300000, guid: 50ef9e51d993734499f3ba55391226ec, type: 3}
   - {fileID: 8300000, guid: 272c1b463f5155543881cb12a3fad53b, type: 3}
-  - {fileID: 8300000, guid: bbd4941d8f179af4eaa8b0e6f06352a8, type: 3}
   trackOffset: 0.0085
 --- !u!114 &114227411003060648
 MonoBehaviour:
