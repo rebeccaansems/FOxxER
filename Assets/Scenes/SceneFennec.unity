@@ -958,6 +958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandChunks:
   - {fileID: 5103461122260118676, guid: bafb786dd99713a4fabf680d31965952, type: 3}
+  - {fileID: 8228928996319050484, guid: 7e22415a1d912824d9288f8232210de4, type: 3}
+  - {fileID: 1729125043298645086, guid: 9ddf464f5e03f0c4db554dbdd31315bb, type: 3}
   player: {fileID: 0}
 --- !u!1 &1646041066
 GameObject:
