@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: 114660781311089964}
   - component: {fileID: 82582516283481270}
   - component: {fileID: 2061893946950455346}
+  - component: {fileID: 5657902646034122794}
   m_Layer: 20
   m_Name: Fox Snow
   m_TagString: Player
@@ -1344,6 +1345,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
+--- !u!114 &5657902646034122794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434496334728790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5faa24425b86b4cad3fd943192cd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 7cf3e9f3448c1f7468e153fc79112ecf, type: 3}
+  - {fileID: 8300000, guid: 8657b212b47d0574cb281c55518c2ed4, type: 3}
 --- !u!1 &1443002308163614
 GameObject:
   m_ObjectHideFlags: 0

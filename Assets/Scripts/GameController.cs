@@ -77,6 +77,8 @@ public class GameController : MonoBehaviour
 
         highscoreParticleSystem.Stop();
         highscoreParticleSystem.Play();
+
+        player.GetComponent<PlayAudio>().Play(1);
     }
 
     public void GameOver()

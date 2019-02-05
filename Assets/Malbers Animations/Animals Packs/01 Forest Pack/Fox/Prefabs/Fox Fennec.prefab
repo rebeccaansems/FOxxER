@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 114283249868752372}
   - component: {fileID: 82000012498624090}
   - component: {fileID: 7028203902311998863}
+  - component: {fileID: 2174841823285007336}
   m_Layer: 20
   m_Name: Fox Fennec
   m_TagString: Player
@@ -1479,6 +1480,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
+--- !u!114 &2174841823285007336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012598859214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5faa24425b86b4cad3fd943192cd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 7cf3e9f3448c1f7468e153fc79112ecf, type: 3}
+  - {fileID: 8300000, guid: 8657b212b47d0574cb281c55518c2ed4, type: 3}
 --- !u!1 &1000012626461740
 GameObject:
   m_ObjectHideFlags: 0

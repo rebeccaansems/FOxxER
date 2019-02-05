@@ -20,6 +20,7 @@ public class FoxController : MonoBehaviour
             islandsHit.Add(other.gameObject);
             GameController.instance.gameScore++;
 
+            this.GetComponent<PlayAudio>().Play(0);
             this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + startSpeed, topSpeed);
         }
     }

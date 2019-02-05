@@ -1361,6 +1361,7 @@ GameObject:
   - component: {fileID: 114123739056150088}
   - component: {fileID: 82000011481735508}
   - component: {fileID: 2563255265509957685}
+  - component: {fileID: 9190290692998340759}
   m_Layer: 20
   m_Name: Fox Black
   m_TagString: Player
@@ -1952,6 +1953,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
+--- !u!114 &9190290692998340759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013658294946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5faa24425b86b4cad3fd943192cd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 7cf3e9f3448c1f7468e153fc79112ecf, type: 3}
+  - {fileID: 8300000, guid: 8657b212b47d0574cb281c55518c2ed4, type: 3}
 --- !u!1 &1000013849441940
 GameObject:
   m_ObjectHideFlags: 0

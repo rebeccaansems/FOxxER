@@ -766,15 +766,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1221056513, guid: 40028b8e62dc154408c556da49a70943, type: 3}
-      propertyPath: cameraFollow
-      value: 
-      objectReference: {fileID: 991666928}
-    - target: {fileID: 114000012371957162, guid: 40028b8e62dc154408c556da49a70943,
-        type: 3}
-      propertyPath: inputs.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40028b8e62dc154408c556da49a70943, type: 3}
 --- !u!114 &1568586962 stripped
@@ -1126,6 +1117,16 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1241,16 +1242,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
-    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4855850548707628493, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

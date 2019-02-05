@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 114227411003060648}
   - component: {fileID: 82000012018711674}
   - component: {fileID: 1221056513}
+  - component: {fileID: 2866185451118643017}
   m_Layer: 20
   m_Name: Fox Orange
   m_TagString: Player
@@ -909,52 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fd74a46159fd04b9a3d3d643cdb50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs:
-  - active: 0
-    name: Jump
-    type: 0
-    input: Jump
-    key: 0
-    GetPressed: 0
-    InputValue: 0
-    OnInputDown:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    OnInputUp:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    OnLongPress:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    OnDoubleTap:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    OnInputChanged:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
-    DoubleTapTime: 0.3
-    LongPressTime: 0.5
-    OnInputPressed:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    OnPressedNormalized:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+  inputs: []
   Horizontal:
     active: 0
     name: Horizontal
@@ -1471,6 +1427,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
+--- !u!114 &2866185451118643017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011880065980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5faa24425b86b4cad3fd943192cd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 7cf3e9f3448c1f7468e153fc79112ecf, type: 3}
+  - {fileID: 8300000, guid: 8657b212b47d0574cb281c55518c2ed4, type: 3}
 --- !u!1 &1000011976071022
 GameObject:
   m_ObjectHideFlags: 0
