@@ -22,7 +22,7 @@ public class FoxController : MonoBehaviour
             GameController.instance.gameScore++;
 
             this.GetComponent<PlayAudio>().Play(0);
-            this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + startSpeed, topSpeed);
+            this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.01f) + startSpeed, topSpeed);
         }
         else if (other.gameObject.CompareTag("Water") && hasHitWater == false) //play drowning noise
         {
