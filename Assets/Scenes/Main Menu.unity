@@ -2230,7 +2230,7 @@ MonoBehaviour:
   currentLevel: 0
   musicVolume: 0
   sfxVolume: 1
-  unlockScores: 000000001900000064000000c8000000
+  unlockScores: 00000000190000000a0000000a000000
 --- !u!114 &1520672820
 MonoBehaviour:
   m_ObjectHideFlags: 0

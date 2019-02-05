@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5314708117734615014}
   - component: {fileID: 493159225548171708}
   - component: {fileID: 3175874645649551514}
-  m_Layer: 0
+  - component: {fileID: 3529055579308185847}
+  m_Layer: 4
   m_Name: Water_M_b_01
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3529055579308185847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647839559273409287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 49.999992, y: 0.19999991, z: 49.999992}
+  m_Center: {x: 24.999994, y: 0.016821465, z: 25.000027}
 --- !u!1 &1865026799341966470
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,9 +156,9 @@ GameObject:
   - component: {fileID: 8620028603162319001}
   - component: {fileID: 2910716333371095915}
   - component: {fileID: 1163163914976696167}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water_M_b_01 (1)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4583799417694112339}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +266,7 @@ GameObject:
   - component: {fileID: 3492617551935535727}
   - component: {fileID: 2511886005796178534}
   - component: {fileID: 8206348189959481442}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Bottom_Terrain_H_a_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
