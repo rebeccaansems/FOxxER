@@ -86,7 +86,8 @@ namespace MalbersAnimations
             var PlanarRawDirection = animal.RawDirection;
             PlanarRawDirection.y = 0;
             animal.AirControlDir = PlanarRawDirection;
-           
+
+            GameController.instance.GetComponent<PlayAudio>().PlayRandom();
 
            //----------------------------------------------------------------------------------------
             #region Jump Multiplier Start
