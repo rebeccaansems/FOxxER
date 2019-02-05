@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5974144367594339663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447894348951862816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 49.999992, y: 0.19999991, z: 49.999992}
+  m_Center: {x: 24.999994, y: 0.016821465, z: 25.000027}
+--- !u!65 &4925531678953056003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738078022491878333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 49.999992, y: 0.19999991, z: 49.999992}
+  m_Center: {x: 24.999994, y: 0.016821465, z: 25.000027}
 --- !u!1 &7073902216130815454
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +35,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5302345558635996899}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +69,14 @@ PrefabInstance:
     - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
       propertyPath: m_Name
       value: Water_M_b_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 407570, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,6 +124,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+--- !u!1 &3447894348951862816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30,
+    type: 3}
+  m_PrefabInstance: {fileID: 3447894348951761232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3447894348952144194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407570, guid: 93ee5ff8af93e344886b85c5eafc4a30,
@@ -110,6 +150,14 @@ PrefabInstance:
     - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 407570, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
       propertyPath: m_LocalPosition.x
@@ -169,6 +217,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ee5ff8af93e344886b85c5eafc4a30, type: 3}
+--- !u!1 &6738078022491878333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167792, guid: 93ee5ff8af93e344886b85c5eafc4a30,
+    type: 3}
+  m_PrefabInstance: {fileID: 6738078022491716813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6738078022491571423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407570, guid: 93ee5ff8af93e344886b85c5eafc4a30,
@@ -185,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 144402, guid: 1b355d71d61e8b942a37d4de93c88c2d, type: 3}
       propertyPath: m_Name
       value: Bottom_Terrain_H_a_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 144402, guid: 1b355d71d61e8b942a37d4de93c88c2d, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 405354, guid: 1b355d71d61e8b942a37d4de93c88c2d, type: 3}
       propertyPath: m_LocalPosition.x

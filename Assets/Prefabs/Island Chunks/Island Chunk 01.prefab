@@ -117,6 +117,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3447894348951862816, guid: ca8c6f14c6a6e564381695f720f93de7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447894348951862816, guid: ca8c6f14c6a6e564381695f720f93de7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738078022491878333, guid: ca8c6f14c6a6e564381695f720f93de7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738078022491878333, guid: ca8c6f14c6a6e564381695f720f93de7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca8c6f14c6a6e564381695f720f93de7, type: 3}
 --- !u!4 &8854288905972705230 stripped

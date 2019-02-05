@@ -12,6 +12,7 @@ public class FoxController : MonoBehaviour
 
     private int zCounter, zMatchCounter;
     private int lastZvalue;
+    private bool hasHitWater = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,6 +23,12 @@ public class FoxController : MonoBehaviour
 
             this.GetComponent<PlayAudio>().Play(0);
             this.GetComponent<Animal>().trotSpeed.animator = Mathf.Min((GameController.instance.gameScore * 0.005f) + startSpeed, topSpeed);
+        }
+        else if (other.gameObject.CompareTag("Water") && hasHitWater == false) //play drowning noise
+        {
+            this.GetComponent<PlayAudio>().Play(3);
+            Die();
+            hasHitWater = true;
         }
     }
 

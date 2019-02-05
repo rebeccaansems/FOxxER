@@ -103,6 +103,8 @@ public class GameController : MonoBehaviour
 
         if (newFoxUnlocked)
         {
+            player.GetComponent<PlayAudio>().Play(2);
+
             foxUnlockedScreen.interactable = true;
             foxUnlockedScreen.blocksRaycasts = true;
             foxUnlockedScreen.alpha = 1;
