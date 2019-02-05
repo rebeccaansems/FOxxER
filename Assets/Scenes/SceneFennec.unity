@@ -793,11 +793,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
+    - target: {fileID: 2142991257, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191213284, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRestartPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 223718307, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093535930, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
 --- !u!198 &952480368 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8003872136245491774, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 952480367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &952480369 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1595445739, guid: 50c4d8f76b072814e933d8d86a840fd7,
     type: 3}
   m_PrefabInstance: {fileID: 952480367}
   m_PrefabAsset: {fileID: 0}
@@ -1148,6 +1178,7 @@ MonoBehaviour:
   prevHighScoreText: {fileID: 135499906}
   pauseScreen: {fileID: 1659537948}
   restartScreen: {fileID: 727379962}
+  foxUnlockedScreen: {fileID: 952480369}
   jumpZone: {fileID: 902039032}
   highscoreParticleSystem: {fileID: 952480368}
 --- !u!114 &2045037885

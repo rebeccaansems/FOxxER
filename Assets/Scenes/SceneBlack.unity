@@ -735,6 +735,12 @@ MonoBehaviour:
   - {fileID: 1865026799341966470, guid: 39b1251a4839a5348b27834264868744, type: 3}
   - {fileID: 1865026799341966470, guid: 311b0d9fef273884b90996f496c2805e, type: 3}
   player: {fileID: 0}
+--- !u!225 &1595445739 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1595445739, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1194924050424026875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1677626308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011551960202, guid: 343c81389df5bea428fd193525123ad3,
@@ -856,6 +862,7 @@ MonoBehaviour:
   prevHighScoreText: {fileID: 4855850549305149244}
   pauseScreen: {fileID: 4855850548707628492}
   restartScreen: {fileID: 1078079576475573575}
+  foxUnlockedScreen: {fileID: 1595445739}
   jumpZone: {fileID: 4855850548325975438}
   highscoreParticleSystem: {fileID: 8003872136245491774}
 --- !u!114 &2045037885
@@ -1004,12 +1011,12 @@ PrefabInstance:
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -1129,12 +1136,12 @@ PrefabInstance:
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548707628493, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -1238,6 +1245,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 223718307, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223718308, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
+    - target: {fileID: 1093535930, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093535932, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2045037884}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
 --- !u!1001 &4344804628468061413

@@ -958,6 +958,7 @@ MonoBehaviour:
   prevHighScoreText: {fileID: 1568586962}
   pauseScreen: {fileID: 47984162}
   restartScreen: {fileID: 1078079576475573575}
+  foxUnlockedScreen: {fileID: 4855850548685356016}
   jumpZone: {fileID: 463322720}
   highscoreParticleSystem: {fileID: 4855850548685356015}
 --- !u!114 &2045037885
@@ -1118,12 +1119,12 @@ PrefabInstance:
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -1243,12 +1244,12 @@ PrefabInstance:
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855850548707628493, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -1313,10 +1314,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
-    - target: {fileID: 1756635010, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 6894686346672807911, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1327,11 +1324,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
-    - target: {fileID: 6440300319158625808, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MuteMusicButtonPressed
-      objectReference: {fileID: 0}
     - target: {fileID: 1918037209, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1340,10 +1332,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
-    - target: {fileID: 1918037210, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 1153686529, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1352,40 +1340,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
-    - target: {fileID: 1153686531, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MuteMusicButtonPressed
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855850549518341556, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    - target: {fileID: 4395270357872107276, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
-      propertyPath: m_Camera
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4855850548788796448, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
+    - target: {fileID: 2142991257, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4855850548788796478, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2045037884}
-    - target: {fileID: 2510788509739919206, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
+    - target: {fileID: 191213284, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1150287371879941084, guid: 50c4d8f76b072814e933d8d86a840fd7,
-        type: 3}
+    - target: {fileID: 1595445738, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045037884}
+    - target: {fileID: 223718307, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093535930, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c4d8f76b072814e933d8d86a840fd7, type: 3}
 --- !u!198 &4855850548685356015 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8003872136245491774, guid: 50c4d8f76b072814e933d8d86a840fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4855850548685356014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &4855850548685356016 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1595445739, guid: 50c4d8f76b072814e933d8d86a840fd7,
     type: 3}
   m_PrefabInstance: {fileID: 4855850548685356014}
   m_PrefabAsset: {fileID: 0}

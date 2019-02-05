@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI prevHighScoreText;
     [SerializeField]
-    private CanvasGroup pauseScreen, restartScreen;
+    private CanvasGroup pauseScreen, restartScreen, foxUnlockedScreen;
     [SerializeField]
     private Image jumpZone;
     [SerializeField]
@@ -83,13 +83,34 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        restartScreen.interactable = true;
-        restartScreen.blocksRaycasts = true;
-        restartScreen.alpha = 1;
-
         jumpZone.raycastTarget = false;
 
-        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + gameScore);
+        int newTotalScore = PlayerPrefs.GetInt("TotalScore") + gameScore;
+
+        bool newFoxUnlocked = false;
+
+        for (int i = 1; i < OverallController.instance.unlockScores.Length; i++)
+        {
+            if (newTotalScore >= OverallController.instance.unlockScores[i] &&
+                PlayerPrefs.GetInt("TotalScore") < OverallController.instance.unlockScores[i])
+            {
+                newFoxUnlocked = true;
+                break;
+            }
+        }
+
+        if (newFoxUnlocked)
+        {
+            foxUnlockedScreen.interactable = true;
+            foxUnlockedScreen.blocksRaycasts = true;
+            foxUnlockedScreen.alpha = 1;
+        }
+        else
+        {
+            ShowRestartPanel();
+        }
+
+        PlayerPrefs.SetInt("TotalScore", newTotalScore);
         PlayerPrefs.SetInt("Score" + currentLevel, Mathf.Max(prevHighScore, gameScore));
 
         PlayerPrefs.Save();
@@ -131,6 +152,17 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+    }
+
+    public void ShowRestartPanel()
+    {
+        restartScreen.interactable = true;
+        restartScreen.blocksRaycasts = true;
+        restartScreen.alpha = 1;
+
+        foxUnlockedScreen.interactable = false;
+        foxUnlockedScreen.blocksRaycasts = false;
+        foxUnlockedScreen.alpha = 0;
     }
 
     public void Restart()

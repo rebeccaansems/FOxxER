@@ -20,9 +20,6 @@ public class MainMenuController : MonoBehaviour
 
     private int[] highScores;
 
-    [SerializeField]
-    private int[] unlockScores;
-
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -170,7 +167,7 @@ public class MainMenuController : MonoBehaviour
     
     void CheckFoxLocking()
     {
-        if (PlayerPrefs.GetInt("TotalScore", 0) > unlockScores[selectedLevel]) //Unlock
+        if (PlayerPrefs.GetInt("TotalScore", 0) >= OverallController.instance.unlockScores[selectedLevel]) //Unlock
         {
             scoreInfoText.text = highScores[selectedLevel].ToString();
             lockedFoxCanvas.alpha = 0;
@@ -182,7 +179,7 @@ public class MainMenuController : MonoBehaviour
         }
         else //Lock
         {
-            scoreInfoText.text = unlockScores[selectedLevel].ToString();
+            scoreInfoText.text = OverallController.instance.unlockScores[selectedLevel].ToString();
             lockedFoxCanvas.alpha = 1;
             trophyIcon.enabled = false;
             unlockIcon.enabled = true;
