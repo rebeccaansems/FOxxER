@@ -11,6 +11,8 @@ public class OverallController : MonoBehaviour
     
     public int[] unlockScores;
 
+    public string[] levelName;
+
     public static OverallController instance = null;
 
     void Awake()
