@@ -1385,7 +1385,6 @@ Transform:
   - {fileID: 4000011015081870}
   - {fileID: 4479760430973392}
   - {fileID: 4000011826174680}
-  - {fileID: 4742785498406038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1805,7 +1804,7 @@ MonoBehaviour:
     m_Bits: 1024
   Tracks: {fileID: 198000013136168986, guid: b89bf404b651df940b0f4eb9de79a61d, type: 3}
   Dust: {fileID: 0}
-  StepsVolume: 0.2
+  StepsVolume: 79.24
   DustParticles: 15
   Scale: {x: 1, y: 1, z: 1}
   clips:
@@ -2078,68 +2077,6 @@ Transform:
   m_Father: {fileID: 4000012818362354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1277045099766084
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4742785498406038}
-  - component: {fileID: 65283297133339740}
-  - component: {fileID: 114284702503493256}
-  m_Layer: 2
-  m_Name: Attack Trigger Front
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4742785498406038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277045099766084}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00399971, y: 0, z: 0.9430008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4000012730290872}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65283297133339740
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277045099766084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.8366139, z: 0.44}
-  m_Center: {x: -0.0000008009374, y: 0.41830695, z: 0.00000035762787}
---- !u!114 &114284702503493256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277045099766084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba6a0c4ae41dba499b324d6ba760f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 2
-  damageMultiplier: 1
-  PushForce: 0
-  debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
 --- !u!1 &1342405616173764
 GameObject:
   m_ObjectHideFlags: 0

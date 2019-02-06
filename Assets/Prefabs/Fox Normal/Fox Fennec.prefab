@@ -887,8 +887,8 @@ GameObject:
   - component: {fileID: 114055676717428586}
   - component: {fileID: 114283249868752372}
   - component: {fileID: 82000012498624090}
-  - component: {fileID: 7028203902311998863}
-  - component: {fileID: 2174841823285007336}
+  - component: {fileID: 9097333400095482345}
+  - component: {fileID: 7970288968251575265}
   m_Layer: 20
   m_Name: Fox Fennec
   m_TagString: Player
@@ -912,7 +912,6 @@ Transform:
   - {fileID: 4000010697476526}
   - {fileID: 4688398856810280}
   - {fileID: 4000010998127560}
-  - {fileID: 4075209766199796}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -967,7 +966,7 @@ MonoBehaviour:
   Horizontal:
     active: 0
     name: Horizontal
-    raw: 0
+    raw: 1
     input: Horizontal
     OnAxisValueChanged:
       m_PersistentCalls:
@@ -977,8 +976,8 @@ MonoBehaviour:
   Vertical:
     active: 0
     name: Vertical
-    raw: 0
-    input: Jump
+    raw: 1
+    input: Vertical
     OnAxisValueChanged:
       m_PersistentCalls:
         m_Calls: []
@@ -1018,15 +1017,15 @@ MonoBehaviour:
   CanDoubleJump: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 1024
   StartSpeed: 2
-  height: 0.51
+  height: 0.46
   walkSpeed:
     name: 
     position: 0
     animator: 1
     lerpPosition: 8
-    lerpAnimator: 2
+    lerpAnimator: 4
     rotation: 0
     lerpRotation: 6
   trotSpeed:
@@ -1034,7 +1033,7 @@ MonoBehaviour:
     position: 0
     animator: 1
     lerpPosition: 4
-    lerpAnimator: 3
+    lerpAnimator: 4
     rotation: 0
     lerpRotation: 6
   runSpeed:
@@ -1042,7 +1041,7 @@ MonoBehaviour:
     position: 0
     animator: 1
     lerpPosition: 2
-    lerpAnimator: 2
+    lerpAnimator: 4
     rotation: 0
     lerpRotation: 6
   m_Vertical: Vertical
@@ -1202,11 +1201,11 @@ MonoBehaviour:
   EditorGround: 0
   EditorWater: 1
   EditorAir: 1
-  EditorAdvanced: 0
+  EditorAdvanced: 1
   EditorAirControl: 0
   EditorAttributes: 0
-  EditorEvents: 0
-  EditorAnimatorParameters: 0
+  EditorEvents: 1
+  EditorAnimatorParameters: 1
 --- !u!114 &114510369056750240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,7 +1257,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.TransformEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  showMeshesList: 1
+  showMeshesList: 0
   random: 0
 --- !u!114 &114979247475781944
 MonoBehaviour:
@@ -1312,7 +1311,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  showMeshesList: 1
+  showMeshesList: 0
   random: 0
 --- !u!114 &114055676717428586
 MonoBehaviour:
@@ -1466,7 +1465,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &7028203902311998863
+--- !u!114 &9097333400095482345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1480,7 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
---- !u!114 &2174841823285007336
+--- !u!114 &7970288968251575265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2329,68 +2328,6 @@ MonoBehaviour:
   DebugColor: {r: 0, g: 0.91724133, b: 1, a: 1}
   DrawAxis: 0
   AxisSize: 0.3
---- !u!1 &1541060717199630
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4075209766199796}
-  - component: {fileID: 65791736949913130}
-  - component: {fileID: 114298006788887960}
-  m_Layer: 2
-  m_Name: Attack Trigger Front
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4075209766199796
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541060717199630}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00399971, y: 0, z: 0.9430008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4000014140041006}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65791736949913130
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541060717199630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.8366139, z: 0.44}
-  m_Center: {x: -0.0000008009374, y: 0.41830695, z: 0.00000035762787}
---- !u!114 &114298006788887960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541060717199630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba6a0c4ae41dba499b324d6ba760f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 2
-  damageMultiplier: 1
-  PushForce: 0
-  debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
 --- !u!1 &1748431618333230
 GameObject:
   m_ObjectHideFlags: 0

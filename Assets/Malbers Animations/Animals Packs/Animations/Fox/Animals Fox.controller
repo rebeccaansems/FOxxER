@@ -5295,17 +5295,17 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 110979786}
   m_StateMachineTransitions:
-  - first: {fileID: 110743868}
-    second: []
   - first: {fileID: 110750744}
     second:
     - {fileID: 110982718}
     - {fileID: 110956508}
     - {fileID: 110991308}
     - {fileID: 110968886}
-  - first: {fileID: 110703742}
-    second: []
   - first: {fileID: 110789220}
+    second: []
+  - first: {fileID: 110743868}
+    second: []
+  - first: {fileID: 110703742}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -156, y: -264, z: 0}
@@ -7165,18 +7165,6 @@ MonoBehaviour:
     Active: 1
   onExitMessage: []
   onTimeMessage: []
---- !u!114 &114598823429849612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a965b339f7ac73140be24df694eec541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114643700139854100
 MonoBehaviour:
   m_ObjectHideFlags: 3

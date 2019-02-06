@@ -142,7 +142,7 @@ Transform:
   - {fileID: 1164644348}
   - {fileID: 1471264420}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144729092
 GameObject:
@@ -414,7 +414,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -655,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4855850549518341557, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
@@ -1443,7 +1443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436995309259694, guid: c63203aac475c4b489335b13a7c5c03e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4436995309259694, guid: c63203aac475c4b489335b13a7c5c03e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1462,5 +1462,35 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: trotSpeed.lerpAnimator
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: EditorAirControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: EditorGround
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: EditorAdvanced
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: EditorAnimatorParameters
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872010490114814, guid: c63203aac475c4b489335b13a7c5c03e,
+        type: 3}
+      propertyPath: EditorEvents
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c63203aac475c4b489335b13a7c5c03e, type: 3}
