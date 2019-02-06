@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClips:
-  - {fileID: 8300000, guid: b3f92bb9e5f82784698454ded742e8e5, type: 3}
+  - {fileID: 8300000, guid: 6efe8534c1e22e74e97316e778d0b25d, type: 3}
 --- !u!82 &1337510609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2812,7 +2812,7 @@ MonoBehaviour:
   musicVolume: 0
   sfxVolume: 1
   gamesPlayed: 0
-  unlockScores: 0000000019000000640000002c010000
+  unlockScores: 00000000190000000a0000000a000000
   levelName:
   - Orange Fox
   - Black Fox
@@ -2941,6 +2941,7 @@ GameObject:
   - component: {fileID: 1533912160}
   - component: {fileID: 1533912162}
   - component: {fileID: 1533912161}
+  - component: {fileID: 1533912163}
   m_Layer: 5
   m_Name: Credits Text
   m_TagString: Untagged
@@ -3096,6 +3097,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533912159}
   m_CullTransparentMesh: 0
+--- !u!114 &1533912163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533912159}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e3efd012fe58144b4bb91f7a1a2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditsFile: {fileID: 4900000, guid: 8f4d6150fd15862469d3b03ff3ec1a0c, type: 3}
 --- !u!1 &1545564864
 GameObject:
   m_ObjectHideFlags: 0
