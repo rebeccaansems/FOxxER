@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
     public int selectedLevel = 0, currDirection;
 
     public GameObject diskObject;
-    public CanvasGroup mainCanvas, lockedFoxCanvas, playButtonCanvas;
+    public CanvasGroup mainCanvas, lockedFoxCanvas, playButtonCanvas, creditsCanvas;
     public TextMeshProUGUI scoreInfoText, totalScoreText;
     public Image soundOnImage, soundOffImage, trophyIcon, unlockIcon;
 
@@ -187,5 +187,12 @@ public class MainMenuController : MonoBehaviour
             playButtonCanvas.alpha = 0;
             playButtonCanvas.interactable = false;
         }
+    }
+
+    public void CreditsPanel()
+    {
+        creditsCanvas.alpha = 1 - creditsCanvas.alpha;
+        creditsCanvas.interactable = !creditsCanvas.interactable;
+        creditsCanvas.blocksRaycasts = !creditsCanvas.blocksRaycasts;
     }
 }

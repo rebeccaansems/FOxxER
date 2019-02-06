@@ -1,2 +1,21 @@
-Font
-Single Sleeve - Vic Fieger
+<size=130%>CREDITS
+<size=25%>
+<size=80%>Creator
+<size=60%>Rebecca Ansems
+<size=35%>http://www.rebeccaansems.com
+
+<size=80%>Audio
+<size=60%>Music
+<size=50%>Arrival, Happy, Palm Trees - MBB
+<size=35%>https://www.theartistunion.com/mbbofficial/tracks
+
+<size=60%>Sound Effects 
+<size=50%>Zapsplat 
+
+<size=80%>Art
+<size=60%>Icons
+<size=35%>Font Awesome - Dave Gandy
+
+<size=60%>Font
+<size=50%>Single Sleeve - Vic Fieger
+<size=35%>Monofonto - Typodermic Fonts
