@@ -2231,6 +2231,11 @@ MonoBehaviour:
   musicVolume: 0
   sfxVolume: 1
   unlockScores: 00000000190000000a0000000a000000
+  levelName:
+  - Orange Fox
+  - Black Fox
+  - Arctic Fox
+  - Fennec Fox
 --- !u!114 &1520672820
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class OverallController : MonoBehaviour
     public int currentLevel = 0;
     public int musicVolume = 0;
     public int sfxVolume = 1;
+    public int gamesPlayed = 0;
     
     public int[] unlockScores;
 

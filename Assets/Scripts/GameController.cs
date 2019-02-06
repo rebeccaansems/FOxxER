@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
@@ -113,6 +114,13 @@ public class GameController : MonoBehaviour
         else
         {
             ShowRestartPanel();
+        }
+
+        OverallController.instance.gamesPlayed++;
+
+        if (OverallController.instance.gamesPlayed % 5 == 0 || gameScore > 15)
+        {
+            Advertisement.Show();
         }
 
         PlayerPrefs.SetInt("TotalScore", newTotalScore);
