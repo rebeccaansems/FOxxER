@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
 
         OverallController.instance.gamesPlayed++;
 
-        if (OverallController.instance.gamesPlayed % 5 == 0 || gameScore > 15)
+        if (Advertisement.IsReady() && (OverallController.instance.gamesPlayed % 5 == 0 || gameScore > 15))
         {
             Advertisement.Show();
         }
