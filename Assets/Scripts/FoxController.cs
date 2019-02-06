@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class FoxController : MonoBehaviour
 {
     public float startSpeed = 1, topSpeed = 2;
+    public bool hasHitWater = false;
 
     private List<GameObject> islandsHit = new List<GameObject>();
 
     private int zCounter, zMatchCounter;
     private int lastZvalue;
-    private bool hasHitWater = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -34,21 +34,20 @@ public class FoxController : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 1)
+        if (hasHitWater == false)
         {
-            if (IfStuck())
+            if (Time.timeScale == 1)
             {
-                Die();
-            }
+                if (IfStuck())
+                {
+                    Die();
+                }
 
-            if (this.transform.position.y < -0.6f)
-            {
-                Die();
-            }
-            else if (Mathf.Abs(this.transform.position.x) > 0.05f)
-            {
-                float step = 0.05f * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, transform.position.y, transform.position.z), step);
+                if (Mathf.Abs(this.transform.position.x) > 0.05f)
+                {
+                    float step = 0.05f * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, transform.position.y, transform.position.z), step);
+                }
             }
         }
     }
@@ -58,7 +57,6 @@ public class FoxController : MonoBehaviour
         Camera.main.GetComponent<CameraFollow>().cameraFollowOn = false;
         this.GetComponent<MalbersInput>().AlwaysForward = false;
         this.GetComponent<StepsManager>().Active = false;
-        this.GetComponent<Animal>().getDamaged(new DamageValues(Vector3.up, 200));
 
         StartCoroutine(Restart());
     }

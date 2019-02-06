@@ -67,7 +67,7 @@ namespace MalbersAnimations
 
             WaterLayer = LayerMask.GetMask("Water");
 
-           RootMotion = true; //To make it work with another assets...
+            RootMotion = true; //To make it work with another assets...
 
             //if (animalProxy) animalProxy.SetAnimal(this);                       //Set this animal as proxy
         }
@@ -82,7 +82,7 @@ namespace MalbersAnimations
             DeltaPosition = Vector3.zero;
 
             _RigidBody.isKinematic = false;                     //Some People set it as Kinematic and falling stop working (Just to make sure)
-             Anim.updateMode = AnimatorUpdateMode.Normal;        //Make Sure the Update Mode is on Normal Mode
+            Anim.updateMode = AnimatorUpdateMode.Normal;        //Make Sure the Update Mode is on Normal Mode
 
             isInAir = false;
 
@@ -95,11 +95,14 @@ namespace MalbersAnimations
 
             switch (StartSpeed)                                     //Set Start Speed
             {
-                case Ground.walk: Speed1 = true;
+                case Ground.walk:
+                    Speed1 = true;
                     break;
-                case Ground.trot: Speed2 = true;
+                case Ground.trot:
+                    Speed2 = true;
                     break;
-                case Ground.run: Speed3 = true;
+                case Ground.run:
+                    Speed3 = true;
                     break;
                 default:
                     break;
@@ -139,7 +142,7 @@ namespace MalbersAnimations
                 Fly = true;
                 Anim.Play("Fly", 0);
                 IsInAir = true;
-               _RigidBody.useGravity = false;
+                _RigidBody.useGravity = false;
             }
         }
 
@@ -177,7 +180,7 @@ namespace MalbersAnimations
                 Anim.SetBool(hash_Action, action);
                 Anim.SetInteger(hash_IDAction, ActionID);
                 Anim.SetInteger(hash_IDInt, IDInt);                //The problem is that is always zero if you change it externally;
-                
+
 
 
                 //Optional Animator Parameters
@@ -192,7 +195,7 @@ namespace MalbersAnimations
                 if (hasUnderwater && CanGoUnderWater) Anim.SetBool(hash_Underwater, underwater);
             }
 
-            Anim.SetBool(hash_Fall,  fall );  //Update  fall either if is death or not
+            Anim.SetBool(hash_Fall, fall);  //Update  fall either if is death or not
 
             OnSyncAnimator.Invoke(); //Ready to Sync all the parameters with external scripts ... (Riding System)
         }
@@ -271,7 +274,7 @@ namespace MalbersAnimations
             Vector3 WorldHorizontal = _transform.InverseTransformDirection(0, Turn * 2 * clampDirection * time, 0); //Calculate the World Vector to Turn with
             DeltaRotation *= Quaternion.Euler(WorldHorizontal);
 
-           // DeltaRotation *= Quaternion.Euler(0, Turn * 2 * clampDirection * time, 0);
+            // DeltaRotation *= Quaternion.Euler(0, Turn * 2 * clampDirection * time, 0);
 
             if (Fly || swim || stun || AnimState == AnimTag.Action) return;      //Skip the code below if is in any of this states
 
@@ -293,14 +296,14 @@ namespace MalbersAnimations
         protected virtual void AdditionalSpeed(float time)
         {
             currentSpeed = new Speeds(1);                                                    //Resets the Speeds IMPORTANT (BUG Catched by Jonathan MACK)
-            if (hasUnderwater && underwater && CurrentAnimState == AnimTag.Underwater) currentSpeed = underWaterSpeed; 
+            if (hasUnderwater && underwater && CurrentAnimState == AnimTag.Underwater) currentSpeed = underWaterSpeed;
             else if (hasSwim && swim && CurrentAnimState == AnimTag.Swim) currentSpeed = swimSpeed;                                        //Change values to Swim
             else if (hasFly && fly && CurrentAnimState == AnimTag.Fly) currentSpeed = flySpeed;                                         //Change values to Fly
             else if (IsJumping || fall || CurrentAnimState == AnimTag.Fall) { currentSpeed = new Speeds(1); }
             else if (Speed3 || (Speed2 && Shift)) currentSpeed = runSpeed;
             else if (Speed2 || (Speed1 && Shift)) currentSpeed = trotSpeed;
             else if (Speed1) currentSpeed = walkSpeed;
-          
+
             if (vertical < 0) currentSpeed.position = walkSpeed.position;      //If is going backwards use the WalkSpeed
 
 
@@ -334,7 +337,7 @@ namespace MalbersAnimations
             }
             else if (Down)
             {
-                NewY = Mathf.Lerp(NewY,MovementForward > 0 ? -0.7f : -1, time * smoothness);
+                NewY = Mathf.Lerp(NewY, MovementForward > 0 ? -0.7f : -1, time * smoothness);
             }
             else
             {
@@ -449,7 +452,10 @@ namespace MalbersAnimations
             {
                 fall = true;
 
-                if (pivot_Hip && backray) fall = false;
+                if (pivot_Hip && backray && this.GetComponent<FoxController>().hasHitWater == false)
+                {
+                    fall = false;
+                }
             }
 
             FixDistance = hit_Hip.distance;
@@ -492,33 +498,33 @@ namespace MalbersAnimations
             //Calculate the Align vector of the terrain
             if (IsInAir || slope < -1 || AnimState == AnimTag.NoAlign || !backray || (backray && !frontray))
             {
-               if (slope < 0 || AnimState == AnimTag.Fall)
+                if (slope < 0 || AnimState == AnimTag.Fall)
                     AlignRotation(false, time, AlingToGround);
             }
             else
             {
-                AlignRotation(true, time , AlingToGround);
+                AlignRotation(true, time, AlingToGround);
             }
         }
 
         internal virtual void RaycastWater()
         {
-            if (!pivot_Water) return;
+            //if (!pivot_Water) return;
 
-            if (Physics.Raycast(pivot_Water.transform.position, -T_Up, out WaterHitCenter, scaleFactor * pivot_Water.multiplier * 1.5f, WaterLayer))
-            {
-                waterLevel = WaterHitCenter.point.y;                //Get the water level when find water
+            //if (Physics.Raycast(pivot_Water.transform.position, -T_Up, out WaterHitCenter, scaleFactor * pivot_Water.multiplier * 1.5f, WaterLayer))
+            //{
+            //    waterLevel = WaterHitCenter.point.y;                //Get the water level when find water
 
-                isInWater = true;                                   //Has found a water layer.. so Set isInWater to true
-            }
-            else
-            {
-                if (isInWater && AnimState != AnimTag.SwimJump)     //if is in water but is jumping set to is inwater to false
-                {
-                    isInWater = false;
-                    //waterLevel = LowWaterLevel;
-                }
-            }
+            //    isInWater = true;                                   //Has found a water layer.. so Set isInWater to true
+            //}
+            //else
+            //{
+            //    if (isInWater && AnimState != AnimTag.SwimJump)     //if is in water but is jumping set to is inwater to false
+            //    {
+            //        isInWater = false;
+            //        //waterLevel = LowWaterLevel;
+            //    }
+            //}
         }
 
         /// <summary> Swim Logic </summary>
@@ -528,7 +534,7 @@ namespace MalbersAnimations
             if (underwater) return;                             //if we are underwater this behavior does not need to be calcultate **Important**
             if (Stand || !pivot_Water) return;                  //Skip if where doing nothing | If there's no water Pivot do nothing
 
-            if (FrameCounter % WaterRayInterval == 0)  RaycastWater();      //DO the Water Raycast
+            if (FrameCounter % WaterRayInterval == 0) RaycastWater();      //DO the Water Raycast
 
             if (isInWater)                                                  //if we hit water
             {
@@ -587,7 +593,7 @@ namespace MalbersAnimations
                 {
                     YFix = YFix +
                        (((AnimState == AnimTag.Locomotion || Stand) && difference > 0.01f) ?
-                        difference : 
+                        difference :
                         difference * time * SnapToGround);
                 }
             }
@@ -630,7 +636,7 @@ namespace MalbersAnimations
                 Multiplier *= FallRayMultiplier;
             }
 
-           
+
 
             //Set the Fall Ray a bit farther from the front feet.
             if (Physics.Raycast(fall_Point, -T_Up, out FallRayCast, Multiplier, GroundLayer))
@@ -650,7 +656,10 @@ namespace MalbersAnimations
                     return;
                 }
 
-                fall = false;
+                if (this.GetComponent<FoxController>().hasHitWater == false)
+                {
+                    fall = false;
+                }
 
                 CheckForLanding();
 
@@ -714,14 +723,14 @@ namespace MalbersAnimations
         {
             float maxspeed = groundSpeed;           //Do not override the groundSpeed
 
-            var H_Smooth = 1+currentSpeed.lerpRotation;
-            var V_Smooth = 1+currentSpeed.lerpPosition;
+            var H_Smooth = 1 + currentSpeed.lerpRotation;
+            var V_Smooth = 1 + currentSpeed.lerpPosition;
 
             maxspeed = swim || underwater ? 1 : maxspeed;
 
             if (Shift && UseShift) maxspeed++;                                                  //Increase the Speed with Shift pressed
 
-            if (!Fly && !Swim && !IsJumping )                                       //Don't check for slopes when swimming or flying
+            if (!Fly && !Swim && !IsJumping)                                       //Don't check for slopes when swimming or flying
             {
                 if (SlowSlopes && slope >= 0.5 && maxspeed > 1) maxspeed--;         //SlowDown When going UpHill
 
@@ -749,12 +758,12 @@ namespace MalbersAnimations
             vertical = Mathf.Lerp(vertical, movementAxis.z * maxspeed, Time.deltaTime * V_Smooth);             //smooth the Vertical direction Move.Z
             horizontal = Mathf.Lerp(horizontal, movementAxis.x * ((Shift && UseShift) ? 2 : 1), Time.deltaTime * H_Smooth);  //smooth the Horizontal direction Move.X
 
-            if (Mathf.Abs(horizontal)>0.1f || (Mathf.Abs(vertical) > 0.2f))   //Check if the Character is Standing
+            if (Mathf.Abs(horizontal) > 0.1f || (Mathf.Abs(vertical) > 0.2f))   //Check if the Character is Standing
                 stand = false;
             else stand = true;
 
             if (!MovementReleased) stand = false;
-           
+
 
             if (jump || damaged || stun || fall || swim || fly || isInAir || (tired >= GotoSleep && GotoSleep != 0)) stand = false; //Stand False when doing some action
 
@@ -769,7 +778,7 @@ namespace MalbersAnimations
         /// Distance calculated for the RayCasts Hip-Chest or Water Pivot
         /// </summary>
         protected float FixDistance;
-      
+
 
         void FixedUpdate()
         {
@@ -777,7 +786,7 @@ namespace MalbersAnimations
 
             float time = Time.fixedDeltaTime;
 
-            if (swim && AnimState != AnimTag.SwimJump )      //if is not Swim Jumping then aling with the water (THIS IS NEEDED TO BE DONE IN FIXEDUPDATE)
+            if (swim && AnimState != AnimTag.SwimJump)      //if is not Swim Jumping then aling with the water (THIS IS NEEDED TO BE DONE IN FIXEDUPDATE)
             {
                 YFix = ((Waterlevel - _Height + waterLine) - _transform.position.y) * time * 5f;   //Smoothy Aling position with the Water
             }
@@ -801,15 +810,15 @@ namespace MalbersAnimations
             AdditionalSpeed(time);                                //Apply Speed movement Turn movement ON UPDATE
             AdditionalTurn(time);                                 //Apply Additional Turn movement ON UPDATE
 
-          //  if (CanGoUnderWater && underwater) return;           //Dont calculate the methods below  if we are swimming
+            //  if (CanGoUnderWater && underwater) return;           //Dont calculate the methods below  if we are swimming
 
             RayCasting();
-          
+
             Swimming(time);                                       //Calculate Swimming Logic when not falling on Update
             FixRotation(time);                                    //Apply Extra rotation (for aligning to the terrain)
             UpdatePlatformMovement(true);
             Falling();
-          
+
         }
 
         /// <summary>
@@ -843,8 +852,8 @@ namespace MalbersAnimations
 
             if (RootMotion && Time.deltaTime > 0)               //Only Update the RigidBody Velocity when is on RootMotion Mode IMPORTANT
             {
-               //  transform.position = (Anim.rootPosition + DeltaPosition);
-                 _RigidBody.velocity = (Anim.deltaPosition  + DeltaPosition ) / Time.deltaTime;
+                //  transform.position = (Anim.rootPosition + DeltaPosition);
+                _RigidBody.velocity = (Anim.deltaPosition + DeltaPosition) / Time.deltaTime;
             }
 
             //  _RigidBody.angularVelocity = MalbersTools.Quaternion_to_AngularVelocity(Anim.deltaRotation * DeltaRotation);
@@ -891,7 +900,7 @@ namespace MalbersAnimations
             Animals.Remove(this);   //Remove all this animal from the Overall AnimalList
         }
 
-        
+
 #if UNITY_EDITOR
         void OnDrawGizmos()
         {
@@ -911,12 +920,12 @@ namespace MalbersAnimations
                     Gizmos.DrawWireSphere(hit_Chest.point, 0.03f * sc);
                 }
 
-              
+
                 GUIStyle newStyle = new GUIStyle();
                 newStyle.normal.textColor = RootMotion ? Color.green : Color.black;
                 newStyle.fontStyle = _rigidbody.constraints == RigidbodyConstraints.FreezeRotation ? FontStyle.BoldAndItalic : FontStyle.Bold;
 
-                UnityEditor.Handles.Label(_transform.position,"Rootmotion (" +anim.speed+")", newStyle);
+                UnityEditor.Handles.Label(_transform.position, "Rootmotion (" + anim.speed + ")", newStyle);
             }
         }
 #endif
