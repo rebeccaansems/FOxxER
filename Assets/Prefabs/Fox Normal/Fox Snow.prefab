@@ -1200,11 +1200,11 @@ MonoBehaviour:
   DustParticles: 15
   Scale: {x: 1, y: 1, z: 1}
   clips:
-  - {fileID: 8300000, guid: 73addaaa36bc5b4478d7cbee61bd3ad0, type: 3}
-  - {fileID: 8300000, guid: 7f5d9f9991c533547a0f2e8dca867933, type: 3}
-  - {fileID: 8300000, guid: bbd4941d8f179af4eaa8b0e6f06352a8, type: 3}
-  - {fileID: 8300000, guid: 50ef9e51d993734499f3ba55391226ec, type: 3}
-  - {fileID: 8300000, guid: 272c1b463f5155543881cb12a3fad53b, type: 3}
+  - {fileID: 8300000, guid: ddc7ea2707b188246b23fdd889f12c56, type: 3}
+  - {fileID: 8300000, guid: 0c758c859e411664babd7ece5381a403, type: 3}
+  - {fileID: 8300000, guid: 130677e023c00de4aa9ce327614c2483, type: 3}
+  - {fileID: 8300000, guid: ad6cd92a8676bf94ca3cb0fa3423d4ff, type: 3}
+  - {fileID: 8300000, guid: b3b1b14275f0baa449cc6306d30faae2, type: 3}
   trackOffset: 0.0085
 --- !u!114 &114660781311089964
 MonoBehaviour:
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   topSpeed: 2
+  hasHitWater: 0
 --- !u!114 &5657902646034122794
 MonoBehaviour:
   m_ObjectHideFlags: 0
