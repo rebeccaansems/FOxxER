@@ -1075,6 +1075,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4855850549305149244, guid: 50c4d8f76b072814e933d8d86a840fd7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 2583691263
+      objectReference: {fileID: 0}
     - target: {fileID: 4855850548868812325, guid: 50c4d8f76b072814e933d8d86a840fd7,
         type: 3}
       propertyPath: m_havePropertiesChanged
