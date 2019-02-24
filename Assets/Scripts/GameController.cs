@@ -27,7 +27,6 @@ public class GameController : MonoBehaviour
     private ParticleSystem highscoreParticleSystem;
 
     private int currentLevel = 0, prevHighScore;
-    private SocialShareSheet socialShare;
 
     public static GameController instance = null;
 
@@ -210,27 +209,5 @@ public class GameController : MonoBehaviour
         {
             soundOff.GetComponent<Image>().enabled = OverallController.instance.isMuted;
         }
-    }
-
-    public void ShareTwitter()
-    {
-        socialShare = new SocialShareSheet();
-#if UNITY_IOS
-        socialShare.URL = "https://itunes.apple.com/us/app/foxxer/id1451262100?ls=1&mt=8";
-#elif UNITY_ANDROID
-        SocialShare.URL = "https://play.google.com/store/apps/details?id=com.rebeccaansems.foxxer";
-#endif
-        socialShare.Text = "My highscore on FOxxER with " + OverallController.instance.levelName[currentLevel]
-            + " is " + PlayerPrefs.GetInt("Score" + currentLevel, 0) + ", can you beat it? " + socialShare.URL;
-
-        Debug.Log("SHARED: " + socialShare.Text);
-
-        // Show composer
-        NPBinding.UI.SetPopoverPointAtLastTouchPosition(); // To show popover at last touch point on iOS. On Android, its ignored.
-        NPBinding.Sharing.ShowView(socialShare, FinishedSharing);
-    }
-
-    private void FinishedSharing(eShareResult _result)
-    {
     }
 }

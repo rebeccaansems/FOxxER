@@ -17,14 +17,6 @@ public class OverallController : MonoBehaviour
 
     public static OverallController instance = null;
 
-#if UNITY_IOS
-    private const string gameID = "3032848";
-#elif UNITY_ANDROID
-    private const string gameID = "3032849";
-#elif UNITY_EDITOR
-    private const string gameID = "1111111";
-#endif
-
     void Awake()
     {
         if (instance == null)
@@ -37,11 +29,6 @@ public class OverallController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        Advertisement.Initialize(gameID);
     }
 
     private void Update()
