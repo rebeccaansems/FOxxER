@@ -23,6 +23,12 @@ public class OverallController : MonoBehaviour
         {
             instance = this;
             isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
+
+#if UNITY_IOS
+            Advertisement.Initialize("3032848", false);
+#else
+            Advertisement.Initialize("3032849", false);
+#endif
             DontDestroyOnLoad(this.gameObject);
         }
         else
